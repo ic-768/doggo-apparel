@@ -13,7 +13,10 @@ import dog from "../images/glasses/glasses-3.jpg";
 import selfie1 from "../images/user-selfies/selfie-1.jpg";
 import selfie2 from "../images/user-selfies/selfie-2.jpg";
 import selfie3 from "../images/user-selfies/selfie-3.webp";
+import hat11 from "../images/hats/hat-11.jpg";
 import sportOutfit from "../images/outfits/sporty.jpg";
+import batdog from "../images/outfits/batman.jpg";
+import bernard from "../images/outfits/indian-bernard.jpg";
 
 export default function LandingPage() {
   return (
@@ -115,34 +118,81 @@ export default function LandingPage() {
               Featured Products
             </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {[1, 2, 3].map((item) => (
-                <motion.div
-                  key={item}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Card>
-                    <CardContent className="p-4">
-                      <Image
-                        className="w-full rounded-lg"
-                        alt="cutely dressed dog"
-                        src={dog}
-                        width={250}
-                        height={250}
-                      />
-                      <h3 className="mb-2 text-xl font-semibold">
-                        Fancy Dog Outfit {item}
-                      </h3>
-                      <p className="mb-4 text-gray-600">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                      <Button className="w-full text-white bg-blue-600 hover:bg-blue-700">
-                        Add to Cart
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Card>
+                  <CardContent className="p-4">
+                    <Image
+                      className="w-full rounded-lg"
+                      alt="cutely dressed dog"
+                      src={hat11}
+                      width={500}
+                      height={500}
+                    />
+                    <h3 className="mb-2 text-xl font-semibold">
+                      Fancy Dog Outfit 1
+                    </h3>
+                    <p className="mb-4 text-gray-600">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                    <Button className="w-full text-white bg-blue-600 hover:bg-blue-700">
+                      Add to Cart
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Card>
+                  <CardContent className="p-4">
+                    <Image
+                      className="w-full rounded-lg"
+                      alt="cutely dressed dog"
+                      src={batdog}
+                      width={500}
+                      height={500}
+                    />
+                    <h3 className="mb-2 text-xl font-semibold">
+                      Fancy Dog Outfit 2
+                    </h3>
+                    <p className="mb-4 text-gray-600">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                    <Button className="w-full text-white bg-blue-600 hover:bg-blue-700">
+                      Add to Cart
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Card>
+                  <CardContent className="p-4">
+                    <Image
+                      className="w-full rounded-lg"
+                      alt="cutely dressed dog"
+                      src={bernard}
+                      width={500}
+                      height={500}
+                    />
+                    <h3 className="mb-2 text-xl font-semibold">
+                      Fancy Dog Outfit 3
+                    </h3>
+                    <p className="mb-4 text-gray-600">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                    <Button className="w-full text-white bg-blue-600 hover:bg-blue-700">
+                      Add to Cart
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </div>
           </div>
         </section>
