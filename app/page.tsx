@@ -2,17 +2,19 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import PawPrint from "@/components/ui/icons/paw-print";
-import Facebook from "@/components/ui/icons/facebook";
-import Instagram from "@/components/ui/icons/instagram";
-import Twitter from "@/components/ui/icons/twitter";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  PawPrintIcon,
+  TwitterIcon,
+} from "lucide-react";
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 to-amber-100">
       <header className="container flex justify-between items-center py-6 px-4 mx-auto">
         <div className="flex items-center space-x-2">
-          <PawPrint />
+          <PawPrintIcon />
           <span className="text-2xl font-bold text-blue-600">
             Doggo Apparel
           </span>
@@ -202,7 +204,7 @@ export default function LandingPage() {
           <div className="flex flex-wrap justify-between">
             <div className="mb-8 w-full md:mb-0 md:w-1/4">
               <div className="flex items-center mb-4 space-x-2">
-                <PawPrint />
+                <PawPrintIcon />
                 <span className="text-2xl font-bold text-white">
                   Doggo Apparel
                 </span>
@@ -259,19 +261,19 @@ export default function LandingPage() {
                   href="#"
                   className="text-gray-400 transition-colors hover:text-white"
                 >
-                  <Facebook />
+                  <FacebookIcon />
                 </a>
                 <a
                   href="#"
                   className="text-gray-400 transition-colors hover:text-white"
                 >
-                  <Instagram />
+                  <InstagramIcon />
                 </a>
                 <a
                   href="#"
                   className="text-gray-400 transition-colors hover:text-white"
                 >
-                  <Twitter />
+                  <TwitterIcon />
                 </a>
               </div>
             </div>
