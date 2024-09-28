@@ -10,6 +10,10 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import dog from "../images/glasses/glasses-3.jpg";
+import selfie1 from "../images/user-selfies/selfie-1.jpg";
+import selfie2 from "../images/user-selfies/selfie-2.jpg";
+import selfie3 from "../images/user-selfies/selfie-3.webp";
+import sportOutfit from "../images/outfits/sporty.jpg";
 
 export default function LandingPage() {
   return (
@@ -120,11 +124,11 @@ export default function LandingPage() {
                   <Card>
                     <CardContent className="p-4">
                       <Image
-                        className="rounded-lg"
+                        className="w-full rounded-lg"
                         alt="cutely dressed dog"
                         src={dog}
-                        width={500}
-                        height={500}
+                        width={250}
+                        height={250}
                       />
                       <h3 className="mb-2 text-xl font-semibold">
                         Fancy Dog Outfit {item}
@@ -149,29 +153,69 @@ export default function LandingPage() {
               What Our Customers Say
             </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {[1, 2, 3].map((item) => (
-                <Card key={item} className="bg-white">
-                  <CardContent className="p-6">
-                    <p className="mb-4 text-gray-600">
-                      "My dog looks absolutely adorable in their new outfit from
-                      Doggo Apparel! The quality is amazing."
-                    </p>
-                    <div className="flex items-center">
-                      <Image
-                        className="rounded-lg"
-                        alt="cutely dressed dog"
-                        src={dog}
-                        width={500}
-                        height={500}
-                      />
-                      <div>
-                        <p className="font-semibold">Happy Customer {item}</p>
-                        <p className="text-sm text-gray-500">Dog Parent</p>
-                      </div>
+              <Card className="bg-white">
+                <CardContent className="p-6">
+                  <p className="mb-4 text-gray-600">
+                    "My dog looks absolutely adorable in their new outfit from
+                    Doggo Apparel! The quality is amazing."
+                  </p>
+                  <div className="flex 1s-center">
+                    <Image
+                      width={50}
+                      height={50}
+                      src={selfie1}
+                      alt="Customer 1"
+                      className="mr-4 w-12 h-12 rounded-full"
+                    />
+                    <div>
+                      <p className="font-semibold">Happy Customer 1</p>
+                      <p className="text-sm text-gray-250">Dog Parent</p>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="bg-white">
+                <CardContent className="p-6">
+                  <p className="mb-4 text-gray-600">
+                    "My dog looks absolutely adorable in their new outfit from
+                    Doggo Apparel! The quality is amazing."
+                  </p>
+                  <div className="flex 2s-center">
+                    <Image
+                      width={50}
+                      height={50}
+                      src={selfie2}
+                      alt="Customer 2"
+                      className="mr-4 w-12 h-12 rounded-full"
+                    />
+                    <div>
+                      <p className="font-semibold">Happy Customer 2</p>
+                      <p className="text-sm text-gray-250">Dog Parent</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="bg-white">
+                <CardContent className="p-6">
+                  <p className="mb-4 text-gray-600">
+                    "My dog looks absolutely adorable in their new outfit from
+                    Doggo Apparel! The quality is amazing."
+                  </p>
+                  <div className="flex 3s-center">
+                    <Image
+                      width={50}
+                      height={50}
+                      src={selfie3}
+                      alt="Customer 3"
+                      className="mr-4 w-12 h-12 rounded-full"
+                    />
+                    <div>
+                      <p className="font-semibold">Happy Customer 3</p>
+                      <p className="text-sm text-gray-250">Dog Parent</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -183,7 +227,7 @@ export default function LandingPage() {
                 <Image
                   className="rounded-lg"
                   alt="cutely dressed dog"
-                  src={dog}
+                  src={sportOutfit}
                   width={500}
                   height={500}
                 />
