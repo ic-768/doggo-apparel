@@ -8,6 +8,8 @@ import {
   PawPrintIcon,
   TwitterIcon,
 } from "lucide-react";
+import Image from "next/image";
+import dog from "../images/glasses/glasses-3.jpg";
 
 export default function LandingPage() {
   return (
@@ -58,7 +60,7 @@ export default function LandingPage() {
       </header>
 
       <main>
-        <section className="container flex flex-col items-center py-20 px-4 mx-auto lg:flex-row">
+        <section className="container flex flex-col gap-4 items-center py-20 px-4 mx-auto lg:flex-row">
           <div className="flex flex-col gap-8 mb-10 lg:mb-0 lg:w-1/2">
             <motion.h1
               className="text-5xl font-bold text-gray-800 lg:text-6xl"
@@ -93,7 +95,13 @@ export default function LandingPage() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <span> TODO image here </span>
+            <Image
+              className="rounded-lg"
+              alt="cutely dressed dog"
+              src={dog}
+              width={500}
+              height={500}
+            />
           </motion.div>
         </section>
 
@@ -111,7 +119,13 @@ export default function LandingPage() {
                 >
                   <Card>
                     <CardContent className="p-4">
-                      <span> TODO image here </span>
+                      <Image
+                        className="rounded-lg"
+                        alt="cutely dressed dog"
+                        src={dog}
+                        width={500}
+                        height={500}
+                      />
                       <h3 className="mb-2 text-xl font-semibold">
                         Fancy Dog Outfit {item}
                       </h3>
@@ -143,7 +157,13 @@ export default function LandingPage() {
                       Doggo Apparel! The quality is amazing."
                     </p>
                     <div className="flex items-center">
-                      <span> TODO image here </span>
+                      <Image
+                        className="rounded-lg"
+                        alt="cutely dressed dog"
+                        src={dog}
+                        width={500}
+                        height={500}
+                      />
                       <div>
                         <p className="font-semibold">Happy Customer {item}</p>
                         <p className="text-sm text-gray-500">Dog Parent</p>
@@ -160,7 +180,13 @@ export default function LandingPage() {
           <div className="container px-4 mx-auto">
             <div className="flex flex-col items-center lg:flex-row">
               <div className="mb-10 lg:mb-0 lg:w-1/2">
-                <span> TODO image here </span>
+                <Image
+                  className="rounded-lg"
+                  alt="cutely dressed dog"
+                  src={dog}
+                  width={500}
+                  height={500}
+                />
               </div>
               <div className="lg:pl-12 lg:w-1/2">
                 <h2 className="mb-6 text-4xl font-bold text-gray-800">
