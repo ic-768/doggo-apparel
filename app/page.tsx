@@ -1,16 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-100 to-purple-100">
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-amber-100">
       <header className="container flex justify-between items-center py-6 px-4 mx-auto">
         <div className="flex items-center space-x-2">
           <span> TODO paw icon</span>
-          <span className="text-2xl font-bold text-pink-600">
+          <span className="text-2xl font-bold text-blue-600">
             Doggo Apparel
           </span>
         </div>
@@ -19,7 +18,7 @@ export default function LandingPage() {
             <li>
               <a
                 href="#"
-                className="text-gray-600 transition-colors hover:text-pink-600"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 Home
               </a>
@@ -27,7 +26,7 @@ export default function LandingPage() {
             <li>
               <a
                 href="#"
-                className="text-gray-600 transition-colors hover:text-pink-600"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 Shop
               </a>
@@ -35,7 +34,7 @@ export default function LandingPage() {
             <li>
               <a
                 href="#"
-                className="text-gray-600 transition-colors hover:text-pink-600"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 About
               </a>
@@ -43,7 +42,7 @@ export default function LandingPage() {
             <li>
               <a
                 href="#"
-                className="text-gray-600 transition-colors hover:text-pink-600"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 Contact
               </a>
@@ -54,9 +53,9 @@ export default function LandingPage() {
 
       <main>
         <section className="container flex flex-col items-center py-20 px-4 mx-auto lg:flex-row">
-          <div className="mb-10 lg:mb-0 lg:w-1/2">
+          <div className="flex flex-col gap-8 mb-10 lg:mb-0 lg:w-1/2">
             <motion.h1
-              className="mb-6 text-5xl font-bold text-gray-800 lg:text-6xl"
+              className="text-5xl font-bold text-gray-800 lg:text-6xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -64,7 +63,7 @@ export default function LandingPage() {
               Dress Your Dog in Style
             </motion.h1>
             <motion.p
-              className="mb-8 text-xl text-gray-600"
+              className="text-xl text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -77,7 +76,7 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Button className="py-3 px-6 text-lg font-bold text-white bg-pink-600 rounded-full hover:bg-pink-700">
+              <Button className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700">
                 Shop Now
               </Button>
             </motion.div>
@@ -93,8 +92,8 @@ export default function LandingPage() {
         </section>
 
         <section className="py-20 bg-white">
-          <div className="container px-4 mx-auto">
-            <h2 className="mb-12 text-4xl font-bold text-center text-gray-800">
+          <div className="flex flex-col gap-12 px-4 mx-auto">
+            <h2 className="text-4xl font-bold text-center text-gray-800">
               Featured Products
             </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -113,7 +112,7 @@ export default function LandingPage() {
                       <p className="mb-4 text-gray-600">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       </p>
-                      <Button className="w-full text-white bg-pink-600 hover:bg-pink-700">
+                      <Button className="w-full text-white bg-blue-600 hover:bg-blue-700">
                         Add to Cart
                       </Button>
                     </CardContent>
@@ -124,9 +123,9 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="py-20 bg-pink-100">
-          <div className="container px-4 mx-auto">
-            <h2 className="mb-12 text-4xl font-bold text-center text-gray-800">
+        <section className="py-20">
+          <div className="flex flex-col gap-12 px-4 mx-auto">
+            <h2 className="text-4xl font-bold text-center text-gray-800">
               What Our Customers Say
             </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -171,7 +170,7 @@ export default function LandingPage() {
                   humans and their furry friends. That's why we put so much care
                   into every piece we create.
                 </p>
-                <Button className="py-3 px-6 text-lg font-bold text-white bg-pink-600 rounded-full hover:bg-pink-700">
+                <Button className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700">
                   Learn More
                 </Button>
               </div>
@@ -179,13 +178,13 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="py-20 bg-pink-600">
+        <section className="py-20 bg-blue-600">
           <div className="container px-4 mx-auto">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="mb-6 text-4xl font-bold text-white">
                 Join Our Newsletter
               </h2>
-              <p className="mb-8 text-xl text-pink-100">
+              <p className="mb-8 text-xl text-blue-100">
                 Stay up to date with the latest trends in dog fashion and
                 exclusive offers!
               </p>
