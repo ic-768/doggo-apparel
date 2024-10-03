@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import sportOutfit from "@/images/outfits/sporty.jpg";
-import { fadeIntoView } from "@/lib/motion";
+import { fadeIntoView, tapScale } from "@/lib/motion";
+import MotionButton from "../ui/motion/motion-button";
 
 export default function AboutUs() {
   return (
@@ -34,9 +34,12 @@ export default function AboutUs() {
               humans and their furry friends. That&apos;s why we put so much
               care into every piece we create.
             </p>
-            <Button className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700">
+            <MotionButton
+              {...tapScale}
+              className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700"
+            >
               Learn More
-            </Button>
+            </MotionButton>
           </motion.div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import MotionButton from "../../ui/motion/motion-button";
-import { fadeIntoView } from "@/lib/motion";
+import { fadeIntoView, tapScale } from "@/lib/motion";
 
 const imageProps = {
   className: "w-full rounded-lg",
@@ -37,7 +37,7 @@ export default function FeaturedProducts() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
                 <MotionButton
-                  whileTap={{ scale: 0.95 }}
+                  {...tapScale}
                   className="w-full text-white bg-blue-600 hover:bg-blue-700"
                 >
                   View
@@ -56,7 +56,7 @@ export default function FeaturedProducts() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
                 <MotionButton
-                  whileTap={{ scale: 0.95 }}
+                  {...tapScale}
                   className="w-full text-white bg-blue-600 hover:bg-blue-700"
                 >
                   View
@@ -75,7 +75,7 @@ export default function FeaturedProducts() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
                 <MotionButton
-                  whileTap={{ scale: 0.95 }}
+                  {...tapScale}
                   className="w-full text-white bg-blue-600 hover:bg-blue-700"
                 >
                   View

@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import dog from "@/images/glasses/glasses-3.jpg";
-import { fadeIntoView } from "@/lib/motion";
+import { fadeIntoView, tapScale } from "@/lib/motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import MotionButton from "../ui/motion/motion-button";
 
 export default function ShopNow() {
   return (
@@ -21,9 +21,12 @@ export default function ShopNow() {
           dog deserves to look their best!
         </motion.p>
         <motion.div {...fadeIntoView}>
-          <Button className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700">
+          <MotionButton
+            {...tapScale}
+            className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700"
+          >
             Shop Now
-          </Button>
+          </MotionButton>
         </motion.div>
       </div>
       <motion.div

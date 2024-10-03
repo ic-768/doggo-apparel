@@ -3,7 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
-import { fadeIntoView } from "@/lib/motion";
+import { fadeIntoView, tapScale } from "@/lib/motion";
 import MotionButton from "@/components/ui/motion/motion-button";
 
 const imageProps = {
@@ -33,7 +33,7 @@ export default function PreviewCard({
           <h3 className="mb-2 text-xl font-semibold">{title}</h3>
           <p className="mb-4 text-gray-600">{description}</p>
           <MotionButton
-            whileTap={{ scale: 0.95 }}
+            {...tapScale}
             className="w-full text-white bg-blue-600 hover:bg-blue-700"
           >
             View
