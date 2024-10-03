@@ -19,9 +19,9 @@ export default function TestimonialCard({
 }: TestimonialCardProps) {
   return (
     <MotionCard {...fadeIntoView} className="bg-white">
-      <CardContent className="p-6">
-        <p className="mb-4 text-gray-600">&quot;{quote}&quot;</p>
-        <div className="flex 1s-center">
+      <CardContent className="flex flex-col gap-2 p-6 h-full">
+        <p className="flex-grow text-gray-600">&quot;{quote}&quot;</p>
+        <div className="flex items-center">
           <Image
             width={50}
             height={50}
