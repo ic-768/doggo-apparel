@@ -7,25 +7,29 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import MotionButton from "../ui//motion/motion-button";
+import { fadeIntoView } from "@/lib/motion";
+
+const imageProps = {
+  className: "w-full rounded-lg",
+  width: 500,
+  height: 500,
+};
 
 export default function FeaturedProducts() {
   return (
     <section className="py-20 bg-white">
       <div className="flex flex-col gap-12 px-4 mx-auto">
-        <h2 className="text-4xl font-bold text-center text-gray-800">
+        <motion.h2
+          {...fadeIntoView}
+          className="text-4xl font-bold text-center text-gray-800"
+        >
           Featured Products
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <motion.div whileHover={{ scale: 1.05 }}>
+          <motion.div {...fadeIntoView} whileHover={{ scale: 1.05 }}>
             <Card>
               <CardContent className="p-4">
-                <Image
-                  className="w-full rounded-lg"
-                  alt="cutely dressed dog"
-                  src={hat11}
-                  width={500}
-                  height={500}
-                />
+                <Image alt="cutely dressed dog" src={hat11} {...imageProps} />
                 <h3 className="mb-2 text-xl font-semibold">
                   Fancy Dog Outfit 1
                 </h3>
@@ -41,16 +45,10 @@ export default function FeaturedProducts() {
               </CardContent>
             </Card>
           </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }}>
+          <motion.div {...fadeIntoView} whileHover={{ scale: 1.05 }}>
             <Card>
               <CardContent className="p-4">
-                <Image
-                  className="w-full rounded-lg"
-                  alt="cutely dressed dog"
-                  src={batdog}
-                  width={500}
-                  height={500}
-                />
+                <Image alt="cutely dressed dog" src={batdog} {...imageProps} />
                 <h3 className="mb-2 text-xl font-semibold">
                   Fancy Dog Outfit 2
                 </h3>
@@ -66,16 +64,10 @@ export default function FeaturedProducts() {
               </CardContent>
             </Card>
           </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }}>
+          <motion.div {...fadeIntoView} whileHover={{ scale: 1.05 }}>
             <Card>
               <CardContent className="p-4">
-                <Image
-                  className="w-full rounded-lg"
-                  alt="cutely dressed dog"
-                  src={bernard}
-                  width={500}
-                  height={500}
-                />
+                <Image alt="cutely dressed dog" src={bernard} {...imageProps} />
                 <h3 className="mb-2 text-xl font-semibold">
                   Fancy Dog Outfit 3
                 </h3>

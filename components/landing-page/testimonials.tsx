@@ -1,18 +1,28 @@
-import { Card, CardContent } from "@/components/ui/card";
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+import { CardContent } from "@/components/ui/card";
 import selfie1 from "@/images/user-selfies/selfie-1.jpg";
 import selfie2 from "@/images/user-selfies/selfie-2.jpg";
 import selfie3 from "@/images/user-selfies/selfie-3.webp";
+import { fadeIntoView } from "@/lib/motion";
+
+import MotionCard from "../ui/motion/motion-card";
 
 export default function Testimonials() {
   return (
     <section className="py-20">
       <div className="flex flex-col gap-12 px-4 mx-auto">
-        <h2 className="text-4xl font-bold text-center text-gray-800">
+        <motion.h2
+          {...fadeIntoView}
+          className="text-4xl font-bold text-center text-gray-800"
+        >
           What Our Customers Say
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <Card className="bg-white">
+          <MotionCard {...fadeIntoView} className="bg-white">
             <CardContent className="p-6">
               <p className="mb-4 text-gray-600">
                 &quot;My dog looks absolutely adorable in their new outfit from
@@ -32,8 +42,8 @@ export default function Testimonials() {
                 </div>
               </div>
             </CardContent>
-          </Card>
-          <Card className="bg-white">
+          </MotionCard>
+          <MotionCard {...fadeIntoView} className="bg-white">
             <CardContent className="p-6">
               <p className="mb-4 text-gray-600">
                 &quot;My dog looks absolutely adorable in their new outfit from
@@ -53,8 +63,8 @@ export default function Testimonials() {
                 </div>
               </div>
             </CardContent>
-          </Card>
-          <Card className="bg-white">
+          </MotionCard>
+          <MotionCard {...fadeIntoView} className="bg-white">
             <CardContent className="p-6">
               <p className="mb-4 text-gray-600">
                 &quot;My dog looks absolutely adorable in their new outfit from
@@ -74,7 +84,7 @@ export default function Testimonials() {
                 </div>
               </div>
             </CardContent>
-          </Card>
+          </MotionCard>
         </div>
       </div>
     </section>
