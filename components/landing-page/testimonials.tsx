@@ -25,8 +25,10 @@ export default function Testimonials() {
           <MotionCard {...fadeIntoView} className="bg-white">
             <CardContent className="p-6">
               <p className="mb-4 text-gray-600">
-                &quot;My dog looks absolutely adorable in their new outfit from
-                Doggo Apparel! The quality is amazing.&quot;
+                &quot;I bought this outfit for my dog&apos;s first Diwali
+                celebration, and it was a hit! The fabric is soft and
+                breathable, ensuring he was comfortable all day long. Super
+                vibrant colors and beautifully intricate designs!&quot;
               </p>
               <div className="flex 1s-center">
                 <Image
@@ -46,8 +48,9 @@ export default function Testimonials() {
           <MotionCard {...fadeIntoView} className="bg-white">
             <CardContent className="p-6">
               <p className="mb-4 text-gray-600">
-                &quot;My dog looks absolutely adorable in their new outfit from
-                Doggo Apparel! The quality is amazing.&quot;
+                &quot;This outfit exceeded my expectations! It’s not only
+                stylish but also very easy to put on and take off. My dog looked
+                so adorable! I&apos;ll definitely be buying more!.&quot;
               </p>
               <div className="flex 2s-center">
                 <Image
@@ -67,8 +70,36 @@ export default function Testimonials() {
           <MotionCard {...fadeIntoView} className="bg-white">
             <CardContent className="p-6">
               <p className="mb-4 text-gray-600">
-                &quot;My dog looks absolutely adorable in their new outfit from
-                Doggo Apparel! The quality is amazing.&quot;
+                &quot;These sunglasses are a game-changer for our beach trips!
+                They fit my dog perfectly and stay in place, even during our
+                most adventurous outings. Not only do they protect his eyes from
+                the sun, but they also make him look incredibly cool! I&apos;ve
+                received countless compliments, and my pup loves them.&quot;{" "}
+              </p>
+              <div className="flex 3s-center">
+                <Image
+                  width={50}
+                  height={50}
+                  src={selfie3}
+                  alt="Customer 3"
+                  className="mr-4 w-12 h-12 rounded-full"
+                />
+                <div>
+                  <p className="font-semibold">Happy Customer 3</p>
+                  <p className="text-sm text-gray-250">Dog Parent</p>
+                </div>
+              </div>
+            </CardContent>
+          </MotionCard>
+
+          <MotionCard {...fadeIntoView} className="bg-white">
+            <CardContent className="p-6">
+              <p className="mb-4 text-gray-600">
+                &quot;I can’t say enough good things about this dog cap! It’s
+                not only adorable, but it also keeps my pup cool and protected
+                from the sun during our walks. The adjustable strap makes it a
+                perfect fit, and the breathable material ensures he stays
+                comfortable.&quot;{" "}
               </p>
               <div className="flex 3s-center">
                 <Image
