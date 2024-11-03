@@ -1,4 +1,6 @@
 import * as React from "react";
+import Image from "next/image";
+
 import {
   Card,
   CardContent,
@@ -15,75 +17,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
-const clothingCategories = [
-  {
-    name: "T-Shirts",
-    items: [
-      {
-        id: 1,
-        name: "Classic White Tee",
-        price: 19.99,
-        image: "/placeholder.svg?height=200&width=200",
-        description: "A timeless white t-shirt for any occasion.",
-      },
-      {
-        id: 2,
-        name: "Graphic Print Tee",
-        price: 24.99,
-        image: "/placeholder.svg?height=200&width=200",
-        description: "Bold graphic tee with unique designs.",
-      },
-      {
-        id: 3,
-        name: "V-Neck Tee",
-        price: 22.99,
-        image: "/placeholder.svg?height=200&width=200",
-        description: "Comfortable V-neck tee in various colors.",
-      },
-      {
-        id: 4,
-        name: "Striped Tee",
-        price: 26.99,
-        image: "/placeholder.svg?height=200&width=200",
-        description: "Classic striped pattern tee for a casual look.",
-      },
-    ],
-  },
-  {
-    name: "Jeans",
-    items: [
-      {
-        id: 5,
-        name: "Slim Fit Jeans",
-        price: 49.99,
-        image: "/placeholder.svg?height=200&width=200",
-        description: "Modern slim fit jeans for a sleek look.",
-      },
-      {
-        id: 6,
-        name: "Relaxed Fit Jeans",
-        price: 54.99,
-        image: "/placeholder.svg?height=200&width=200",
-        description: "Comfortable relaxed fit jeans for everyday wear.",
-      },
-      {
-        id: 7,
-        name: "Distressed Jeans",
-        price: 59.99,
-        image: "/placeholder.svg?height=200&width=200",
-        description: "Trendy distressed jeans with a worn-in look.",
-      },
-      {
-        id: 8,
-        name: "High-Waisted Jeans",
-        price: 64.99,
-        image: "/placeholder.svg?height=200&width=200",
-        description: "Flattering high-waisted jeans for all body types.",
-      },
-    ],
-  },
-];
+import { clothingCategories } from "@/lib/clothing-categories";
 
 export default function ShopPage() {
   return (
@@ -94,14 +28,20 @@ export default function ShopPage() {
           <h2 className="mb-4 text-2xl font-semibold">{category.name}</h2>
           <Carousel className="mx-16">
             <CarouselContent>
-              {category.items.map((item) => (
+              {category.items.map((item, i) => (
                 <CarouselItem
-                  key={item.id}
+                  key={item.name + i}
                   className="md:basis-1/2 lg:basis-1/3"
                 >
                   <Card>
                     <CardHeader>
-                      <div>image will go here </div>
+                      <Image
+                        className="w-full rounded-lg"
+                        alt={`Bandana ${i + 1}`}
+                        src={item.image}
+                        height={500}
+                        width={500}
+                      />
                     </CardHeader>
                     <CardContent>
                       <CardTitle>{item.name}</CardTitle>
