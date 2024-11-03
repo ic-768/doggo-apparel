@@ -9,70 +9,68 @@ import Multiple2 from "@/images/accessories/multiple-2.jpg";
 import Multiple from "@/images/accessories/multiple.jpg";
 import Scarf from "@/images/accessories/scarf.jpg";
 
-export const accessories = [
-  {
-    name: "Accessories",
-    items: [
-      {
-        name: "Classic White Tee",
-        price: 19.99,
-        image: Bandana1,
-        description: "A timeless white t-shirt for any occasion.",
-      },
-      {
-        name: "Classic White Tee",
-        price: 19.99,
-        image: Bandana2,
-        description: "A timeless white t-shirt for any occasion.",
-      },
-      {
-        name: "Classic White Tee",
-        price: 19.99,
-        image: Bandana3,
-        description: "A timeless white t-shirt for any occasion.",
-      },
-      {
-        name: "Classic White Tee",
-        price: 19.99,
-        image: Headband1,
-        description: "A timeless white t-shirt for any occasion.",
-      },
-      {
-        name: "Classic White Tee",
-        price: 19.99,
-        image: Headband2,
-        description: "A timeless white t-shirt for any occasion.",
-      },
-      {
-        name: "Classic White Tee",
-        price: 19.99,
-        image: Bow,
-        description: "A timeless white t-shirt for any occasion.",
-      },
-      {
-        name: "Classic White Tee",
-        price: 19.99,
-        image: Gold,
-        description: "A timeless white t-shirt for any occasion.",
-      },
-      {
-        name: "Classic White Tee",
-        price: 19.99,
-        image: Multiple2,
-        description: "A timeless white t-shirt for any occasion.",
-      },
-      {
-        name: "Classic White Tee",
-        price: 19.99,
-        image: Multiple,
-        description: "A timeless white t-shirt for any occasion.",
-      },
-      {
-        name: "Classic White Tee",
-        price: 19.99,
-        image: Scarf,
-        description: "A timeless white t-shirt for any occasion.",
-      },
-    ],
-  },
-];
+export const accessories = {
+  name: "Accessories",
+  items: [
+    {
+      name: "Classic White Tee",
+      price: 19.99,
+      image: Bandana1,
+      description: "A timeless white t-shirt for any occasion.",
+    },
+    {
+      name: "Classic White Tee",
+      price: 19.99,
+      image: Bandana2,
+      description: "A timeless white t-shirt for any occasion.",
+    },
+    {
+      name: "Classic White Tee",
+      price: 19.99,
+      image: Bandana3,
+      description: "A timeless white t-shirt for any occasion.",
+    },
+    {
+      name: "Classic White Tee",
+      price: 19.99,
+      image: Headband1,
+      description: "A timeless white t-shirt for any occasion.",
+    },
+    {
+      name: "Classic White Tee",
+      price: 19.99,
+      image: Headband2,
+      description: "A timeless white t-shirt for any occasion.",
+    },
+    {
+      name: "Classic White Tee",
+      price: 19.99,
+      image: Bow,
+      description: "A timeless white t-shirt for any occasion.",
+    },
+    {
+      name: "Classic White Tee",
+      price: 19.99,
+      image: Gold,
+      description: "A timeless white t-shirt for any occasion.",
+    },
+    {
+      name: "Classic White Tee",
+      price: 19.99,
+      image: Multiple2,
+      description: "A timeless white t-shirt for any occasion.",
+    },
+    {
+      name: "Classic White Tee",
+      price: 19.99,
+      image: Multiple,
+      description: "A timeless white t-shirt for any occasion.",
+    },
+    {
+      name: "Classic White Tee",
+      price: 19.99,
+      image: Scarf,
+      description: "A timeless white t-shirt for any occasion.",
+    },
+  ],
+};

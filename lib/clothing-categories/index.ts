@@ -6,10 +6,10 @@ import { loungewear } from "./loungewear";
 import { outfits } from "./outfits";
 
 export const clothingCategories = [
-  ...accessories,
-  ...fitness,
-  ...glasses,
-  ...hats,
-  ...outfits,
-  ...loungewear,
+  accessories,
+  fitness,
+  glasses,
+  hats,
+  outfits,
+  loungewear,
 ];
