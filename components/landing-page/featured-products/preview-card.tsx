@@ -27,11 +27,11 @@ export default function PreviewCard({
 }: PreviewCardProps) {
   return (
     <motion.div {...fadeIntoView} whileHover={{ scale: 1.05 }}>
-      <Card>
-        <CardContent className="p-4">
+      <Card className="h-full">
+        <CardContent className="flex flex-col p-4 h-full">
           <Image alt={alt} src={src} {...imageProps} />
           <h3 className="mb-2 text-xl font-semibold">{title}</h3>
-          <p className="mb-4 text-gray-600">{description}</p>
+          <p className="flex-grow mb-4 text-gray-600">{description}</p>
           <MotionButton
             {...tapScale}
             className="w-full text-white bg-blue-600 hover:bg-blue-700"
