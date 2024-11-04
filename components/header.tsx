@@ -13,7 +13,12 @@ export default function Header() {
     <header className="flex justify-between items-center py-6 px-4 mx-auto bg-gradient-to-b from-blue-100 to-blue-200 border-b border-zinc-800">
       <div className="flex items-center space-x-2">
         <PawPrintIcon />
-        <span className="text-2xl font-bold text-blue-600">Doggo Apparel</span>
+        <Link
+          href="/"
+          className="text-2xl font-bold text-blue-600 hover:text-blue-500 transition-colors"
+        >
+          Doggo Apparel
+        </Link>
       </div>
       <nav>
         <ul className="flex space-x-4">

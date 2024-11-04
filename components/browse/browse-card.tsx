@@ -30,12 +30,7 @@ export default function BrowseCard({
 }: BrowseCardProps) {
   return (
     <Link href={`/${id}`}>
-      <motion.div
-        {...fadeIntoView}
-        initial="initial"
-        animate="initial"
-        whileHover="animate"
-      >
+      <motion.div {...fadeIntoView} whileHover={{ rotate: 1 }}>
         <Card>
           <CardHeader>
             <Image alt="name" src={image} {...imageProps} />
