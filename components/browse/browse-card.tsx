@@ -29,9 +29,13 @@ export default function BrowseCard({
   id,
 }: BrowseCardProps) {
   return (
-    <Link href={`/${id}`}>
-      <motion.div {...fadeIntoView} whileHover={{ rotate: 1 }}>
-        <Card>
+    <Link className="h-full" href={`/${id}`}>
+      <motion.div
+        {...fadeIntoView}
+        whileHover={{ rotate: 1 }}
+        className="h-full"
+      >
+        <Card className="h-full">
           <CardHeader>
             <Image alt="name" src={image} {...imageProps} />
           </CardHeader>
