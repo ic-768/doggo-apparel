@@ -21,7 +21,7 @@ export default function ShopNow() {
           dog deserves to look their best!
         </motion.p>
         <Link
-          className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700 self-start"
+          className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700 self-start transition-colors"
           href="/browse"
         >
           Shop Now
