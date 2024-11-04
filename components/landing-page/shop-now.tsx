@@ -1,10 +1,10 @@
 "use client";
 
 import dog from "@/images/glasses/glasses-3.jpg";
-import { fadeIntoView, tapScale } from "@/lib/motion";
+import { fadeIntoView } from "@/lib/motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import MotionButton from "../ui/motion/motion-button";
+import Link from "next/link";
 
 export default function ShopNow() {
   return (
@@ -20,14 +20,12 @@ export default function ShopNow() {
           Discover the latest in canine fashion at Doggo Apparel. Because every
           dog deserves to look their best!
         </motion.p>
-        <motion.div {...fadeIntoView}>
-          <MotionButton
-            {...tapScale}
-            className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700"
-          >
-            Shop Now
-          </MotionButton>
-        </motion.div>
+        <Link
+          className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700 self-start"
+          href="/browse"
+        >
+          Shop Now
+        </Link>
       </div>
       <motion.div
         className="lg:w-1/2"
