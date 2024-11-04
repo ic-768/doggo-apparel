@@ -5,12 +5,7 @@ import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import { fadeIntoView, tapScale } from "@/lib/motion";
 import MotionButton from "@/components/ui/motion/motion-button";
-
-const imageProps = {
-  className: "w-full rounded-lg",
-  width: 500,
-  height: 500,
-};
+import { imageProps } from "@/lib/constants";
 
 interface PreviewCardProps {
   alt: string;
