@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, Heart, ShoppingCart } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -30,8 +30,8 @@ export default function ItemPage({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100">
-      <main className="container mx-auto px-4 py-8">
+    <main className="bg-blue-100 mx-auto px-4 py-8">
+      <div className="container">
         <Link
           href="/browse"
           className="inline-flex items-center text-purple-600 hover:text-purple-800 mb-6"
@@ -90,7 +90,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
