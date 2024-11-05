@@ -11,6 +11,6 @@ const DivWithFramerProps = forwardRef<HTMLParagraphElement, MotionDivProps>(
 
 DivWithFramerProps.displayName = "MotionDiv";
 
-const MotionDiv = motion(DivWithFramerProps);
+const MotionDiv = motion.create(DivWithFramerProps);
 
 export default MotionDiv;

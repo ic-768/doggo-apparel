@@ -11,6 +11,6 @@ const PWithFramerProps = forwardRef<HTMLParagraphElement, MotionPProps>(
 
 PWithFramerProps.displayName = "MotionP";
 
-const MotionP = motion(PWithFramerProps);
+const MotionP = motion.create(PWithFramerProps);
 
 export default MotionP;

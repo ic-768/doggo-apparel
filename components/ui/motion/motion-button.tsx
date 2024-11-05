@@ -9,6 +9,6 @@ const MotionButtonProps = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 MotionButtonProps.displayName = "MotionButton";
-const MotionButton = motion(MotionButtonProps);
+const MotionButton = motion.create(MotionButtonProps);
 
 export default MotionButton;

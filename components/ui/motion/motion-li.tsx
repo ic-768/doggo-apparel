@@ -11,6 +11,6 @@ const LiWithFramerProps = forwardRef<HTMLLIElement, MotionLiProps>(
 
 LiWithFramerProps.displayName = "MotionLi";
 
-const MotionLi = motion(LiWithFramerProps);
+const MotionLi = motion.create(LiWithFramerProps);
 
 export default MotionLi;

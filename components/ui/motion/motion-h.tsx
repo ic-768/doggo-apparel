@@ -23,6 +23,6 @@ const HWithFramerProps = forwardRef(
 HWithFramerProps.displayName = "MotionHeading";
 
 // Wrapping in `motion` for animation
-const MotionH = motion(HWithFramerProps);
+const MotionH = motion.create(HWithFramerProps);
 
 export default MotionH;

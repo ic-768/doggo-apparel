@@ -15,6 +15,6 @@ const CardWithFramerProps = forwardRef<HTMLDivElement, MotionCardProps>(
 );
 
 CardWithFramerProps.displayName = "MotionCard";
-const MotionCard = motion(CardWithFramerProps);
+const MotionCard = motion.create(CardWithFramerProps);
 
 export default MotionCard;
