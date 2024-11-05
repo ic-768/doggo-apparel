@@ -1,5 +1,3 @@
-"use client";
-
 import Image, { StaticImageData } from "next/image";
 
 import { CardContent } from "@/components/ui/card";

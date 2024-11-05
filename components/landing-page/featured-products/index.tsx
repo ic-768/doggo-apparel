@@ -1,22 +1,21 @@
-"use client";
-
 import batdog from "@/images/outfits/batman.jpg";
 import bernard from "@/images/outfits/indian-bernard.jpg";
 import hat11 from "@/images/hats/hat-11.jpg";
-import { motion } from "framer-motion";
 import { fadeIntoView } from "@/lib/motion";
 import PreviewCard from "./preview-card";
+import MotionH from "@/components/ui/motion/motion-h1";
 
 export default function FeaturedProducts() {
   return (
     <section className="py-20 bg-white">
       <div className="flex flex-col gap-12 px-4 mx-auto container">
-        <motion.h2
+        <MotionH
+          as="h2"
           {...fadeIntoView}
           className="text-4xl font-bold text-center text-gray-800"
         >
           Featured Products
-        </motion.h2>
+        </MotionH>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <PreviewCard
             alt="awesome dog in an awesome hat"

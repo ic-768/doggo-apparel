@@ -2,15 +2,9 @@
 
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
-import { Button } from "../button";
+import { Button, ButtonProps } from "../button";
 
-interface MotionButtonProps {
-  children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-}
-
-const ButtonWithFramerProps = forwardRef<HTMLButtonElement, MotionButtonProps>(
+const ButtonWithFramerProps = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => <Button ref={ref} {...props} />,
 );
 

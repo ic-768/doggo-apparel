@@ -1,24 +1,22 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 import selfie1 from "@/images/user-selfies/selfie-1.jpg";
 import selfie2 from "@/images/user-selfies/selfie-2.jpg";
 import selfie3 from "@/images/user-selfies/selfie-3.webp";
 import { fadeIntoView } from "@/lib/motion";
 
 import TestimonialCard from "./testimonial-card";
+import MotionH from "@/components/ui/motion/motion-h1";
 
 export default function Testimonials() {
   return (
     <section className="py-20">
       <div className="flex flex-col gap-12 px-4 mx-auto container">
-        <motion.h2
+        <MotionH
+          as="h2"
           {...fadeIntoView}
           className="text-4xl font-bold text-center text-gray-800"
         >
           What Our Customers Say
-        </motion.h2>
+        </MotionH>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <TestimonialCard
             quote="I bought this outfit for my dog's first Diwali

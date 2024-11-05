@@ -1,5 +1,3 @@
-"use client";
-import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import {
   Card,
@@ -12,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { fadeIntoView } from "@/lib/motion";
 import { imageProps } from "@/lib/constants";
 import Link from "next/link";
+import MotionDiv from "../ui/motion/motion-div";
 
 interface BrowseCardProps {
   image: string | StaticImageData;
@@ -30,7 +29,7 @@ export default function BrowseCard({
 }: BrowseCardProps) {
   return (
     <Link className="h-full" href={`/${id}`}>
-      <motion.div
+      <MotionDiv
         {...fadeIntoView}
         whileHover={{ rotate: 1 }}
         className="h-full"
@@ -49,7 +48,7 @@ export default function BrowseCard({
             </Badge>
           </CardFooter>
         </Card>
-      </motion.div>
+      </MotionDiv>
     </Link>
   );
 }

@@ -1,16 +1,14 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import sportOutfit from "@/images/outfits/sporty.jpg";
 import { fadeIntoView, tapScale } from "@/lib/motion";
 import MotionButton from "../ui/motion/motion-button";
+import MotionDiv from "../ui/motion/motion-div";
 
 export default function AboutUs() {
   return (
     <section className="py-20">
       <div className="flex flex-col items-center lg:flex-row mx-auto container px-4">
-        <motion.div {...fadeIntoView} className="mb-10 lg:mb-0 lg:w-1/2">
+        <MotionDiv {...fadeIntoView} className="mb-10 lg:mb-0 lg:w-1/2">
           <Image
             className="rounded-lg"
             alt="cutely dressed dog"
@@ -18,8 +16,8 @@ export default function AboutUs() {
             width={500}
             height={500}
           />
-        </motion.div>
-        <motion.div
+        </MotionDiv>
+        <MotionDiv
           {...fadeIntoView}
           className="lg:pl-12 lg:w-1/2 flex flex-col items-center"
         >
@@ -42,7 +40,7 @@ export default function AboutUs() {
           >
             Learn More
           </MotionButton>
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   );
