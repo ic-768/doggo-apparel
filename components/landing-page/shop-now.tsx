@@ -3,7 +3,7 @@ import { fadeIntoView } from "@/lib/motion";
 import Image from "next/image";
 import Link from "next/link";
 import MotionP from "../ui/motion/motion-p";
-import H1P from "../ui/motion/motion-h1";
+import H1P from "../ui/motion/motion-h";
 import MotionDiv from "../ui/motion/motion-div";
 
 export default function ShopNow() {

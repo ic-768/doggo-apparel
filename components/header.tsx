@@ -1,8 +1,8 @@
 "use client";
-import { motion } from "framer-motion";
 
 import { Grid, Heart, PawPrintIcon, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import MotionLi from "./ui/motion/motion-li";
 
 const links = [
   { element: <Grid size={24} />, href: "/browse" },
@@ -25,7 +25,7 @@ export default function Header() {
       <nav>
         <ul className="flex gap-10">
           {links.map(({ element, href }) => (
-            <motion.li key={href} whileHover={{ scale: 1.08 }}>
+            <MotionLi key={href} whileHover={{ scale: 1.08 }}>
               <Link
                 className="text-gray-600 hover:text-blue-600"
                 href={href}
@@ -33,7 +33,7 @@ export default function Header() {
               >
                 {element}
               </Link>
-            </motion.li>
+            </MotionLi>
           ))}
         </ul>
       </nav>

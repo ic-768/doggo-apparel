@@ -4,11 +4,11 @@ import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Button, ButtonProps } from "../button";
 
-const ButtonWithFramerProps = forwardRef<HTMLButtonElement, ButtonProps>(
+const MotionButtonProps = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => <Button ref={ref} {...props} />,
 );
 
-ButtonWithFramerProps.displayName = "MotionButton";
-const MotionButton = motion(ButtonWithFramerProps);
+MotionButtonProps.displayName = "MotionButton";
+const MotionButton = motion(MotionButtonProps);
 
 export default MotionButton;

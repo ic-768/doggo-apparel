@@ -3,7 +3,7 @@ import bernard from "@/images/outfits/indian-bernard.jpg";
 import hat11 from "@/images/hats/hat-11.jpg";
 import { fadeIntoView } from "@/lib/motion";
 import PreviewCard from "./preview-card";
-import MotionH from "@/components/ui/motion/motion-h1";
+import MotionH from "@/components/ui/motion/motion-h";
 
 export default function FeaturedProducts() {
   return (
