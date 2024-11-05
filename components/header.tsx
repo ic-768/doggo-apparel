@@ -1,11 +1,10 @@
-import { PawPrintIcon } from "lucide-react";
+import { Grid, Heart, PawPrintIcon, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 const links = [
-  { name: "Home", href: "#" },
-  { name: "Shop", href: "/browse" },
-  { name: "About", href: "#" },
-  { name: "Contact", href: "#" },
+  { element: <Grid size={24} />, href: "/browse" },
+  { element: <Heart size={24} />, href: "/favorites" },
+  { element: <ShoppingCart size={24} />, href: "/cart" },
 ];
 
 export default function Header() {
@@ -22,14 +21,14 @@ export default function Header() {
       </div>
       <nav>
         <ul className="flex space-x-4">
-          {links.map(({ name, href }) => (
-            <li key={name}>
+          {links.map(({ element, href }) => (
+            <li key={href}>
               <Link
                 className="text-gray-600 transition-colors hover:text-blue-600"
                 href={href}
                 passHref
               >
-                {name}
+                {element}
               </Link>
             </li>
           ))}
