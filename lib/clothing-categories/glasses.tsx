@@ -17,6 +17,7 @@ export const glasses = {
       description:
         "A stylish pair of classic black-framed glasses for everyday use.",
       id: 17,
+      sizes: ["S", "M", "L", "XL"],
     },
     {
       name: "Vintage Round Glasses",

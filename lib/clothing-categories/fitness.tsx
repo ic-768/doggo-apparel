@@ -15,6 +15,7 @@ export const fitness = {
       image: Bball,
       description: "Perfect for sports or casual streetwear.",
       id: 10,
+      sizes: ["S", "M", "L", "XL"],
     },
     {
       name: "White Beater",

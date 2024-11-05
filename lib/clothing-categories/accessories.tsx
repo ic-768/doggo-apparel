@@ -18,6 +18,7 @@ export const accessories = {
       image: Bandana1,
       description: "A stylish bandana for a laid-back look.",
       id: 0,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Blue Headband",

@@ -19,6 +19,7 @@ export const hats = {
       image: Hat1,
       description: "Perfect for outdoor adventures and sun protection.",
       id: 25,
+      sizes: ["S", "M", "L", "XL"],
     },
     {
       name: "Warm Beanie",

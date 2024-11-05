@@ -1,25 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { getClothingItemById } from "@/lib/utils";
 
-export default function ItemPage({ params }: { params: { id: string } }) {
+export default function ItemPage() {
+  const { item: id } = useParams(); // Get the dynamic parameter
   const [selectedSize, setSelectedSize] = useState("");
 
-  const item = {
-    id: 2,
-    name: "Classic Denim Jacket",
-    price: "$79.99",
-    description:
-      "A timeless denim jacket that never goes out of style. Made from high-quality, durable denim fabric, this jacket features a comfortable fit and versatile design that pairs well with any outfit.",
-    image: "/placeholder.svg?height=600&width=600",
-    sizes: ["XS", "S", "M", "L", "XL"],
-  };
+  const item = getClothingItemById(Number(id))!;
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -55,7 +50,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
             <div>
               <h1 className="text-3xl font-bold mb-2">{item.name}</h1>
               <p className="text-2xl font-semibold text-purple-600 mb-4">
-                {item.price}
+                ${item.price}
               </p>
               <p className="text-gray-600 mb-6">{item.description}</p>
 
@@ -66,7 +61,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                   onValueChange={setSelectedSize}
                   className="flex flex-wrap gap-4"
                 >
-                  {item.sizes.map((size) => (
+                  {item.sizes?.map((size) => (
                     <div key={size}>
                       <RadioGroupItem
                         value={size}

@@ -10,7 +10,6 @@ import Mexican from "@/images/outfits/mexican.jpg";
 import Nigerian from "@/images/outfits/nigerian.jpg";
 import Ninja from "@/images/outfits/ninja.jpg";
 import OrnateDress from "@/images/outfits/ornate-dress.jpg";
-import PartyGroup from "@/images/outfits/party-group.jpg";
 import Raincoat2 from "@/images/outfits/raincoat-2.jpg";
 import Raincoat from "@/images/outfits/raincoat.jpg";
 import Smart2 from "@/images/outfits/smart-2.jpg";
@@ -34,6 +33,7 @@ export const outfits = {
       image: Batman,
       description: "Dress like the Dark Knight.",
       id: 40,
+      sizes: ["S", "M", "L", "XL"],
     },
     {
       name: "Business Outfit",

@@ -12,6 +12,7 @@ export const loungewear = {
       image: Robe,
       description: "Luxurious robe perfect for spa days.",
       id: 36,
+      sizes: ["S", "M", "L", "XL"],
     },
     {
       name: "Cream Robe",
