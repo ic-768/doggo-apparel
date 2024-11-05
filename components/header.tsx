@@ -1,5 +1,3 @@
-"use client";
-
 import { Grid, Heart, PawPrintIcon, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import MotionLi from "./ui/motion/motion-li";
