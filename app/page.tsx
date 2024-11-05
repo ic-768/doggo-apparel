@@ -2,7 +2,6 @@ import ShopNow from "@/components/landing-page/shop-now";
 import FeaturedProducts from "@/components/landing-page/featured-products";
 import Testimonials from "@/components/landing-page/testimonials";
 import AboutUs from "@/components/landing-page/about-us";
-import Footer from "@/components/landing-page/footer";
 
 export default function LandingPage() {
   return (
@@ -12,7 +11,6 @@ export default function LandingPage() {
         <FeaturedProducts />
         <Testimonials />
         <AboutUs />
-        <Footer />
       </main>
     </div>
   );
