@@ -28,7 +28,7 @@ export default function BrowseCard({
   id,
 }: BrowseCardProps) {
   return (
-    <Link className="h-full" href={`/${id}`}>
+    <Link className="h-full" href={`/item/${id}`}>
       <MotionDiv
         {...fadeIntoView}
         whileHover={{ rotate: 1 }}
