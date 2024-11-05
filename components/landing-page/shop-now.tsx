@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function ShopNow() {
   return (
-    <section className="flex flex-col gap-8 items-center py-20 px-4 mx-auto lg:flex-row">
+    <section className="flex flex-col gap-8 items-center py-20 px-4 mx-auto lg:flex-row container">
       <div className="flex flex-col gap-8 lg:w-1/2">
         <motion.h1
           className="text-5xl font-bold text-gray-800 lg:text-6xl"

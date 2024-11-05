@@ -11,12 +11,11 @@ import BrowseCard from "@/components/browse/browse-card";
 
 export default function ShopPage() {
   return (
-    <div className="py-8 px-4 mx-auto bg-blue-100">
-      <h1 className="mb-8 text-3xl font-bold">Our Collection</h1>
-      <div className="flex flex-col gap-12">
+    <section className="bg-blue-100 flex flex-col items-center gap-8 py-4">
+      <div className="flex flex-col gap-10 container">
         {clothingCategories.map((category) => (
-          <div className="flex flex-col gap-4" key={category.name}>
-            <h2 className="text-secondary-foreground text-2xl font-semibold">
+          <div className="flex flex-col gap-6" key={category.name}>
+            <h2 className="text-secondary-foreground text-2xl font-semibold text-center">
               {category.name}
             </h2>
             <Carousel className="mx-16">
@@ -36,6 +35,6 @@ export default function ShopPage() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

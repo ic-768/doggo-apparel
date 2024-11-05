@@ -10,7 +10,7 @@ import PreviewCard from "./preview-card";
 export default function FeaturedProducts() {
   return (
     <section className="py-20 bg-white">
-      <div className="flex flex-col gap-12 px-4 mx-auto">
+      <div className="flex flex-col gap-12 px-4 mx-auto container">
         <motion.h2
           {...fadeIntoView}
           className="text-4xl font-bold text-center text-gray-800"

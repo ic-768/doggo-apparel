@@ -1,3 +1,6 @@
+"use client";
+import { motion } from "framer-motion";
+
 import { Grid, Heart, PawPrintIcon, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
@@ -9,7 +12,7 @@ const links = [
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center py-6 px-4 mx-auto bg-gradient-to-b from-blue-100 to-blue-200 border-b border-zinc-800">
+    <header className="flex justify-between items-center py-6 px-12 mx-auto bg-gradient-to-b from-blue-100 to-blue-200 border-b border-zinc-400">
       <div className="flex items-center space-x-2">
         <PawPrintIcon />
         <Link
@@ -20,17 +23,17 @@ export default function Header() {
         </Link>
       </div>
       <nav>
-        <ul className="flex space-x-4">
+        <ul className="flex gap-10">
           {links.map(({ element, href }) => (
-            <li key={href}>
+            <motion.li key={href} whileHover={{ scale: 1.08 }}>
               <Link
-                className="text-gray-600 transition-colors hover:text-blue-600"
+                className="text-gray-600 hover:text-blue-600"
                 href={href}
                 passHref
               >
                 {element}
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </nav>
