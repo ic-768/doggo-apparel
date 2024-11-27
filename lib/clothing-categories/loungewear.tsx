@@ -20,6 +20,7 @@ export const loungewear = {
       image: Robe1,
       description: "Soft and cozy robe for relaxation.",
       id: 37,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Blue Pyjama Set",
@@ -27,6 +28,7 @@ export const loungewear = {
       image: Pyjama1,
       description: "Comfortable pajama set for a good night's sleep.",
       id: 38,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Pink Pyjama Set",
@@ -34,6 +36,7 @@ export const loungewear = {
       image: Pyjama2,
       description: "Stylish pajama set for lounging.",
       id: 39,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
   ],
 };

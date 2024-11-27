@@ -30,6 +30,7 @@ export const fitness = {
       image: Beater,
       description: "Durable beater for high-intensity workouts.",
       id: 12,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Gray Jacket",
@@ -51,6 +52,7 @@ export const fitness = {
       image: Runner,
       description: "High-performance, absorbant sports tee for any athlete.",
       id: 15,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Treadmill",

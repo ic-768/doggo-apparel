@@ -28,6 +28,7 @@ export const hats = {
       description:
         "Comfortable and insulated material, perfect for wintery days.",
       id: 26,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Casual Cap",
@@ -35,6 +36,7 @@ export const hats = {
       image: Hat11,
       description: "Simple design for a laid-back look.",
       id: 27,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Classic Cap",
@@ -42,6 +44,7 @@ export const hats = {
       image: Hat2,
       description: "A timeless cap for that signature look.",
       id: 28,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Lightweight Sun Hat",
@@ -49,6 +52,7 @@ export const hats = {
       image: Hat3,
       description: "Lightweight and durable for outdoor fun.",
       id: 29,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Classic Fedora",
@@ -56,6 +60,7 @@ export const hats = {
       image: Hat4,
       description: "A stylish fedora for all occasions.",
       id: 30,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Stylish Beanie",
@@ -63,6 +68,7 @@ export const hats = {
       image: Hat5,
       description: "A chic accessory that complements any outfit.",
       id: 31,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Trendy Cap (mini)",
@@ -77,6 +83,7 @@ export const hats = {
       image: Hat7,
       description: "Are you the next David Barkerfield?",
       id: 33,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Everyday Cap",
@@ -91,6 +98,7 @@ export const hats = {
       image: Hat9,
       description: "A versatile hat that suits anyone.",
       id: 35,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
   ],
 };

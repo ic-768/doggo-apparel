@@ -42,6 +42,7 @@ export const glasses = {
       description:
         "Oversized frames that offer a trendy style and great sun protection.",
       id: 20,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Elegant Reading Glasses",
@@ -65,6 +66,7 @@ export const glasses = {
       description:
         "Contemporary clear frame glasses for a sleek, modern appearance.",
       id: 23,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Luxury Designer Shades",

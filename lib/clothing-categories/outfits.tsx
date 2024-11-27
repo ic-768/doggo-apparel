@@ -41,6 +41,7 @@ export const outfits = {
       image: Business,
       description: "Professional attire for any meeting.",
       id: 41,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Construction Outfit",
@@ -55,6 +56,7 @@ export const outfits = {
       image: IndianBernard,
       description: "Traditional attire with a modern twist.",
       id: 43,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Indian Sari (Female)",
@@ -62,6 +64,7 @@ export const outfits = {
       image: IndianShihtzu,
       description: "Elegant outfit for festive occasions.",
       id: 44,
+      sizes: ["SX", "S"],
     },
     {
       name: "Jacket",
@@ -76,6 +79,7 @@ export const outfits = {
       image: Kimono2,
       description: "A small kimono for to immerse in style.",
       id: 46,
+      sizes: ["SX", "S"],
     },
     {
       name: "Kimono",

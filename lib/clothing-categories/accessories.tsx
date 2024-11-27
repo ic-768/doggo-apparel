@@ -33,6 +33,7 @@ export const accessories = {
       image: Bandana3,
       description: "A vibrant bandana perfect for adding a pop of color.",
       id: 2,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Cotton Headband - Striped",
@@ -62,6 +63,7 @@ export const accessories = {
       image: Gold,
       description: "A stunning gold chain that adds elegance to your neckline.",
       id: 6,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
     {
       name: "Jewellery Set",
@@ -85,6 +87,7 @@ export const accessories = {
       description:
         "A heavy winter scarf perfect for warm days. Comes in red or blue.",
       id: 9,
+      sizes: ["XS", "S", "M", "L", "XL"],
     },
   ],
 };
