@@ -8,7 +8,7 @@ import MotionDiv from "../ui/motion/motion-div";
 
 export default function ShopNow() {
   return (
-    <section className="flex flex-col gap-8 items-center py-20 px-4 mx-auto lg:flex-row">
+    <section className="container flex flex-col gap-8 items-center py-20 px-4 mx-auto lg:flex-row">
       <div className="flex flex-col gap-8 lg:w-1/2">
         <H1P
           className="text-5xl font-bold text-gray-800 lg:text-6xl"
@@ -21,7 +21,7 @@ export default function ShopNow() {
           dog deserves to look their best!
         </MotionP>
         <Link
-          className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700 self-start transition-colors"
+          className="self-start py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full transition-colors hover:bg-blue-700"
           href="/browse"
         >
           Shop Now

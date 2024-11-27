@@ -29,57 +29,41 @@ export default function ItemPage() {
   };
 
   return (
-    <main className="py-8 px-4 mx-auto bg-blue-100">
+    <main className="py-8 px-4 mx-auto bg-blue-100 md:px-32">
       <div className="container">
         <Link
           href="/browse"
-          className="inline-flex items-center mb-6 text-purple-600 hover:text-purple-800"
+          className="inline-flex items-center text-purple-600 hover:text-purple-800"
         >
           <ChevronLeft size={20} />
           <span className="ml-1">Back to Browse</span>
         </Link>
 
         <div className="grid gap-8 md:grid-cols-2">
-          <div className="overflow-hidden relative rounded-lg h-[400px] md:h-[600px]">
-            <Image
-              src={item.image}
-              alt={item.name}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg"
-            />
-          </div>
+          <Image src={item.image} alt={item.name} className="rounded-lg" />
 
-          <div className="flex flex-col justify-between">
-            <div>
-              <h1 className="mb-2 text-3xl font-bold">{item.name}</h1>
-              <p className="mb-4 text-2xl font-semibold text-purple-600">
+          <div className="flex flex-col">
+            <div className="flex flex-col gap-4 grow">
+              <h1 className="text-3xl font-bold">{item.name}</h1>
+              <p className="text-2xl font-semibold text-purple-600">
                 ${item.price}
               </p>
-              <p className="mb-6 text-gray-600">{item.description}</p>
+              <p className="text-gray-600">{item.description}</p>
 
               {isSizedItem && (
-                <div className="mb-6">
-                  <h2 className="mb-2 text-lg font-semibold">Select Size</h2>
+                <div className="md:pt-32">
+                  <h2 className="text-lg font-semibold">Select Size</h2>
                   <RadioGroup
                     value={selectedSize}
+                    defaultValue={selectedSize}
                     onValueChange={setSelectedSize}
                     className="flex flex-wrap gap-4"
                   >
                     {item.sizes?.map((size) => {
                       return (
-                        <div key={size}>
-                          <RadioGroupItem
-                            value={size}
-                            id={`size-${size}`}
-                            className="sr-only peer"
-                          />
-                          <Label
-                            htmlFor={`size-${size}`}
-                            className="flex justify-center items-center w-12 h-12 text-sm font-medium rounded-full border-2 border-gray-200 transition-colors cursor-pointer"
-                          >
-                            {size}
-                          </Label>
+                        <div key={size} className="flex items-center space-x-2">
+                          <RadioGroupItem value={size} id={size} />
+                          <Label htmlFor={size}>{size}</Label>
                         </div>
                       );
                     })}
@@ -87,7 +71,7 @@ export default function ItemPage() {
                 </div>
               )}
 
-              <Button onClick={handleAddToCart} className="mb-4 w-full">
+              <Button onClick={handleAddToCart} className="w-full md:w-32">
                 Add to Cart
               </Button>
             </div>
