@@ -1,41 +1,20 @@
-"use client";
-
-import { useState } from "react";
-import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import SizeSelection from "@/components/ui/size-selection";
-
 import { getClothingItemById } from "@/lib/utils";
-import { toast } from "react-toastify";
-import { useShoppingCart } from "@/context/use-shopping-cart";
+import PurchaseControls from "@/components/item/purchase-controls";
 
-export default function ItemPage() {
-  const { item: id } = useParams();
-  const [selectedSize, setSelectedSize] = useState("");
-  const { addToCart } = useShoppingCart();
+export default async function ItemPage({
+  params,
+}: {
+  params: Promise<{ item: string }>;
+}) {
+  const itemId = (await params).item;
 
-  const item = getClothingItemById(Number(id));
+  const item = getClothingItemById(Number(itemId));
 
   if (!item) return;
-
-  const handleAddToCart = () => {
-    if (item.sizes && !selectedSize) {
-      toast.error("Please select a size");
-      return;
-    }
-
-    addToCart({
-      id: item.id,
-      price: item.price,
-      size: selectedSize,
-    });
-
-    toast.success("Added to cart!");
-  };
 
   return (
     <main className="py-8 px-4 mx-auto bg-blue-100 md:px-32">
@@ -56,18 +35,7 @@ export default function ItemPage() {
               ${item.price}
             </p>
             <p className="text-gray-600">{item.description}</p>
-
-            {item.sizes && (
-              <SizeSelection
-                sizes={item.sizes}
-                size={selectedSize}
-                setSize={setSelectedSize}
-              />
-            )}
-
-            <Button onClick={handleAddToCart} className="w-full md:w-32">
-              Add to Cart
-            </Button>
+            <PurchaseControls item={item} />
           </div>
         </div>
       </div>
