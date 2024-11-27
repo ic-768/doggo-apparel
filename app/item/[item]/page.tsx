@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { getClothingItemById } from "@/lib/utils";
+import { toast } from "react-toastify";
 
 export default function ItemPage() {
   const { item: id } = useParams();
@@ -20,12 +21,10 @@ export default function ItemPage() {
   const isSizedItem = item.sizes?.length;
 
   const handleAddToCart = () => {
-    // TODO use toasts instead
     if (isSizedItem && !selectedSize) {
-      alert("Please select a size");
-      return;
+      return toast.error("Please select a size");
     }
-    alert(`Added ${item.name} (Size: ${selectedSize}) to cart!`);
+    toast.success("Added to cart!");
   };
 
   return (
