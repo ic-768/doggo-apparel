@@ -11,13 +11,17 @@ import { Label } from "@/components/ui/label";
 import { getClothingItemById } from "@/lib/utils";
 
 export default function ItemPage() {
-  const { item: id } = useParams(); // Get the dynamic parameter
+  const { item: id } = useParams();
+
   const [selectedSize, setSelectedSize] = useState("");
 
   const item = getClothingItemById(Number(id))!;
 
+  const isSizedItem = item.sizes?.length;
+
   const handleAddToCart = () => {
-    if (!selectedSize) {
+    // TODO use toasts instead
+    if (isSizedItem && !selectedSize) {
       alert("Please select a size");
       return;
     }
@@ -25,18 +29,18 @@ export default function ItemPage() {
   };
 
   return (
-    <main className="bg-blue-100 mx-auto px-4 py-8">
+    <main className="py-8 px-4 mx-auto bg-blue-100">
       <div className="container">
         <Link
           href="/browse"
-          className="inline-flex items-center text-purple-600 hover:text-purple-800 mb-6"
+          className="inline-flex items-center mb-6 text-purple-600 hover:text-purple-800"
         >
           <ChevronLeft size={20} />
           <span className="ml-1">Back to Browse</span>
         </Link>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="relative h-[400px] md:h-[600px] rounded-lg overflow-hidden">
+        <div className="grid gap-8 md:grid-cols-2">
+          <div className="overflow-hidden relative rounded-lg h-[400px] md:h-[600px]">
             <Image
               src={item.image}
               alt={item.name}
@@ -48,38 +52,42 @@ export default function ItemPage() {
 
           <div className="flex flex-col justify-between">
             <div>
-              <h1 className="text-3xl font-bold mb-2">{item.name}</h1>
-              <p className="text-2xl font-semibold text-purple-600 mb-4">
+              <h1 className="mb-2 text-3xl font-bold">{item.name}</h1>
+              <p className="mb-4 text-2xl font-semibold text-purple-600">
                 ${item.price}
               </p>
-              <p className="text-gray-600 mb-6">{item.description}</p>
+              <p className="mb-6 text-gray-600">{item.description}</p>
 
-              <div className="mb-6">
-                <h2 className="text-lg font-semibold mb-2">Select Size</h2>
-                <RadioGroup
-                  value={selectedSize}
-                  onValueChange={setSelectedSize}
-                  className="flex flex-wrap gap-4"
-                >
-                  {item.sizes?.map((size) => (
-                    <div key={size}>
-                      <RadioGroupItem
-                        value={size}
-                        id={`size-${size}`}
-                        className="peer sr-only"
-                      />
-                      <Label
-                        htmlFor={`size-${size}`}
-                        className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-200 text-sm font-medium peer-checked:border-purple-600 peer-checked:text-purple-600 cursor-pointer transition-colors"
-                      >
-                        {size}
-                      </Label>
-                    </div>
-                  ))}
-                </RadioGroup>
-              </div>
+              {isSizedItem && (
+                <div className="mb-6">
+                  <h2 className="mb-2 text-lg font-semibold">Select Size</h2>
+                  <RadioGroup
+                    value={selectedSize}
+                    onValueChange={setSelectedSize}
+                    className="flex flex-wrap gap-4"
+                  >
+                    {item.sizes?.map((size) => {
+                      return (
+                        <div key={size}>
+                          <RadioGroupItem
+                            value={size}
+                            id={`size-${size}`}
+                            className="sr-only peer"
+                          />
+                          <Label
+                            htmlFor={`size-${size}`}
+                            className="flex justify-center items-center w-12 h-12 text-sm font-medium rounded-full border-2 border-gray-200 transition-colors cursor-pointer"
+                          >
+                            {size}
+                          </Label>
+                        </div>
+                      );
+                    })}
+                  </RadioGroup>
+                </div>
+              )}
 
-              <Button onClick={handleAddToCart} className="w-full mb-4">
+              <Button onClick={handleAddToCart} className="mb-4 w-full">
                 Add to Cart
               </Button>
             </div>
