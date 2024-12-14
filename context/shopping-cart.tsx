@@ -6,11 +6,8 @@ interface CartItem {
   id: number;
   price: number;
   size: string;
-}
-
-type CartItemWithQuantity = CartItem & {
   quantity: number;
-};
+}
 
 export interface ShoppingCartContextType {
   cart: CartItem[] | null;
@@ -27,7 +24,7 @@ export const ShoppingCartContext = createContext<
 export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
   // Null means that it hasn't been loaded from local storage yet.
   // This avoids hydration error
-  const [cart, setCart] = useState<CartItemWithQuantity[] | null>(null);
+  const [cart, setCart] = useState<CartItem[] | null>(null);
 
   // Load cart from localStorage after mounting
   useEffect(() => {

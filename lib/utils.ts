@@ -14,4 +14,5 @@ export function getClothingItemById(id: number) {
       return item;
     }
   }
+  throw new Error(`Item with id ${id} not found`);
 }

@@ -5,7 +5,7 @@ import QuickLinks from "./quick-links";
 
 export default function Footer() {
   return (
-    <footer className="py-12 text-white bg-gray-800">
+    <footer className="py-12 text-white bg-gray-800 sm:py-8 md:py-4">
       <div className="px-4 mx-auto container">
         <div className="flex flex-wrap justify-between">
           <div className="mb-8 w-full md:mb-0 md:w-1/4">
