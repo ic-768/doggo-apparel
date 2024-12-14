@@ -12,7 +12,7 @@ export default function SizeSelection({
   setSize,
 }: SizeSelectionProps) {
   return (
-    <div className="md:pt-32">
+    <div>
       <h2 className="text-lg font-semibold">Select Size</h2>
       <RadioGroup
         value={size}

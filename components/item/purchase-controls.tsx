@@ -6,6 +6,7 @@ import { useState } from "react";
 import SizeSelection from "@/components/item/size-selection";
 import { Button } from "@/components/ui/button";
 import { ClothingItem } from "@/lib/types";
+import { Heart, ShoppingCart } from "lucide-react";
 
 export default function PurchaseControls({ item }: { item: ClothingItem }) {
   const [selectedSize, setSelectedSize] = useState("");
@@ -21,6 +22,7 @@ export default function PurchaseControls({ item }: { item: ClothingItem }) {
       id: item.id,
       price: item.price,
       size: selectedSize,
+      quantity: 1,
     });
 
     toast.success("Added to cart!");
@@ -36,9 +38,16 @@ export default function PurchaseControls({ item }: { item: ClothingItem }) {
         />
       )}
 
-      <Button onClick={handleAddToCart} className="w-full md:w-32">
-        Add to Cart
-      </Button>
+      <div className="flex gap-4">
+        <Button onClick={handleAddToCart} className="flex-1" size="lg">
+          <ShoppingCart className="w-4 h-4 mr-2" />
+          Add to Cart
+        </Button>
+        <Button variant="outline" size="lg">
+          <Heart className="w-4 h-4 mr-2" />
+          Add to Wishlist
+        </Button>
+      </div>
     </>
   );
 }

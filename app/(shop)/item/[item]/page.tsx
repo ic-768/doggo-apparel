@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation"; // Import the notFound helper
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Shield, Star, Truck } from "lucide-react";
 
 import { getClothingItemById } from "@/lib/utils";
 import PurchaseControls from "@/components/item/purchase-controls";
 import Main from "@/components/ui/main";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default async function ItemPage({
   params,
@@ -28,7 +30,7 @@ export default async function ItemPage({
           className="text-blue-500 hover:text-blue-700 inline-flex items-center transition-colors"
         >
           <ChevronLeft size={20} />
-          <span className="ml-1">Back to Browse</span>
+          <span>Back to Browse</span>
         </Link>
 
         <div className="grid gap-8 md:grid-cols-2">
@@ -39,13 +41,58 @@ export default async function ItemPage({
               className="object-cover rounded-2xl"
             />
           </div>
+
           <div className="flex flex-col gap-4 grow">
             <h1 className="text-3xl font-bold">{item.name}</h1>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-5 h-5 ${i < 4 ? "fill-yellow-400 text-yellow-400" : "fill-gray-200 text-gray-200"}`}
+                  />
+                ))}
+              </div>
+              <span className="text-sm text-gray-600">(128 reviews)</span>
+            </div>
             <p className="text-2xl font-semibold text-purple-600">
               ${item.price}
             </p>
             <p className="text-gray-600">{item.description}</p>
+
+            <div>
+              <div className="flex items-center gap-2">
+                <Badge variant="secondary" className="px-2 py-1">
+                  4 in cart
+                </Badge>
+                <Badge variant="secondary" className="px-2 py-1">
+                  In Stock
+                </Badge>
+              </div>
+            </div>
             <PurchaseControls item={item} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Card>
+                <CardContent className="flex items-center gap-4 p-4">
+                  <Truck className="w-6 h-6 text-blue-600" />
+                  <div>
+                    <h3 className="font-semibold">Free Shipping</h3>
+                    <p className="text-sm text-gray-600">On orders over $50</p>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="flex items-center gap-4 p-4">
+                  <Shield className="w-6 h-6 text-blue-600" />
+                  <div>
+                    <h3 className="font-semibold">Satisfaction Guaranteed</h3>
+                    <p className="text-sm text-gray-600">
+                      30-day return policy
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </div>

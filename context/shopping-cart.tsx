@@ -49,7 +49,7 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
 
     // first item in cart
     if (!cart || !cart.length) {
-      nextCart = [{ ...item, quantity: 1 }];
+      nextCart = [{ ...item }];
     }
 
     // if item is already in cart, increment quantity
@@ -60,7 +60,7 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
     }
 
     // first item of it's kind
-    else nextCart = [...cart, { ...item, quantity: 1 }];
+    else nextCart = [...cart, { ...item }];
 
     setCart(nextCart);
   };
