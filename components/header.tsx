@@ -5,9 +5,7 @@ import MotionLi from "./ui/motion/motion-li";
 import { useShoppingCart } from "@/context/use-shopping-cart";
 
 export default function Header() {
-  const { cart } = useShoppingCart();
-
-  const numItems = cart?.length;
+  const { numItems } = useShoppingCart();
 
   const links = [
     { element: <Grid size={24} />, href: "/browse" },
@@ -15,11 +13,11 @@ export default function Header() {
     {
       element: (
         <div className="relative">
-          {numItems && numItems > 0 && (
+          {numItems && numItems > 0 ? (
             <span className="absolute -top-3 -right-3 flex items-center justify-center w-4 h-4 text-xs text-white bg-red-500 rounded-full">
               {numItems}
             </span>
-          )}
+          ) : null}
           <ShoppingCart size={24} />
         </div>
       ),
