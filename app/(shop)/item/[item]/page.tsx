@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation"; // Import the notFound helper
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
@@ -14,7 +15,9 @@ export default async function ItemPage({
 
   const item = getClothingItemById(Number(itemId));
 
-  if (!item) return;
+  if (!item) {
+    notFound();
+  }
 
   return (
     <main className="py-8 px-4 mx-auto bg-blue-100 md:px-32">

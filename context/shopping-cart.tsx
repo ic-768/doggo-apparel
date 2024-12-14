@@ -9,7 +9,7 @@ interface CartItem {
 }
 
 export interface ShoppingCartContextType {
-  cart: CartItem[];
+  cart: CartItem[] | null;
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
@@ -20,17 +20,21 @@ export const ShoppingCartContext = createContext<
 >(undefined);
 
 export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
-  // Load cart from localStorage on initial load
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    if (typeof window !== "undefined") {
-      const savedCart = localStorage.getItem("cart");
-      return savedCart ? JSON.parse(savedCart) : [];
-    }
-    return [];
-  });
+  // Null means that it hasn't been loaded from local storage yet.
+  // This avoids hydration error
+  const [cart, setCart] = useState<CartItem[] | null>(null);
+
+  // Load cart from localStorage after mounting
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    setCart(savedCart ? JSON.parse(savedCart) : []);
+  }, []);
 
   // Update localStorage whenever cart changes
   useEffect(() => {
+    // If null (i.e. it's just been initialised), don't overwrite localStorage
+    if (cart === null) return;
+
     if (cart.length > 0) {
       localStorage.setItem("cart", JSON.stringify(cart));
     } else {
@@ -39,11 +43,13 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
   }, [cart]);
 
   const addToCart = (item: CartItem) => {
-    setCart((prevCart) => [...prevCart, item]);
+    setCart((prevCart) => (prevCart ? [...prevCart, item] : [item]));
   };
 
   const removeFromCart = (id: number) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+    setCart((prevCart) =>
+      prevCart ? prevCart.filter((item) => item.id !== id) : [],
+    );
   };
 
   const clearCart = () => {
