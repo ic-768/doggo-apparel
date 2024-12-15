@@ -2,7 +2,7 @@
 import { Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useShoppingCart } from "@/context/use-shopping-cart";
 import { getClothingItemById } from "@/lib/utils";
 import Link from "@/components/ui/link";

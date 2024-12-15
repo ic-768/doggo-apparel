@@ -3,11 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, Shield, Star, Truck } from "lucide-react";
 
-import { getClothingItemById } from "@/lib/utils";
+import { getClothingItemById, getRelatedItems } from "@/lib/utils";
 import PurchaseControls from "@/components/item/purchase-controls";
 import Main from "@/components/ui/main";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import BrowseCard from "@/components/browse/browse-card";
 
 export default async function ItemPage({
   params,
@@ -17,6 +25,7 @@ export default async function ItemPage({
   const itemId = (await params).item;
 
   const item = getClothingItemById(Number(itemId));
+  const relatedItems = getRelatedItems(Number(itemId));
 
   if (!item) {
     notFound();
@@ -94,6 +103,24 @@ export default async function ItemPage({
               </Card>
             </div>
           </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-bold mb-4">You May Also Like</h2>
+          <Carousel>
+            <CarouselContent>
+              {relatedItems.map((item) => (
+                <CarouselItem
+                  key={item.name}
+                  className="md:basis-1/2 lg:basis-1/3 xl:basis-1/5 flex"
+                >
+                  <BrowseCard {...item} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </Main>

@@ -16,3 +16,15 @@ export function getClothingItemById(id: number) {
   }
   throw new Error(`Item with id ${id} not found`);
 }
+
+export function getRelatedItems(id: number) {
+  const category = clothingCategories.find(
+    (category) => category.items.find((item) => item.id === id) !== undefined,
+  );
+
+  if (!category) {
+    throw new Error(`Item with id ${id} not found`);
+  }
+
+  return category.items.filter((item) => item.id !== id);
+}
