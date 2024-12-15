@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useShoppingCart } from "@/context/use-shopping-cart";
 import { getClothingItemById } from "@/lib/utils";
-import Link from "@/components/ui/link";
 import Main from "@/components/ui/main";
+import NextLink from "next/link";
+import Link from "@/components/ui/link";
 
 export default function CartPage() {
   const { cart } = useShoppingCart();
@@ -38,12 +39,14 @@ export default function CartPage() {
                 return (
                   <Card key={`${item.id}${item.size}`} className="p-4">
                     <div className="flex gap-4">
-                      <Image
-                        src={image}
-                        alt={name}
-                        height={150}
-                        className="w-24 h-24  rounded-md"
-                      />
+                      <NextLink href={`/item/${item.id}`} key={item.id}>
+                        <Image
+                          src={image}
+                          alt={name}
+                          height={150}
+                          className="w-24 h-24  rounded-md"
+                        />
+                      </NextLink>
 
                       <div className="flex-1 flex flex-col gap-2">
                         <div className="flex justify-between">

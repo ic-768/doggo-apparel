@@ -82,9 +82,7 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
 
   // how many of an item in cart
   const getNumInCart = (item: ClothingItem) => {
-    console.log("ITEM IS", item);
     const itemInCart = cart?.find((i) => i.id === item.id);
-    console.log(itemInCart);
     return itemInCart?.quantity || 0;
   };
 
