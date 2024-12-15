@@ -12,7 +12,7 @@ import { imageProps } from "@/lib/constants";
 import Link from "next/link";
 import MotionDiv from "../ui/motion/motion-div";
 
-interface BrowseCardProps {
+interface ItemCardProps {
   image: string | StaticImageData;
   name: string;
   description: string;
@@ -20,13 +20,13 @@ interface BrowseCardProps {
   id: number;
 }
 
-export default function BrowseCard({
+export default function ItemCard({
   image,
   name,
   description,
   price,
   id,
-}: BrowseCardProps) {
+}: ItemCardProps) {
   return (
     <Link className="h-full" href={`/item/${id}`}>
       <MotionDiv

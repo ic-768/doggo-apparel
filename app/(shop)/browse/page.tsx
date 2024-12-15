@@ -7,8 +7,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { clothingCategories } from "@/lib/clothing-categories";
-import BrowseCard from "@/components/browse/browse-card";
 import Main from "@/components/ui/main";
+import ItemCard from "@/components/item/item-card";
 
 export default function ShopPage() {
   return (
@@ -25,7 +25,7 @@ export default function ShopPage() {
                   key={item.name + i}
                   className="md:basis-1/2 lg:basis-1/3 xl:basis-1/5 flex"
                 >
-                  <BrowseCard {...item} />
+                  <ItemCard {...item} />
                 </CarouselItem>
               ))}
             </CarouselContent>

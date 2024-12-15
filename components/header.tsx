@@ -1,4 +1,5 @@
 "use client";
+// TODO scope use client to shopping cart icon
 import { Grid, Heart, PawPrintIcon, ShoppingCart } from "lucide-react";
 import MotionLi from "./ui/motion/motion-li";
 import { useShoppingCart } from "@/context/use-shopping-cart";

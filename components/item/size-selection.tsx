@@ -22,10 +22,13 @@ export default function SizeSelection({
       >
         {sizes?.map((s) => {
           return (
-            <div key={s} className="flex items-center space-x-2">
+            <Label
+              key={s}
+              className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-blue-100 [&:has(:checked)]:border-blue-500"
+            >
               <RadioGroupItem value={s} id={s} />
-              <Label htmlFor={s}>{s}</Label>
-            </div>
+              {s}
+            </Label>
           );
         })}
       </RadioGroup>

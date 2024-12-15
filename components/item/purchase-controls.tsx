@@ -43,7 +43,7 @@ export default function PurchaseControls({ item }: { item: ClothingItem }) {
           <ShoppingCart className="w-4 h-4 mr-2" />
           Add to Cart
         </Button>
-        <Button variant="outline" size="lg">
+        <Button className="flex-1" variant="outline" size="lg">
           <Heart className="w-4 h-4 mr-2" />
           Add to Wishlist
         </Button>

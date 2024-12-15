@@ -15,7 +15,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import BrowseCard from "@/components/browse/browse-card";
+import ItemCard from "@/components/item/item-card";
 
 export default async function ItemPage({
   params,
@@ -25,15 +25,16 @@ export default async function ItemPage({
   const itemId = (await params).item;
 
   const item = getClothingItemById(Number(itemId));
-  const relatedItems = getRelatedItems(Number(itemId));
 
   if (!item) {
     notFound();
   }
 
+  const relatedItems = getRelatedItems(Number(itemId));
+
   return (
     <Main className="items-center">
-      <div className="container">
+      <div className="container flex flex-col gap-6">
         <Link
           href="/browse"
           className="text-blue-500 hover:text-blue-700 inline-flex items-center transition-colors"
@@ -43,7 +44,7 @@ export default async function ItemPage({
         </Link>
 
         <div className="grid gap-8 md:grid-cols-2">
-          <div className="relative max-h-96 max-w-96">
+          <div className="relative">
             <Image
               src={item.image}
               alt={item.name}
@@ -51,7 +52,7 @@ export default async function ItemPage({
             />
           </div>
 
-          <div className="flex flex-col gap-4 grow">
+          <div className="flex flex-col gap-4">
             <h1 className="text-3xl font-bold">{item.name}</h1>
             <div className="flex items-center gap-2 mb-4">
               <div className="flex">
@@ -64,57 +65,89 @@ export default async function ItemPage({
               </div>
               <span className="text-sm text-gray-600">(128 reviews)</span>
             </div>
-            <p className="text-2xl font-semibold text-purple-600">
-              ${item.price}
-            </p>
-            <p className="text-gray-600">{item.description}</p>
+            <Badge
+              variant="secondary"
+              className="text-lg font-semibold self-start"
+            >
+              ${item.price.toFixed(2)}
+            </Badge>
+            <Card className="p-4 text-gray-600 self-start">
+              {item.description}
+            </Card>
 
-            <div>
-              <div className="flex items-center gap-2">
-                <Badge variant="secondary" className="px-2 py-1">
-                  4 in cart
-                </Badge>
-                <Badge variant="secondary" className="px-2 py-1">
-                  In Stock
-                </Badge>
+            <div className="flex items-center gap-2">
+              <Badge variant="secondary" className="px-2 py-1">
+                4 in cart
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-1">
+                In Stock
+              </Badge>
+            </div>
+
+            <div className="mt-16 flex flex-col gap-8">
+              <PurchaseControls item={item} />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Card>
+                  <CardContent className="flex items-center gap-4 p-4">
+                    <Truck className="w-6 h-6 text-blue-600" />
+                    <div>
+                      <h3 className="font-semibold">Free Shipping</h3>
+                      <p className="text-sm text-gray-600">
+                        On orders over $50
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="flex items-center gap-4 p-4">
+                    <Shield className="w-6 h-6 text-blue-600" />
+                    <div>
+                      <h3 className="font-semibold">Satisfaction Guaranteed</h3>
+                      <p className="text-sm text-gray-600">
+                        30-day return policy
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
-            <PurchaseControls item={item} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Card>
-                <CardContent className="flex items-center gap-4 p-4">
-                  <Truck className="w-6 h-6 text-blue-600" />
-                  <div>
-                    <h3 className="font-semibold">Free Shipping</h3>
-                    <p className="text-sm text-gray-600">On orders over $50</p>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="flex items-center gap-4 p-4">
-                  <Shield className="w-6 h-6 text-blue-600" />
-                  <div>
-                    <h3 className="font-semibold">Satisfaction Guaranteed</h3>
-                    <p className="text-sm text-gray-600">
-                      30-day return policy
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card className="p-4">
+              <h3 className="font-semibold">Features</h3>
+              <ul className="list-disc list-inside text-gray-600">
+                <li>Premium cotton material</li>
+                <li>Double-stitched edges for durability</li>
+                <li>Adjustable fit for comfort</li>
+                <li>Machine washable</li>
+                {item.sizes ? <li>Available in multiple sizes</li> : null}
+              </ul>
+            </Card>
+            <Card className="p-4">
+              <h3 className="font-semibold">Care Instructions</h3>
+              <ul className="list-disc list-inside text-gray-600">
+                <li>Machine wash cold</li>
+                <li>Tumble dry low</li>
+                <li>Do not bleach</li>
+                <li>Iron on low if needed</li>
+              </ul>
+            </Card>
           </div>
         </div>
 
         <div>
           <h2 className="text-2xl font-bold mb-4">You May Also Like</h2>
-          <Carousel>
+          <Carousel className="mx-16">
             <CarouselContent>
               {relatedItems.map((item) => (
                 <CarouselItem
                   key={item.name}
                   className="md:basis-1/2 lg:basis-1/3 xl:basis-1/5 flex"
                 >
-                  <BrowseCard {...item} />
+                  <ItemCard {...item} />
                 </CarouselItem>
               ))}
             </CarouselContent>
