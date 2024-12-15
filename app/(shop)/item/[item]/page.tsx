@@ -1,13 +1,13 @@
-import { notFound } from "next/navigation"; // Import the notFound helper
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, Shield, Star, Truck } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 import { getClothingItemById, getRelatedItems } from "@/lib/utils";
 import PurchaseControls from "@/components/item/purchase-controls";
 import Main from "@/components/ui/main";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -16,6 +16,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import ItemCard from "@/components/item/item-card";
+import PriceTag from "@/components/item/price-tag";
+import ReviewsScore from "@/components/item/reviews-score";
+import Policies from "@/components/item/policies";
+import NumberInCart from "@/components/item/number-in-cart";
 
 export default async function ItemPage({
   params,
@@ -54,63 +58,21 @@ export default async function ItemPage({
 
           <div className="flex flex-col gap-4">
             <h1 className="text-3xl font-bold">{item.name}</h1>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`w-5 h-5 ${i < 4 ? "fill-yellow-400 text-yellow-400" : "fill-gray-200 text-gray-200"}`}
-                  />
-                ))}
-              </div>
-              <span className="text-sm text-gray-600">(128 reviews)</span>
-            </div>
-            <Badge
-              variant="secondary"
-              className="text-lg font-semibold self-start"
-            >
-              ${item.price.toFixed(2)}
-            </Badge>
+            <ReviewsScore />
+            <PriceTag price={item.price} />
             <Card className="p-4 text-gray-600 self-start">
               {item.description}
             </Card>
 
             <div className="flex items-center gap-2">
-              <Badge variant="secondary" className="px-2 py-1">
-                4 in cart
-              </Badge>
+              <NumberInCart item={item} />
               <Badge variant="secondary" className="px-2 py-1">
                 In Stock
               </Badge>
             </div>
 
-            <div className="mt-16 flex flex-col gap-8">
-              <PurchaseControls item={item} />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Card>
-                  <CardContent className="flex items-center gap-4 p-4">
-                    <Truck className="w-6 h-6 text-blue-600" />
-                    <div>
-                      <h3 className="font-semibold">Free Shipping</h3>
-                      <p className="text-sm text-gray-600">
-                        On orders over $50
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent className="flex items-center gap-4 p-4">
-                    <Shield className="w-6 h-6 text-blue-600" />
-                    <div>
-                      <h3 className="font-semibold">Satisfaction Guaranteed</h3>
-                      <p className="text-sm text-gray-600">
-                        30-day return policy
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+            <PurchaseControls item={item} />
+            <Policies />
           </div>
         </div>
 

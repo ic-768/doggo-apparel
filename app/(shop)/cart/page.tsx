@@ -1,5 +1,4 @@
 "use client";
-// TODO scope use client
 import { Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -53,8 +52,10 @@ export default function CartPage() {
                             <X className="h-5 w-5" />
                           </button>
                         </div>
-                        <p className="text-gray-600">Size: {item.size}</p>
-                        <div className="flex justify-between items-center">
+                        {item.size ? (
+                          <p className="text-gray-600">Size: {item.size}</p>
+                        ) : null}
+                        <div className="flex justify-between items-center mt-auto">
                           <div className="flex items-center gap-2">
                             <Button
                               variant="outline"

@@ -1,27 +1,14 @@
-"use client";
-// TODO scope use client to shopping cart icon
-import { Grid, Heart, PawPrintIcon, ShoppingCart } from "lucide-react";
+import { Grid, Heart, PawPrintIcon } from "lucide-react";
 import MotionLi from "./ui/motion/motion-li";
-import { useShoppingCart } from "@/context/use-shopping-cart";
 import Link from "./ui/link";
+import CartIndicator from "./ui/cart-indicator";
 
 export default function Header() {
-  const { numItems } = useShoppingCart();
-
   const links = [
     { element: <Grid size={24} />, href: "/browse" },
     { element: <Heart size={24} />, href: "/favorites" },
     {
-      element: (
-        <div className="relative">
-          {numItems && numItems > 0 ? (
-            <span className="absolute -top-3 -right-3 flex items-center justify-center w-4 h-4 text-xs text-white bg-red-500 rounded-full">
-              {numItems}
-            </span>
-          ) : null}
-          <ShoppingCart size={24} />
-        </div>
-      ),
+      element: <CartIndicator />,
       href: "/cart",
     },
   ];

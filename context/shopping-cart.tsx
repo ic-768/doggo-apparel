@@ -1,5 +1,6 @@
 "use client";
 
+import { ClothingItem } from "@/lib/types";
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
 interface CartItem {
@@ -15,6 +16,7 @@ export interface ShoppingCartContextType {
   removeFromCart: (id: number) => void;
   clearCart: () => void;
   numItems: number;
+  getNumInCart: (item: ClothingItem) => number;
 }
 
 export const ShoppingCartContext = createContext<
@@ -75,11 +77,27 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
     setCart([]);
   };
 
+  // total num of items
   const numItems = cart?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+
+  // how many of an item in cart
+  const getNumInCart = (item: ClothingItem) => {
+    console.log("ITEM IS", item);
+    const itemInCart = cart?.find((i) => i.id === item.id);
+    console.log(itemInCart);
+    return itemInCart?.quantity || 0;
+  };
 
   return (
     <ShoppingCartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, numItems }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        numItems,
+        getNumInCart,
+      }}
     >
       {children}
     </ShoppingCartContext.Provider>

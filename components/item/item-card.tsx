@@ -6,11 +6,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { fadeIntoView } from "@/lib/motion";
 import { imageProps } from "@/lib/constants";
 import Link from "next/link";
 import MotionDiv from "../ui/motion/motion-div";
+import PriceTag from "./price-tag";
 
 interface ItemCardProps {
   image: string | StaticImageData;
@@ -43,9 +43,7 @@ export default function ItemCard({
             <p className="text-sm text-muted-foreground">{description}</p>
           </CardContent>
           <CardFooter className="flex justify-center">
-            <Badge variant="secondary" className="text-lg font-semibold">
-              ${price.toFixed(2)}
-            </Badge>
+            <PriceTag price={price} />
           </CardFooter>
         </Card>
       </MotionDiv>
