@@ -35,10 +35,10 @@ export default function ItemCard({
         className="h-full"
       >
         <Card className="h-full">
-          <CardHeader>
+          <CardHeader className="p-0">
             <Image alt="name" src={image} {...imageProps} />
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-2">
             <CardTitle>{name}</CardTitle>
             <p className="text-sm text-muted-foreground">{description}</p>
           </CardContent>
