@@ -1,13 +1,11 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React from "react";
 import { motion, MotionProps } from "framer-motion";
 
 type MotionDivProps = React.HTMLProps<HTMLParagraphElement> & MotionProps;
 
-const DivWithFramerProps = forwardRef<HTMLParagraphElement, MotionDivProps>(
-  (props, ref) => <div ref={ref} {...props} />,
-);
+const DivWithFramerProps = (props: MotionDivProps) => <div {...props} />;
 
 DivWithFramerProps.displayName = "MotionDiv";
 

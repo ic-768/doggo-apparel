@@ -1,12 +1,10 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Button, ButtonProps } from "../button";
 
-const MotionButtonProps = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => <Button ref={ref} {...props} />,
-);
+const MotionButtonProps = (props: ButtonProps) => <Button {...props} />;
 
 MotionButtonProps.displayName = "MotionButton";
 const MotionButton = motion.create(MotionButtonProps);

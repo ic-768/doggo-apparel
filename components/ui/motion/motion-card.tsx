@@ -1,6 +1,6 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Card } from "../card";
 
@@ -10,9 +10,7 @@ interface MotionCardProps {
   style?: React.CSSProperties;
 }
 
-const CardWithFramerProps = forwardRef<HTMLDivElement, MotionCardProps>(
-  (props, ref) => <Card ref={ref} {...props} />,
-);
+const CardWithFramerProps = (props: MotionCardProps) => <Card {...props} />;
 
 CardWithFramerProps.displayName = "MotionCard";
 const MotionCard = motion.create(CardWithFramerProps);

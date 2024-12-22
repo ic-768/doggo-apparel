@@ -1,13 +1,11 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React from "react";
 import { motion, MotionProps } from "framer-motion";
 
 type MotionPProps = React.HTMLProps<HTMLParagraphElement> & MotionProps;
 
-const PWithFramerProps = forwardRef<HTMLParagraphElement, MotionPProps>(
-  (props, ref) => <p ref={ref} {...props} />,
-);
+const PWithFramerProps = (props: MotionPProps) => <p {...props} />;
 
 PWithFramerProps.displayName = "MotionP";
 
