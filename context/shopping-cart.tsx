@@ -1,6 +1,5 @@
 "use client";
 
-import { ClothingItem } from "@/lib/types";
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
 interface CartItem {
@@ -16,7 +15,7 @@ export interface ShoppingCartContextType {
   removeFromCart: (id: number) => void;
   clearCart: () => void;
   numItems: number;
-  getNumInCart: (item: ClothingItem) => number;
+  getNumInCart: (id: number) => number;
 }
 
 export const ShoppingCartContext = createContext<
@@ -81,8 +80,8 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
   const numItems = cart?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   // how many of an item in cart
-  const getNumInCart = (item: ClothingItem) => {
-    const itemInCart = cart?.find((i) => i.id === item.id);
+  const getNumInCart = (id: number) => {
+    const itemInCart = cart?.find((i) => i.id === id);
     return itemInCart?.quantity || 0;
   };
 

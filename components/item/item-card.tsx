@@ -11,6 +11,8 @@ import { imageProps } from "@/lib/constants";
 import Link from "next/link";
 import MotionDiv from "../ui/motion/motion-div";
 import PriceTag from "./price-tag";
+import { Heart } from "lucide-react";
+import CartIndicator from "../ui/cart-indicator";
 
 interface ItemCardProps {
   image: string | StaticImageData;
@@ -27,26 +29,32 @@ export default function ItemCard({
   price,
   id,
 }: ItemCardProps) {
+  const isFavorite = false;
+
   return (
-    <Link className="h-full" href={`/item/${id}`}>
-      <MotionDiv
-        {...fadeIntoView}
-        whileHover={{ rotate: 1 }}
-        className="h-full"
-      >
-        <Card className="h-full">
+    <MotionDiv {...fadeIntoView} whileHover={{ rotate: 1 }} className="h-full">
+      <Card className="h-full flex flex-col">
+        <Link className="h-full" href={`/item/${id}`}>
           <CardHeader className="p-0">
             <Image alt="name" src={image} {...imageProps} />
           </CardHeader>
-          <CardContent className="p-2">
-            <CardTitle>{name}</CardTitle>
+          <CardContent className="p-2 flex flex-col gap-2 grow">
+            <div className="flex items-center gap-6">
+              <CardTitle>{name}</CardTitle>
+              <PriceTag price={price} />
+            </div>
             <p className="text-sm text-muted-foreground">{description}</p>
           </CardContent>
-          <CardFooter className="flex justify-center">
-            <PriceTag price={price} />
-          </CardFooter>
-        </Card>
-      </MotionDiv>
-    </Link>
+        </Link>
+        <CardFooter className="flex justify-between">
+          <button>
+            {isFavorite ? <Heart fill="red" stroke="red" /> : <Heart />}
+          </button>
+          <button>
+            <CartIndicator id={id} />
+          </button>
+        </CardFooter>
+      </Card>
+    </MotionDiv>
   );
 }
