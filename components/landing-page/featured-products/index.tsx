@@ -21,6 +21,7 @@ export default function FeaturedProducts() {
           <PreviewCard
             alt="awesome dog in an awesome hat"
             src={hat11}
+            id={27}
             title="Doggo hat"
             description="Made of 100% cotton, this cap keeps your dog cool on hot days, while the adjustable strap ensures a snug fit for dogs of all sizes."
           />
@@ -28,11 +29,13 @@ export default function FeaturedProducts() {
             alt="nanananananana Bat dog!"
             src={batdog}
             title="Batman costume"
+            id={40}
             description="This sleek, officially licensed outfit transforms your pup into Gotham’s Dark Knight for that signature vigilante look."
           />
           <PreviewCard
             alt="saint bernard in beautiful indian attire"
             src={bernard}
+            id={43}
             title="Indian outfit"
             description="Dress your pup in timeless elegance. Whether it's a wedding, festival, or special occasion, your dog will turn heads in this regal ensemble."
           />

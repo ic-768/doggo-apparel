@@ -6,8 +6,8 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import MotionButton from "@/components/ui/motion/motion-button";
 import MotionDiv from "@/components/ui/motion/motion-div";
+import MotionLink from "@/components/ui/motion/motion-link";
 import { imageProps } from "@/lib/constants";
 import { fadeIntoView, tapScale } from "@/lib/motion";
 
@@ -16,6 +16,7 @@ interface PreviewCardProps {
   src: string | StaticImageData;
   title: string;
   description: string;
+  id: number;
 }
 
 export default function PreviewCard({
@@ -23,6 +24,7 @@ export default function PreviewCard({
   src,
   title,
   description,
+  id,
 }: PreviewCardProps) {
   return (
     <MotionDiv {...fadeIntoView} whileHover={{ scale: 1.05 }}>
@@ -35,12 +37,13 @@ export default function PreviewCard({
           <p className="grow text-gray-600">{description}</p>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <MotionButton
+          <MotionLink
             {...tapScale}
-            className="w-full text-white bg-blue-600 hover:bg-blue-700"
+            href={`item/${id}`}
+            className="w-full text-white bg-blue-600 hover:bg-blue-700 p-2 rounded-xl text-center transition-colors"
           >
             View
-          </MotionButton>
+          </MotionLink>
         </CardFooter>
       </Card>
     </MotionDiv>
