@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import ItemCard from "@/components/item/item-card";
+import ItemCard from "@/components/item/card/item-card";
 import {
   Carousel,
   CarouselContent,

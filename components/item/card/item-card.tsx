@@ -12,9 +12,9 @@ import {
 import { imageProps } from "@/lib/constants";
 import { fadeIntoView } from "@/lib/motion";
 
-import CartIndicator from "../ui/cart-indicator";
-import MotionDiv from "../ui/motion/motion-div";
-import PriceTag from "./price-tag";
+import MotionDiv from "../../ui/motion/motion-div";
+import PriceTag from "../price-tag";
+import CartButton from "./cart-button";
 
 interface ItemCardProps {
   image: string | StaticImageData;
@@ -49,12 +49,10 @@ export default function ItemCard({
           </CardContent>
         </Link>
         <CardFooter className="flex justify-between">
-          <button>
+          <button className="hover:bg-neutral-200 p-2 rounded-lg transition-all">
             {isFavorite ? <Heart fill="red" stroke="red" /> : <Heart />}
           </button>
-          <button>
-            <CartIndicator id={id} />
-          </button>
+          <CartButton id={id} />
         </CardFooter>
       </Card>
     </MotionDiv>

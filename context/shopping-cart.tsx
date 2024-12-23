@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 
 interface CartItem {
   id: number;
@@ -56,7 +56,9 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
     // if item is already in cart, increment quantity
     else if (cart?.find((i) => i.size === item.size && i.id === item.id)) {
       nextCart = cart.map((i) =>
-        i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i,
+        i.id === item.id && i.size === item.size
+          ? { ...i, quantity: i.quantity + 1 }
+          : i,
       );
     }
 
@@ -80,9 +82,12 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
   const numItems = cart?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   // how many of an item in cart
-  const getNumInCart = (id: number) => {
-    const itemInCart = cart?.find((i) => i.id === id);
-    return itemInCart?.quantity || 0;
+  const getNumInCart = (id: number, size?: string) => {
+    // if size is provided, take that into account
+    const itemsInCart = cart?.filter(
+      (item) => item.id === id && (!size || item.size === size),
+    );
+    return itemsInCart?.reduce((total, item) => total + item.quantity, 0) || 0;
   };
 
   return (

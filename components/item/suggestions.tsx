@@ -7,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
-import ItemCard from "./item-card";
+import ItemCard from "./card/item-card";
 
 export default function Suggestions({ itemId }: { itemId: number }) {
   const relatedItems = getRelatedItems(itemId);
