@@ -1,18 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShoppingCart } from "lucide-react";
+import { Heart } from "lucide-react";
 
-import { useShoppingCart } from "@/context/cart/use-shopping-cart";
+import { useFavorites } from "@/context/favorites/use-favorites";
 
-export default function CartIndicator({ id }: { id?: number }) {
-  const { numItems, getNumInCart } = useShoppingCart();
+export default function FavoritesIndicator({ id }: { id?: number }) {
+  const { favorites, isFavorite } = useFavorites();
 
-  const numToShow = id !== undefined ? getNumInCart(id) : numItems;
+  const showNum = id === undefined;
+  const numToShow = favorites?.length || 0;
+
+  const props =
+    id !== undefined && isFavorite(id)
+      ? { fill: "red", stroke: "red" }
+      : undefined;
 
   return (
     <div className="relative">
-      {numToShow > 0 && (
+      {showNum && (
         <motion.span
           className="absolute -top-3 -right-3 flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full"
           initial={{ scale: 0, opacity: 0 }}
@@ -28,8 +34,7 @@ export default function CartIndicator({ id }: { id?: number }) {
           </motion.span>
         </motion.span>
       )}
-
-      <ShoppingCart size={24} />
+      <Heart size={24} {...props} />
     </div>
   );
 }

@@ -1,13 +1,14 @@
-import { Grid, Heart, PawPrintIcon } from "lucide-react";
+import { Grid, PawPrintIcon } from "lucide-react";
 
 import CartIndicator from "./ui/cart-indicator";
+import FavoritesIndicator from "./ui/favorites-indicator";
 import Link from "./ui/link";
 import MotionLi from "./ui/motion/motion-li";
 
 export default function Header() {
   const links = [
     { element: <Grid size={24} />, href: "/browse" },
-    { element: <Heart size={24} />, href: "/favorites" },
+    { element: <FavoritesIndicator />, href: "/favorites" },
     {
       element: <CartIndicator />,
       href: "/cart",

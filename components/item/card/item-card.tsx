@@ -1,4 +1,3 @@
-import { Heart } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -15,6 +14,7 @@ import { fadeIntoView } from "@/lib/motion";
 import MotionDiv from "../../ui/motion/motion-div";
 import PriceTag from "../price-tag";
 import CartButton from "./cart-button";
+import FavoritesButton from "./favorites-button";
 
 interface ItemCardProps {
   image: string | StaticImageData;
@@ -31,8 +31,6 @@ export default function ItemCard({
   price,
   id,
 }: ItemCardProps) {
-  const isFavorite = false;
-
   return (
     <MotionDiv {...fadeIntoView} whileHover={{ rotate: 1 }} className="h-full">
       <Card className="h-full flex flex-col">
@@ -49,9 +47,7 @@ export default function ItemCard({
           </CardContent>
         </Link>
         <CardFooter className="flex justify-between">
-          <button className="hover:bg-neutral-200 p-2 rounded-lg transition-all">
-            {isFavorite ? <Heart fill="red" stroke="red" /> : <Heart />}
-          </button>
+          <FavoritesButton id={id} />
           <CartButton id={id} />
         </CardFooter>
       </Card>

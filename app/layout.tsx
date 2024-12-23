@@ -4,7 +4,8 @@ import localFont from "next/font/local";
 
 import Header from "@/components/header";
 import Footer from "@/components/landing-page/footer";
-import { ShoppingCartProvider } from "@/context/shopping-cart";
+import { ShoppingCartProvider } from "@/context/cart/shopping-cart";
+import { FavoritesProvider } from "@/context/favorites/favorites";
 
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -36,8 +37,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <ShoppingCartProvider>
-          <Header />
-          {children}
+          <FavoritesProvider>
+            <Header />
+            {children}
+          </FavoritesProvider>
         </ShoppingCartProvider>
         <Footer />
         <ToastContainer position="bottom-right" closeOnClick pauseOnHover />
