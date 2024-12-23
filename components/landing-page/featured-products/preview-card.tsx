@@ -1,9 +1,10 @@
-import { Card, CardContent } from "@/components/ui/card";
 import Image, { StaticImageData } from "next/image";
-import { fadeIntoView, tapScale } from "@/lib/motion";
+
+import { Card, CardContent } from "@/components/ui/card";
 import MotionButton from "@/components/ui/motion/motion-button";
-import { imageProps } from "@/lib/constants";
 import MotionDiv from "@/components/ui/motion/motion-div";
+import { imageProps } from "@/lib/constants";
+import { fadeIntoView, tapScale } from "@/lib/motion";
 
 interface PreviewCardProps {
   alt: string;

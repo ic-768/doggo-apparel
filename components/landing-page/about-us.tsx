@@ -1,6 +1,8 @@
 import Image from "next/image";
+
 import sportOutfit from "@/images/outfits/sporty.jpg";
 import { fadeIntoView, tapScale } from "@/lib/motion";
+
 import MotionButton from "../ui/motion/motion-button";
 import MotionDiv from "../ui/motion/motion-div";
 

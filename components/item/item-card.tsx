@@ -1,4 +1,7 @@
+import { Heart } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+
 import {
   Card,
   CardContent,
@@ -6,13 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { fadeIntoView } from "@/lib/motion";
 import { imageProps } from "@/lib/constants";
-import Link from "next/link";
+import { fadeIntoView } from "@/lib/motion";
+
+import CartIndicator from "../ui/cart-indicator";
 import MotionDiv from "../ui/motion/motion-div";
 import PriceTag from "./price-tag";
-import { Heart } from "lucide-react";
-import CartIndicator from "../ui/cart-indicator";
 
 interface ItemCardProps {
   image: string | StaticImageData;

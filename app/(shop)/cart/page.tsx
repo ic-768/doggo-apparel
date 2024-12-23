@@ -1,13 +1,14 @@
 "use client";
 import { Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
+import NextLink from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import Link from "@/components/ui/link";
+import Main from "@/components/ui/main";
 import { useShoppingCart } from "@/context/use-shopping-cart";
 import { getClothingItemById } from "@/lib/utils";
-import Main from "@/components/ui/main";
-import NextLink from "next/link";
-import Link from "@/components/ui/link";
 
 export default function CartPage() {
   const { cart } = useShoppingCart();

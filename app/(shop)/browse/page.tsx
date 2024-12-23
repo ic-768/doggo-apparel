@@ -1,4 +1,6 @@
 import * as React from "react";
+
+import ItemCard from "@/components/item/item-card";
 import {
   Carousel,
   CarouselContent,
@@ -6,9 +8,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { clothingCategories } from "@/lib/clothing-categories";
 import Main from "@/components/ui/main";
-import ItemCard from "@/components/item/item-card";
+import { clothingCategories } from "@/lib/clothing-categories";
 
 export default function ShopPage() {
   return (

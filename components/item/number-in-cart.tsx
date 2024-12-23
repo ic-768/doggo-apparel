@@ -1,8 +1,9 @@
 "use client";
 
 import { useShoppingCart } from "@/context/use-shopping-cart";
-import { Badge } from "../ui/badge";
 import { ClothingItem } from "@/lib/types";
+
+import { Badge } from "../ui/badge";
 
 export default function NumberInCart({ item }: { item: ClothingItem }) {
   const { getNumInCart } = useShoppingCart();

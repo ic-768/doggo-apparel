@@ -1,7 +1,8 @@
 import { PawPrintIcon } from "lucide-react";
-import SocialLinks from "./social-links";
+
 import ContactInfo from "./contact-info";
 import QuickLinks from "./quick-links";
+import SocialLinks from "./social-links";
 
 export default function Footer() {
   return (

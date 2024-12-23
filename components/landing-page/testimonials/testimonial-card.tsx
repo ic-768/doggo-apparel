@@ -1,8 +1,8 @@
 import Image, { StaticImageData } from "next/image";
 
 import { CardContent } from "@/components/ui/card";
-import { fadeIntoView } from "@/lib/motion";
 import MotionCard from "@/components/ui/motion/motion-card";
+import { fadeIntoView } from "@/lib/motion";
 
 interface TestimonialCardProps {
   quote: string;

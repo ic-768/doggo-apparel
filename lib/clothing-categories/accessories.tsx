@@ -1,12 +1,12 @@
 import Bandana1 from "@/images/accessories/bandana.jpg";
-import Headband1 from "@/images/accessories/headband.jpg";
-import Headband2 from "@/images/accessories/headband-2.jpg";
 import Bandana2 from "@/images/accessories/bandana-2.jpg";
 import Bandana3 from "@/images/accessories/bandana-3.jpg";
 import Bow from "@/images/accessories/bow.jpg";
 import Gold from "@/images/accessories/gold.jpg";
-import Multiple2 from "@/images/accessories/multiple-2.jpg";
+import Headband1 from "@/images/accessories/headband.jpg";
+import Headband2 from "@/images/accessories/headband-2.jpg";
 import Multiple from "@/images/accessories/multiple.jpg";
+import Multiple2 from "@/images/accessories/multiple-2.jpg";
 import Scarf from "@/images/accessories/scarf.jpg";
 
 export const accessories = {

@@ -1,10 +1,10 @@
+import MotionH from "@/components/ui/motion/motion-h";
 import selfie1 from "@/images/user-selfies/selfie-1.jpg";
 import selfie2 from "@/images/user-selfies/selfie-2.jpg";
 import selfie3 from "@/images/user-selfies/selfie-3.webp";
 import { fadeIntoView } from "@/lib/motion";
 
 import TestimonialCard from "./testimonial-card";
-import MotionH from "@/components/ui/motion/motion-h";
 
 export default function Testimonials() {
   return (

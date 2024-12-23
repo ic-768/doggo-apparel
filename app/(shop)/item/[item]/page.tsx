@@ -1,20 +1,20 @@
-import { notFound } from "next/navigation";
+import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { notFound } from "next/navigation";
 
-import { getClothingItemById } from "@/lib/utils";
-import PurchaseControls from "@/components/item/purchase-controls";
-import Main from "@/components/ui/main";
-import { Card } from "@/components/ui/card";
-import PriceTag from "@/components/item/price-tag";
-import ReviewsScore from "@/components/item/reviews-score";
-import Policies from "@/components/item/policies";
-import NumberInCart from "@/components/item/number-in-cart";
-import InStockBadge from "@/components/item/in-stock-badge";
 import FeaturesList from "@/components/item/features-list";
+import InStockBadge from "@/components/item/in-stock-badge";
 import InstructionsList from "@/components/item/instructions-list";
+import NumberInCart from "@/components/item/number-in-cart";
+import Policies from "@/components/item/policies";
+import PriceTag from "@/components/item/price-tag";
+import PurchaseControls from "@/components/item/purchase-controls";
+import ReviewsScore from "@/components/item/reviews-score";
 import Suggestions from "@/components/item/suggestions";
+import { Card } from "@/components/ui/card";
+import Main from "@/components/ui/main";
+import { getClothingItemById } from "@/lib/utils";
 
 export default async function ItemPage({
   params,

@@ -1,7 +1,8 @@
 "use client";
 
-import { useShoppingCart } from "@/context/use-shopping-cart";
 import { ShoppingCart } from "lucide-react";
+
+import { useShoppingCart } from "@/context/use-shopping-cart";
 
 export default function CartIndicator({ id }: { id?: number }) {
   const { numItems, getNumInCart } = useShoppingCart();

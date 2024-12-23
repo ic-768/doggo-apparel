@@ -1,4 +1,5 @@
 import { FacebookIcon, InstagramIcon, TwitterIcon } from "lucide-react";
+
 import FooterSection from "./footer-section";
 
 interface SocialIconProps {

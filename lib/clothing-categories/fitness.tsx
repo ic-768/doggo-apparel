@@ -1,8 +1,8 @@
 import Bball from "@/images/fitness/bball.jpg";
-import Beater2 from "@/images/fitness/beater-2.jpg";
 import Beater from "@/images/fitness/beater.jpg";
-import Jacket2 from "@/images/fitness/jacket-2.jpg";
+import Beater2 from "@/images/fitness/beater-2.jpg";
 import Jacket from "@/images/fitness/jacket.jpg";
+import Jacket2 from "@/images/fitness/jacket-2.jpg";
 import Runner from "@/images/fitness/runner.jpg";
 import Treadmill from "@/images/fitness/treadmill.jpg";
 

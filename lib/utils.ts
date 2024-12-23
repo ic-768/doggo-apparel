@@ -1,5 +1,6 @@
-import { clsx, type ClassValue } from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+
 import { clothingCategories } from "./clothing-categories";
 
 export function cn(...inputs: ClassValue[]) {

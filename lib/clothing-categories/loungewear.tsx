@@ -1,7 +1,7 @@
-import Robe from "@/images/robes/robe.jpg";
-import Robe1 from "@/images/robes/robe-2.jpg";
 import Pyjama1 from "@/images/pyjamas/pyjama-1.jpg";
 import Pyjama2 from "@/images/pyjamas/pyjama-2.jpg";
+import Robe from "@/images/robes/robe.jpg";
+import Robe1 from "@/images/robes/robe-2.jpg";
 
 export const loungewear = {
   name: "Loungewear",

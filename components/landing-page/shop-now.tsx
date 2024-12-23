@@ -1,10 +1,12 @@
-import dog from "@/images/glasses/glasses-3.jpg";
-import { fadeIntoView } from "@/lib/motion";
 import Image from "next/image";
 import Link from "next/link";
-import MotionP from "../ui/motion/motion-p";
-import H1P from "../ui/motion/motion-h";
+
+import dog from "@/images/glasses/glasses-3.jpg";
+import { fadeIntoView } from "@/lib/motion";
+
 import MotionDiv from "../ui/motion/motion-div";
+import H1P from "../ui/motion/motion-h";
+import MotionP from "../ui/motion/motion-p";
 
 export default function ShopNow() {
   return (

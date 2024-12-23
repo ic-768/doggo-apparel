@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+
 import { Badge } from "../ui/badge";
 
 interface PriceTagProps {

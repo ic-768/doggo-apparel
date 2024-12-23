@@ -1,4 +1,5 @@
 import { getRelatedItems } from "@/lib/utils";
+
 import {
   Carousel,
   CarouselContent,
