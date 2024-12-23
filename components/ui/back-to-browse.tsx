@@ -13,7 +13,7 @@ export default function BackToBrowse() {
       iconPlacement="left"
       asChild
     >
-      <Link href="/browse">
+      <Link className="hover:no-underline" href="/browse">
         <span>Back to Browse</span>
       </Link>
     </Button>
