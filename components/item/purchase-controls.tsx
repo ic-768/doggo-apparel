@@ -7,7 +7,6 @@ import { ShoppingCart } from "lucide-react";
 import SizeSelection from "@/components/item/size-selection";
 import { Button } from "@/components/ui/button";
 import { useShoppingCart } from "@/context/cart/use-shopping-cart";
-import { useFavorites } from "@/context/favorites/use-favorites";
 import { ClothingItem } from "@/lib/types";
 
 import FavoritesButton from "./card/favorites-button";
@@ -15,7 +14,6 @@ import FavoritesButton from "./card/favorites-button";
 export default function PurchaseControls({ item }: { item: ClothingItem }) {
   const [selectedSize, setSelectedSize] = useState("");
   const { addToCart } = useShoppingCart();
-  const { addToFavorites } = useFavorites();
 
   const handleAddToCart = () => {
     if (item.sizes && !selectedSize) {

@@ -18,7 +18,7 @@ export default function TestimonialCard({
   return (
     <MotionCard {...fadeIntoView} className="bg-white">
       <CardContent className="flex flex-col gap-2 p-6 h-full">
-        <p className="flex-grow text-gray-600">&quot;{quote}&quot;</p>
+        <p className="grow text-gray-600">&quot;{quote}&quot;</p>
         <div className="flex items-center">
           <Image
             width={50}
