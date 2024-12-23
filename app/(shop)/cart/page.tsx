@@ -11,11 +11,11 @@ import { useShoppingCart } from "@/context/use-shopping-cart";
 import { getClothingItemById } from "@/lib/utils";
 
 export default function CartPage() {
-  const { cart } = useShoppingCart();
+  const { cart, removeFromCart, clearFromCart, addToCart } = useShoppingCart();
 
   // TODO
   if (!cart) {
-    return <div>Loading...</div>;
+    return <div className="grow-1 grow">Loading...</div>;
   }
 
   const subtotal = cart.reduce(
@@ -37,6 +37,18 @@ export default function CartPage() {
               {cart.map((item) => {
                 const { image, name } = getClothingItemById(item.id);
 
+                const onReduce = () => {
+                  removeFromCart(item);
+                };
+
+                const onIncrease = () => {
+                  addToCart(item);
+                };
+
+                const onClear = () => {
+                  clearFromCart(item.id, item.size);
+                };
+
                 return (
                   <Card key={`${item.id}${item.size}`} className="p-4">
                     <div className="flex gap-4">
@@ -52,7 +64,10 @@ export default function CartPage() {
                       <div className="flex-1 flex flex-col gap-2">
                         <div className="flex justify-between">
                           <h3 className="font-semibold">{name}</h3>
-                          <button className="text-gray-400 hover:text-gray-600">
+                          <button
+                            onClick={onClear}
+                            className="text-gray-400 hover:text-gray-600"
+                          >
                             <X className="h-5 w-5" />
                           </button>
                         </div>
@@ -62,6 +77,7 @@ export default function CartPage() {
                         <div className="flex justify-between items-center mt-auto">
                           <div className="flex items-center gap-2">
                             <Button
+                              onClick={onReduce}
                               variant="outline"
                               size="icon"
                               className="h-8 w-8"
@@ -72,6 +88,7 @@ export default function CartPage() {
                               {item.quantity}
                             </span>
                             <Button
+                              onClick={onIncrease}
                               variant="outline"
                               size="icon"
                               className="h-8 w-8"

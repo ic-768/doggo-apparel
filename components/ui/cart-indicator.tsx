@@ -7,7 +7,6 @@ import { useShoppingCart } from "@/context/use-shopping-cart";
 export default function CartIndicator({ id }: { id?: number }) {
   const { numItems, getNumInCart } = useShoppingCart();
 
-  console.log(id);
   const numToShow = id !== undefined ? getNumInCart(id) : numItems;
 
   return (

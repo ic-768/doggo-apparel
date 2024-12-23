@@ -12,10 +12,11 @@ interface CartItem {
 export interface ShoppingCartContextType {
   cart: CartItem[] | null;
   addToCart: (item: CartItem) => void;
-  removeFromCart: (id: number) => void;
+  removeFromCart: (item: CartItem) => void;
+  clearFromCart: (id: number, size?: string) => void;
   clearCart: () => void;
   numItems: number;
-  getNumInCart: (id: number) => number;
+  getNumInCart: (id: number, size?: string) => number;
 }
 
 export const ShoppingCartContext = createContext<
@@ -68,9 +69,37 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
     setCart(nextCart);
   };
 
-  const removeFromCart = (id: number) => {
+  // reduce a single item by 1
+  const removeFromCart = (item: CartItem) => {
+    const { id, size } = item;
+
     setCart((prevCart) =>
-      prevCart ? prevCart.filter((item) => item.id !== id) : [],
+      prevCart
+        ? prevCart.reduce((nextCart, item) => {
+            if (item.id === id && (!size || item.size === size)) {
+              // If the quantity is greater than 1, decrement it
+              if (item.quantity > 1) {
+                nextCart.push({ ...item, quantity: item.quantity - 1 });
+              }
+              // Else, remove it entirely (do not push to nextCart)
+            } else {
+              // Keep all other items
+              nextCart.push(item);
+            }
+            return nextCart;
+          }, [] as CartItem[])
+        : [],
+    );
+  };
+
+  // clear item entirely
+  const clearFromCart = (id: number, size?: string) => {
+    setCart((prevCart) =>
+      prevCart
+        ? prevCart.filter(
+            (item) => !(item.id === id && (!size || item.size === size)),
+          )
+        : [],
     );
   };
 
@@ -99,6 +128,7 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
         clearCart,
         numItems,
         getNumInCart,
+        clearFromCart,
       }}
     >
       {children}
