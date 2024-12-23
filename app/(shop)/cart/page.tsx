@@ -1,5 +1,7 @@
 "use client";
-import { Minus, Plus, X } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { ArrowRightIcon, Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
 import NextLink from "next/link";
 
@@ -33,83 +35,93 @@ export default function CartPage() {
         <h1 className="text-2xl font-bold">Shopping Cart</h1>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="col-span-1 lg:col-span-2 flex flex-col">
-            <div className="flex flex-col gap-4">
-              {cart.map((item) => {
-                const { image, name } = getClothingItemById(item.id);
+            <ul className="flex flex-col gap-4">
+              <AnimatePresence>
+                {cart.map((item) => {
+                  const { image, name } = getClothingItemById(item.id);
 
-                const onReduce = () => {
-                  removeFromCart(item);
-                };
+                  const onReduce = () => {
+                    removeFromCart(item);
+                  };
 
-                const onIncrease = () => {
-                  addToCart(item);
-                };
+                  const onIncrease = () => {
+                    addToCart(item);
+                  };
 
-                const onClear = () => {
-                  clearFromCart(item.id, item.size);
-                };
+                  const onClear = () => {
+                    clearFromCart(item.id, item.size);
+                  };
 
-                return (
-                  <Card key={`${item.id}${item.size}`} className="p-4">
-                    <div className="flex gap-4">
-                      <NextLink href={`/item/${item.id}`} key={item.id}>
-                        <Image
-                          src={image}
-                          alt={name}
-                          height={150}
-                          className="w-24 h-24  rounded-md"
-                        />
-                      </NextLink>
+                  return (
+                    <motion.li
+                      layout
+                      key={`${item.id}${item.size}`}
+                      layoutId={`${item.id}${item.size}`}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Card className="p-4">
+                        <div className="flex gap-4">
+                          <NextLink href={`/item/${item.id}`} key={item.id}>
+                            <Image
+                              src={image}
+                              alt={name}
+                              height={150}
+                              className="w-24 h-24  rounded-md"
+                            />
+                          </NextLink>
 
-                      <div className="flex-1 flex flex-col gap-2">
-                        <div className="flex justify-between">
-                          <h3 className="font-semibold">{name}</h3>
-                          <button
-                            onClick={onClear}
-                            className="text-gray-400 hover:text-gray-600"
-                          >
-                            <X className="h-5 w-5" />
-                          </button>
-                        </div>
-                        {item.size ? (
-                          <p className="text-gray-600">Size: {item.size}</p>
-                        ) : null}
-                        <div className="flex justify-between items-center mt-auto">
-                          <div className="flex items-center gap-2">
-                            <Button
-                              onClick={onReduce}
-                              variant="outline"
-                              size="icon"
-                              className="h-8 w-8"
-                            >
-                              <Minus className="h-4 w-4" />
-                            </Button>
-                            <span className="w-8 text-center">
-                              {item.quantity}
-                            </span>
-                            <Button
-                              onClick={onIncrease}
-                              variant="outline"
-                              size="icon"
-                              className="h-8 w-8"
-                            >
-                              <Plus className="h-4 w-4" />
-                            </Button>
+                          <div className="flex-1 flex flex-col gap-2">
+                            <div className="flex justify-between">
+                              <h3 className="font-semibold">{name}</h3>
+                              <button
+                                onClick={onClear}
+                                className="text-gray-400 hover:text-gray-600"
+                              >
+                                <X className="h-5 w-5" />
+                              </button>
+                            </div>
+                            {item.size ? (
+                              <p className="text-gray-600">Size: {item.size}</p>
+                            ) : null}
+                            <div className="flex justify-between items-center mt-auto">
+                              <div className="flex items-center gap-2">
+                                <Button
+                                  onClick={onReduce}
+                                  variant="outline"
+                                  size="icon"
+                                  className="h-8 w-8"
+                                >
+                                  <Minus className="h-4 w-4" />
+                                </Button>
+                                <span className="w-8 text-center">
+                                  {item.quantity}
+                                </span>
+                                <Button
+                                  onClick={onIncrease}
+                                  variant="outline"
+                                  size="icon"
+                                  className="h-8 w-8"
+                                >
+                                  <Plus className="h-4 w-4" />
+                                </Button>
+                              </div>
+                              <p className="font-semibold">
+                                ${(item.price * item.quantity).toFixed(2)}
+                              </p>
+                            </div>
                           </div>
-                          <p className="font-semibold">
-                            ${(item.price * item.quantity).toFixed(2)}
-                          </p>
                         </div>
-                      </div>
-                    </div>
-                  </Card>
-                );
-              })}
-            </div>
+                      </Card>
+                    </motion.li>
+                  );
+                })}
+              </AnimatePresence>
+            </ul>
           </div>
 
           <div className="lg:col-span-1">
-            <Card className="p-6">
+            <Card className="p-6 flex flex-col gap-4">
               <h2 className="text-xl font-bold">Order Summary</h2>
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between">
@@ -127,8 +139,13 @@ export default function CartPage() {
                   </div>
                 </div>
               </div>
-              <Button className="w-full bg-black hover:bg-gray-800">
-                Proceed to Checkout
+              <Button
+                className="self-center"
+                effect="expandIcon"
+                icon={ArrowRightIcon}
+                iconPlacement="right"
+              >
+                Proceed To Checkout
               </Button>
             </Card>
           </div>
