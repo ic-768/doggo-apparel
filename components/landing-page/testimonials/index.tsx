@@ -14,7 +14,7 @@ import {
 import TestimonialCard from "./testimonial-card";
 
 const CarouselCard = ({ children }: { children: React.ReactNode }) => (
-  <CarouselItem className="md:basis-1/2 lg:basis-1/3 xl:basis-1/5 flex">
+  <CarouselItem className="md:basis-1/2 lg:basis-1/3  flex">
     {children}
   </CarouselItem>
 );
