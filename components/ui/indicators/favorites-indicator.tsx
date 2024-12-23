@@ -19,7 +19,7 @@ export default function FavoritesIndicator({ id }: { id?: number }) {
 
   return (
     <div className="relative">
-      {showNum && <NumberBubble number={numToShow} />}
+      {showNum && !!numToShow && <NumberBubble number={numToShow} />}
       <Heart size={24} {...iconProps} />
     </div>
   );
