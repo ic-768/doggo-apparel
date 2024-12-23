@@ -1,8 +1,7 @@
 "use client";
+import FavoritesIndicator from "@/components/ui/indicators/favorites-indicator";
 import { useFavorites } from "@/context/favorites/use-favorites";
 import { getClothingItemById } from "@/lib/utils";
-
-import FavoritesIndicator from "../../ui/favorites-indicator";
 
 export default function FavoritesButton({ id }: { id: number }) {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();

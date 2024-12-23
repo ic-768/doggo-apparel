@@ -1,7 +1,7 @@
 import { Grid, PawPrintIcon } from "lucide-react";
 
-import CartIndicator from "./ui/cart-indicator";
-import FavoritesIndicator from "./ui/favorites-indicator";
+import CartIndicator from "./ui/indicators/cart-indicator";
+import FavoritesIndicator from "./ui/indicators/favorites-indicator";
 import Link from "./ui/link";
 import MotionLi from "./ui/motion/motion-li";
 

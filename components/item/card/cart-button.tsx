@@ -2,7 +2,7 @@
 import { useShoppingCart } from "@/context/cart/use-shopping-cart";
 import { getClothingItemById } from "@/lib/utils";
 
-import CartIndicator from "../../ui/cart-indicator";
+import CartIndicator from "../../ui/indicators/cart-indicator";
 
 export default function CartButton({ id }: { id: number }) {
   const { addToCart } = useShoppingCart();
