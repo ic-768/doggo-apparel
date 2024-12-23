@@ -2,7 +2,7 @@
 
 Well, the time is finally here. AI is going to take over. So, I figured, why not make a few funny dog images, throw some dog clothes on them, and call it an e-shop?
 
-Welcome to **The Dog Apparel E-Shop**, a revolutionary online store (not really) where you can buy dog clothes that are way fancier than your own wardrobe. Powered by Next.js, because hey, if it’s good enough for dog clothes, it’s good enough for everything else.
+Welcome to **The Doggo Apparel E-Shop**, a revolutionary online store (not really) where you can buy dog clothes that are way fancier than your own wardrobe. Powered by Next.js, because hey, if it’s good enough for dog clothes, it’s good enough for everything else.
 
 ## Features
 
