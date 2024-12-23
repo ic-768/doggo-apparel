@@ -1,4 +1,4 @@
-# Dog Apparel E-Shop - README
+# Doggo Apparel
 
 Well, the time is finally here. AI is going to take over. So, I figured, why not make a few funny dog images, throw some dog clothes on them, and call it an e-shop?
 
