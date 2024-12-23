@@ -9,7 +9,7 @@ import BackToBrowse from "@/components/ui/back-to-browse";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Main from "@/components/ui/main";
-import { useShoppingCart } from "@/context/use-shopping-cart";
+import { useShoppingCart } from "@/context/cart/use-shopping-cart";
 import { getClothingItemById } from "@/lib/utils";
 
 export default function CartPage() {
