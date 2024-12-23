@@ -1,6 +1,6 @@
 "use client";
 
-import { useShoppingCart } from "@/context/use-shopping-cart";
+import { useShoppingCart } from "@/context/cart/use-shopping-cart";
 import { ClothingItem } from "@/lib/types";
 
 import { Badge } from "../ui/badge";

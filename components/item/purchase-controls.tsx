@@ -2,16 +2,20 @@
 
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { Heart, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 
 import SizeSelection from "@/components/item/size-selection";
 import { Button } from "@/components/ui/button";
-import { useShoppingCart } from "@/context/use-shopping-cart";
+import { useShoppingCart } from "@/context/cart/use-shopping-cart";
+import { useFavorites } from "@/context/favorites/use-favorites";
 import { ClothingItem } from "@/lib/types";
+
+import FavoritesButton from "./card/favorites-button";
 
 export default function PurchaseControls({ item }: { item: ClothingItem }) {
   const [selectedSize, setSelectedSize] = useState("");
   const { addToCart } = useShoppingCart();
+  const { addToFavorites } = useFavorites();
 
   const handleAddToCart = () => {
     if (item.sizes && !selectedSize) {
@@ -40,14 +44,16 @@ export default function PurchaseControls({ item }: { item: ClothingItem }) {
       )}
 
       <div className="flex gap-4">
-        <Button onClick={handleAddToCart} className="flex-1" size="lg">
-          <ShoppingCart className="w-4 h-4 mr-2" />
+        <Button
+          size="lg"
+          effect="shine"
+          iconPlacement="left"
+          icon={ShoppingCart}
+          onClick={handleAddToCart}
+        >
           Add to Cart
         </Button>
-        <Button className="flex-1" variant="outline" size="lg">
-          <Heart className="w-4 h-4 mr-2" />
-          Add to Wishlist
-        </Button>
+        <FavoritesButton id={item.id} />
       </div>
     </>
   );
