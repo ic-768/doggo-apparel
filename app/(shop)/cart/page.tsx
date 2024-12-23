@@ -54,7 +54,6 @@ export default function CartPage() {
 
                   return (
                     <motion.li
-                      layout
                       key={`${item.id}${item.size}`}
                       layoutId={`${item.id}${item.size}`}
                       exit={{ opacity: 0 }}
@@ -135,7 +134,13 @@ export default function CartPage() {
                 <div className="border-t pt-2 mt-2">
                   <div className="flex justify-between font-bold">
                     <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <motion.span
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      key={total}
+                    >
+                      ${total.toFixed(2)}
+                    </motion.span>
                   </div>
                 </div>
               </div>
