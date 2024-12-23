@@ -15,9 +15,8 @@ import { getClothingItemById } from "@/lib/utils";
 export default function CartPage() {
   const { cart, removeFromCart, clearFromCart, addToCart } = useShoppingCart();
 
-  // TODO
   if (!cart) {
-    return <div className="grow-1 grow">Loading...</div>;
+    return <Main />;
   }
 
   const subtotal = cart.reduce(

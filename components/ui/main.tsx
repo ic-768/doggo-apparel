@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 
 interface MainProps {
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 export default function Main({ className, ...props }: MainProps) {
   const classes = twMerge(

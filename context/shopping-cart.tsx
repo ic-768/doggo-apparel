@@ -120,7 +120,7 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <ShoppingCartContext.Provider
+    <ShoppingCartContext
       value={{
         cart,
         addToCart,
@@ -132,6 +132,6 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
       }}
     >
       {children}
-    </ShoppingCartContext.Provider>
+    </ShoppingCartContext>
   );
 };
