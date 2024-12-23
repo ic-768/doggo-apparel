@@ -1,6 +1,4 @@
-import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import FeaturesList from "@/components/item/features-list";
@@ -12,6 +10,7 @@ import PriceTag from "@/components/item/price-tag";
 import PurchaseControls from "@/components/item/purchase-controls";
 import ReviewsScore from "@/components/item/reviews-score";
 import Suggestions from "@/components/item/suggestions";
+import BackToBrowse from "@/components/ui/back-to-browse";
 import { Card } from "@/components/ui/card";
 import Main from "@/components/ui/main";
 import { getClothingItemById } from "@/lib/utils";
@@ -32,13 +31,7 @@ export default async function ItemPage({
   return (
     <Main className="items-center">
       <div className="container flex flex-col gap-6">
-        <Link
-          href="/browse"
-          className="text-blue-500 hover:text-blue-700 inline-flex items-center transition-colors"
-        >
-          <ChevronLeft size={20} />
-          <span>Back to Browse</span>
-        </Link>
+        <BackToBrowse />
 
         <div className="grid gap-8 md:grid-cols-2">
           <div className="relative">
