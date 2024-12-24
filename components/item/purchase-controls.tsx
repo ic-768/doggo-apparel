@@ -43,15 +43,20 @@ export default function PurchaseControls({ item }: { item: ClothingItem }) {
 
       <div className="flex gap-4">
         <Button
-          size="lg"
+          className="rounded-full size-12 fixed top-32 right-2 outline outline-1 outline-neutral-400 sm:rounded-lg sm:static sm:outline-none sm:w-auto"
+          size="iconToLg"
           effect="shine"
           iconPlacement="left"
+          iconClassName="size-6 sm:size-4"
           icon={ShoppingCart}
           onClick={handleAddToCart}
         >
-          Add to Cart
+          <span className="hidden sm:inline">Add to Cart</span>
         </Button>
-        <FavoritesButton id={item.id} />
+        <FavoritesButton
+          className="fixed top-48 right-2 outline outline-1 outline-red-400 rounded-full size-12 flex justify-center items-center bg-red-100 hover:bg-red-400 sm:static"
+          id={item.id}
+        />
       </div>
     </>
   );

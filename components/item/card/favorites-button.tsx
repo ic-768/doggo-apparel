@@ -1,9 +1,18 @@
 "use client";
+import { twMerge } from "tailwind-merge";
+
 import FavoritesIndicator from "@/components/ui/indicators/favorites-indicator";
 import { useFavorites } from "@/context/favorites/use-favorites";
 import { getClothingItemById } from "@/lib/utils";
 
-export default function FavoritesButton({ id }: { id: number }) {
+interface FavoritesButtonProps {
+  className?: string;
+  id: number;
+}
+export default function FavoritesButton({
+  id,
+  className,
+}: FavoritesButtonProps) {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
 
   const onClick = () => {
@@ -17,11 +26,12 @@ export default function FavoritesButton({ id }: { id: number }) {
     }
   };
 
+  const classes = twMerge(
+    "hover:bg-neutral-200 p-2 rounded-lg transition-all",
+    className,
+  );
   return (
-    <button
-      className="hover:bg-neutral-200 p-2 rounded-lg transition-all"
-      onClick={onClick}
-    >
+    <button className={classes} onClick={onClick}>
       <FavoritesIndicator id={id} />
     </button>
   );

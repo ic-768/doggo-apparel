@@ -1,11 +1,12 @@
 import * as React from "react";
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -41,6 +42,7 @@ const buttonVariants = cva(
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
+        iconToLg: "size-10 sm:h-11 sm:rounded-md sm:px-8",
       },
     },
     defaultVariants: {
@@ -64,6 +66,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  iconClassName?: string;
 }
 
 export type ButtonIconProps = IconProps | IconRefProps;
@@ -73,12 +76,15 @@ const Button = ({
   variant,
   effect,
   size,
+  iconClassName,
   icon: Icon,
   iconPlacement,
   asChild = false,
   ...props
 }: ButtonProps & ButtonIconProps) => {
   const Comp = asChild ? Slot : "button";
+  const iconClasses = twMerge("size-4", iconClassName);
+
   return (
     <Comp
       className={cn(buttonVariants({ variant, effect, size, className }))}
@@ -88,20 +94,20 @@ const Button = ({
         iconPlacement === "left" &&
         (effect === "expandIcon" ? (
           <div className="w-0 translate-x-[0%] pr-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-100 group-hover:pr-2 group-hover:opacity-100">
-            <Icon className="size-4" />
+            <Icon className={iconClasses} />
           </div>
         ) : (
-          <Icon />
+          <Icon className={iconClasses} />
         ))}
       <Slottable>{props.children}</Slottable>
       {Icon &&
         iconPlacement === "right" &&
         (effect === "expandIcon" ? (
           <div className="w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-2 group-hover:opacity-100">
-            <Icon className="size-4" />
+            <Icon className={iconClasses} />
           </div>
         ) : (
-          <Icon className="size-4" />
+          <Icon className={iconClasses} />
         ))}
     </Comp>
   );
