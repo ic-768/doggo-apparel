@@ -24,7 +24,7 @@ export default function HamburgerMenu({ links }: HamburgerMenuProps) {
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         aria-label="Toggle menu"
       >
-        {isMenuOpen ? <X /> : <Menu />}
+        {isMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
       </Button>
       {isMenuOpen && (
         <motion.div
