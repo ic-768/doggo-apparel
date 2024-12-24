@@ -11,6 +11,10 @@ import {
 import Main from "@/components/ui/main";
 import { clothingCategories } from "@/lib/clothing-categories";
 
+export const metadata = {
+  title: "Browse",
+};
+
 export default function ShopPage() {
   return (
     <Main>

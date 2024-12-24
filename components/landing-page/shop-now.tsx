@@ -10,7 +10,7 @@ import MotionP from "../ui/motion/motion-p";
 
 export default function ShopNow() {
   return (
-    <section className="container flex flex-col gap-8 items-center py-20 px-4 mx-auto lg:flex-row">
+    <section className="container flex flex-col gap-8 items-center px-4 mx-auto lg:flex-row">
       <div className="flex flex-col gap-8 lg:w-1/2">
         <H1P
           className="text-5xl font-bold text-gray-800 lg:text-6xl"

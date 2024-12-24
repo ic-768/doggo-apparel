@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Main from "@/components/ui/main";
 
+export const metadata = {
+  title: "Favorites",
+};
+
 export default function Favorites() {
   return (
     <Main>

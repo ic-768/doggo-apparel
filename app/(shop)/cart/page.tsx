@@ -16,7 +16,11 @@ export default function CartPage() {
   const { cart, removeFromCart, clearFromCart, addToCart } = useShoppingCart();
 
   if (!cart) {
-    return <Main />;
+    return (
+      <Main>
+        <title>Cart</title>
+      </Main>
+    );
   }
 
   const subtotal = cart.reduce(
@@ -29,6 +33,7 @@ export default function CartPage() {
 
   return (
     <Main className="items-center">
+      <title>Cart</title>
       <div className="container">
         <BackToBrowse />
         <h1 className="text-2xl font-bold">Shopping Cart</h1>
