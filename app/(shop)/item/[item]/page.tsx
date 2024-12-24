@@ -37,16 +37,16 @@ export default async function ItemPage({
             <Image
               src={item.image}
               alt={item.name}
-              className="object-cover rounded-2xl"
+              className="rounded-2xl object-cover"
             />
           </div>
 
-          <div className="flex flex-col gap-4 items-center sm:items-start">
-            <div className="flex gap-4 items-center">
+          <div className="flex flex-col items-center gap-4 sm:items-start">
+            <div className="flex items-center gap-4">
               <h1 className="text-3xl font-bold">{item.name}</h1>
               <PriceTag price={item.price} />
               <FavoritesButton
-                className="fixed top-48 right-2 outline outline-1 outline-red-400 rounded-full size-12 flex justify-center items-center bg-red-100 hover:bg-red-200 sm:static"
+                className="fixed right-2 top-48 flex size-12 items-center justify-center rounded-full bg-red-100 outline outline-1 outline-red-400 hover:bg-red-200 sm:static"
                 id={item.id}
               />
             </div>
@@ -63,7 +63,7 @@ export default async function ItemPage({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2"></div>
         <Suggestions itemId={Number(item.id)} />
       </div>
     </Main>

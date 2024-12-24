@@ -37,8 +37,8 @@ export default function CartPage() {
       <div className="container">
         <BackToBrowse />
         <h1 className="text-2xl font-bold">Shopping Cart</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="col-span-1 lg:col-span-2 flex flex-col">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="col-span-1 flex flex-col lg:col-span-2">
             <ul className="flex flex-col gap-4">
               <AnimatePresence>
                 {cart.map((item) => {
@@ -70,11 +70,11 @@ export default function CartPage() {
                               src={image}
                               alt={name}
                               height={150}
-                              className="w-24 h-24  rounded-md"
+                              className="h-24 w-24 rounded-md"
                             />
                           </NextLink>
 
-                          <div className="flex-1 flex flex-col gap-2">
+                          <div className="flex flex-1 flex-col gap-2">
                             <div className="flex justify-between">
                               <h3 className="font-semibold">{name}</h3>
                               <button
@@ -87,7 +87,7 @@ export default function CartPage() {
                             {item.size ? (
                               <p className="text-gray-600">Size: {item.size}</p>
                             ) : null}
-                            <div className="flex justify-between items-center mt-auto">
+                            <div className="mt-auto flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <Button
                                   onClick={onReduce}
@@ -124,9 +124,9 @@ export default function CartPage() {
           </div>
 
           <div className="lg:col-span-1">
-            <Card className="p-6 flex flex-col gap-4">
+            <Card className="flex flex-col gap-4 p-6">
               <h2 className="text-xl font-bold">Order Summary</h2>
-              <div className="space-y-2 mb-4">
+              <div className="mb-4 space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Subtotal</span>
                   <span>${subtotal.toFixed(2)}</span>
@@ -135,7 +135,7 @@ export default function CartPage() {
                   <span className="text-gray-600">Shipping</span>
                   <span>${shipping.toFixed(2)}</span>
                 </div>
-                <div className="border-t pt-2 mt-2">
+                <div className="mt-2 border-t pt-2">
                   <div className="flex justify-between font-bold">
                     <span>Total</span>
                     <motion.span

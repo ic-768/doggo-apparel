@@ -16,17 +16,17 @@ export default function Header({ withLinks }: { withLinks?: boolean }) {
 
   return (
     <MotionHeader>
-      <div className="flex justify-between items-center h-full">
+      <div className="flex h-full items-center justify-between">
         <Link
           href="/"
-          className="text-xl sm:text-2xl font-bold flex items-center gap-2"
+          className="flex items-center gap-2 text-xl font-bold sm:text-2xl"
         >
           <PawPrintIcon className="size-8" />
           D/A
         </Link>
         {withLinks && (
           <nav className="relative">
-            <ul className="hidden sm:flex gap-10">
+            <ul className="hidden gap-10 sm:flex">
               {links.map(({ element, href }) => (
                 <MotionLi key={href} whileHover={{ scale: 1.08 }}>
                   <Link className="text-gray-600" href={href}>

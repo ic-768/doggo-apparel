@@ -28,11 +28,11 @@ export default function PreviewCard({
 }: PreviewCardProps) {
   return (
     <MotionDiv {...fadeIntoView} whileHover={{ scale: 1.05 }}>
-      <Card className="h-full flex flex-col">
+      <Card className="flex h-full flex-col">
         <CardHeader className="p-0">
           <Image alt={alt} src={src} {...imageProps} />
         </CardHeader>
-        <CardContent className="flex flex-col p-4 grow">
+        <CardContent className="flex grow flex-col p-4">
           <h3 className="mb-2 text-xl font-semibold">{title}</h3>
           <p className="grow text-gray-600">{description}</p>
         </CardContent>
@@ -40,7 +40,7 @@ export default function PreviewCard({
           <MotionLink
             {...tapScale}
             href={`item/${id}`}
-            className="w-full text-white bg-blue-600 hover:bg-blue-700 p-2 rounded-full text-center transition-colors"
+            className="w-full rounded-full bg-blue-600 p-2 text-center text-white transition-colors hover:bg-blue-700"
           >
             View
           </MotionLink>

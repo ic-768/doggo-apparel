@@ -9,7 +9,7 @@ import MotionDiv from "../ui/motion/motion-div";
 export default function AboutUs() {
   return (
     <section className="py-20">
-      <div className="flex flex-col items-center lg:flex-row mx-auto container px-4">
+      <div className="container mx-auto flex flex-col items-center px-4 lg:flex-row">
         <MotionDiv {...fadeIntoView} className="mb-10 lg:mb-0 lg:w-1/2">
           <Image
             className="rounded-lg"
@@ -21,7 +21,7 @@ export default function AboutUs() {
         </MotionDiv>
         <MotionDiv
           {...fadeIntoView}
-          className="lg:pl-12 lg:w-1/2 flex flex-col items-center"
+          className="flex flex-col items-center lg:w-1/2 lg:pl-12"
         >
           <h2 className="mb-6 text-4xl font-bold text-gray-800">
             About Doggo Apparel
@@ -38,7 +38,7 @@ export default function AboutUs() {
           </p>
           <MotionButton
             {...tapScale}
-            className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700"
+            className="rounded-full bg-blue-600 px-6 py-3 text-lg font-bold text-white hover:bg-blue-700"
           >
             Learn More
           </MotionButton>

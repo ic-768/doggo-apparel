@@ -24,7 +24,7 @@ export default function PurchaseControls({ item }: { item: ClothingItem }) {
         <CartButton
           withText
           size={selectedSize}
-          className="bg-primary text-primary-foreground hover:bg-primary/90 fixed top-32 right-2 outline outline-1 outline-neutral-400 rounded-full size-12 flex justify-center items-center sm:size-auto sm:static gap-4"
+          className="fixed right-2 top-32 flex size-12 items-center justify-center gap-4 rounded-full bg-primary text-primary-foreground outline outline-1 outline-neutral-400 hover:bg-primary/90 sm:static sm:size-auto"
           id={item.id}
         />
       </div>

@@ -14,13 +14,13 @@ export default function Suggestions({ itemId }: { itemId: number }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-bold text-center">You May Also Like</h2>
+      <h2 className="text-center text-2xl font-bold">You May Also Like</h2>
       <Carousel className="mx-16">
         <CarouselContent>
           {relatedItems.map((item) => (
             <CarouselItem
               key={item.name}
-              className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 flex"
+              className="flex md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
             >
               <ItemCard {...item} />
             </CarouselItem>

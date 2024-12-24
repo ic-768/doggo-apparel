@@ -14,7 +14,7 @@ import {
 import TestimonialCard from "./testimonial-card";
 
 const CarouselCard = ({ children }: { children: React.ReactNode }) => (
-  <CarouselItem className="md:basis-1/2 lg:basis-1/3  flex">
+  <CarouselItem className="flex md:basis-1/2 lg:basis-1/3">
     {children}
   </CarouselItem>
 );
@@ -22,11 +22,11 @@ const CarouselCard = ({ children }: { children: React.ReactNode }) => (
 export default function Testimonials() {
   return (
     <section className="py-20">
-      <div className="flex flex-col gap-12 px-4 mx-auto container">
+      <div className="container mx-auto flex flex-col gap-12 px-4">
         <MotionH
           as="h2"
           {...fadeIntoView}
-          className="text-4xl font-bold text-center text-gray-800"
+          className="text-center text-4xl font-bold text-gray-800"
         >
           What Our Customers Say
         </MotionH>

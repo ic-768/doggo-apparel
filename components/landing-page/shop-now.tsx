@@ -10,8 +10,8 @@ import MotionP from "../ui/motion/motion-p";
 
 export default function ShopNow() {
   return (
-    <section className="container flex flex-col pb-12 gap-8 items-center px-4 mx-auto lg:flex-row text-center sm:text-start">
-      <div className="flex flex-col gap-8 lg:w-1/2 items-center">
+    <section className="container mx-auto flex flex-col items-center gap-8 px-4 pb-12 text-center sm:text-start lg:flex-row">
+      <div className="flex flex-col items-center gap-8 lg:w-1/2">
         <H1P
           className="text-5xl font-bold text-gray-800 lg:text-6xl"
           {...fadeIntoView}
@@ -23,7 +23,7 @@ export default function ShopNow() {
           dog deserves to look their best!
         </MotionP>
         <Link
-          className="py-3 px-6 text-lg font-bold text-white bg-blue-600 rounded-full transition-colors hover:bg-blue-700"
+          className="rounded-full bg-blue-600 px-6 py-3 text-lg font-bold text-white transition-colors hover:bg-blue-700"
           href="/browse"
         >
           Shop Now

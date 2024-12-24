@@ -24,7 +24,7 @@ export default function SizeSelection({
           return (
             <Label
               key={s}
-              className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-blue-100 [&:has(:checked)]:border-blue-500"
+              className="flex cursor-pointer items-center gap-2 rounded-md border p-2 [&:has(:checked)]:border-blue-500 [&:has(:checked)]:bg-blue-100"
             >
               <RadioGroupItem value={s} id={s} />
               {s}

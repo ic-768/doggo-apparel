@@ -20,7 +20,7 @@ export default function ShopPage() {
     <Main>
       {clothingCategories.map((category) => (
         <div className="flex flex-col gap-6" key={category.name}>
-          <h2 className="text-secondary-foreground text-2xl font-semibold text-center">
+          <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
             {category.name}
           </h2>
           <Carousel className="mx-16">
@@ -28,7 +28,7 @@ export default function ShopPage() {
               {category.items.map((item, i) => (
                 <CarouselItem
                   key={item.name + i}
-                  className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 flex"
+                  className="flex md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
                 >
                   <ItemCard {...item} />
                 </CarouselItem>
