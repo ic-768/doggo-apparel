@@ -1,6 +1,5 @@
+import { Card } from "@/components/ui/card";
 import { ClothingItem } from "@/lib/types";
-
-import { Card } from "../ui/card";
 
 export default function FeaturesList({ item }: { item: ClothingItem }) {
   return (

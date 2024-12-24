@@ -2,11 +2,9 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import FavoritesButton from "@/components/item/card/favorites-button";
-import FeaturesList from "@/components/item/features-list";
+import DetailTabs from "@/components/item/detail-tabs";
 import InStockBadge from "@/components/item/in-stock-badge";
-import InstructionsList from "@/components/item/instructions-list";
 import NumberInCart from "@/components/item/number-in-cart";
-import Policies from "@/components/item/policies";
 import PriceTag from "@/components/item/price-tag";
 import PurchaseControls from "@/components/item/purchase-controls";
 import ReviewsScore from "@/components/item/reviews-score";
@@ -63,14 +61,11 @@ export default async function ItemPage({
             </div>
 
             <PurchaseControls item={item} />
-            <Policies />
+            <DetailTabs item={item} />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <FeaturesList item={item} />
-          <InstructionsList />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         <Suggestions itemId={Number(item.id)} />
       </div>
     </Main>
