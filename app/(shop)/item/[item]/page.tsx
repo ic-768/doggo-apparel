@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import FavoritesButton from "@/components/item/card/favorites-button";
 import FeaturesList from "@/components/item/features-list";
 import InStockBadge from "@/components/item/in-stock-badge";
 import InstructionsList from "@/components/item/instructions-list";
@@ -43,7 +44,13 @@ export default async function ItemPage({
           </div>
 
           <div className="flex flex-col gap-4">
-            <h1 className="text-3xl font-bold">{item.name}</h1>
+            <div className="flex gap-4 items-center">
+              <h1 className="text-3xl font-bold">{item.name}</h1>
+              <FavoritesButton
+                className="fixed top-48 right-2 outline outline-1 outline-red-400 rounded-full size-12 flex justify-center items-center bg-red-100 hover:bg-red-400 sm:static"
+                id={item.id}
+              />
+            </div>
             <ReviewsScore />
             <PriceTag price={item.price} />
             <Card className="p-4 text-gray-600 self-start">

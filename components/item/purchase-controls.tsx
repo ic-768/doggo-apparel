@@ -9,8 +9,6 @@ import { Button } from "@/components/ui/button";
 import { useShoppingCart } from "@/context/cart/use-shopping-cart";
 import { ClothingItem } from "@/lib/types";
 
-import FavoritesButton from "./card/favorites-button";
-
 export default function PurchaseControls({ item }: { item: ClothingItem }) {
   const [selectedSize, setSelectedSize] = useState("");
   const { addToCart } = useShoppingCart();
@@ -43,7 +41,7 @@ export default function PurchaseControls({ item }: { item: ClothingItem }) {
 
       <div className="flex gap-4">
         <Button
-          className="rounded-full size-12 fixed top-32 right-2 outline outline-1 outline-neutral-400 sm:rounded-lg sm:static sm:outline-none sm:w-auto"
+          className="rounded-full size-12 fixed top-32 right-2 outline outline-1 outline-neutral-400 sm:rounded-lg sm:relative sm:outline-none sm:w-auto sm:top-auto sm:right-auto"
           size="iconToLg"
           effect="shine"
           iconPlacement="left"
@@ -53,10 +51,6 @@ export default function PurchaseControls({ item }: { item: ClothingItem }) {
         >
           <span className="hidden sm:inline">Add to Cart</span>
         </Button>
-        <FavoritesButton
-          className="fixed top-48 right-2 outline outline-1 outline-red-400 rounded-full size-12 flex justify-center items-center bg-red-100 hover:bg-red-400 sm:static"
-          id={item.id}
-        />
       </div>
     </>
   );
