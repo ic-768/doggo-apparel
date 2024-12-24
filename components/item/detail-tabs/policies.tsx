@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function Policies() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="flex flex-col gap-2">
       <Card>
         <CardContent className="flex items-center gap-4 p-4">
           <Truck className="text-blue-600" />

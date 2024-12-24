@@ -41,7 +41,7 @@ export default async function ItemPage({
             />
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 items-center sm:items-start">
             <div className="flex gap-4 items-center">
               <h1 className="text-3xl font-bold">{item.name}</h1>
               <PriceTag price={item.price} />
@@ -51,11 +51,9 @@ export default async function ItemPage({
               />
             </div>
             <ReviewsScore />
-            <Card className="p-4 text-gray-600 self-start">
-              {item.description}
-            </Card>
+            <Card className="p-4 text-gray-600">{item.description}</Card>
 
-            <div className="fiex items-center gap-2">
+            <div className="flex items-center gap-2">
               <NumberInCart item={item} />
               <InStockBadge />
             </div>
