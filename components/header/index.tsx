@@ -21,8 +21,8 @@ export default function Header({ withLinks }: { withLinks?: boolean }) {
           href="/"
           className="text-xl sm:text-2xl font-bold flex items-center gap-2"
         >
-          <PawPrintIcon className="size-5 sm:size-6" />
-          Doggo Apparel
+          <PawPrintIcon className="size-8" />
+          D/A
         </Link>
         {withLinks && (
           <nav className="relative">

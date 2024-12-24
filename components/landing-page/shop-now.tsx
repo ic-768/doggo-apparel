@@ -16,7 +16,7 @@ export default function ShopNow() {
           className="text-5xl font-bold text-gray-800 lg:text-6xl"
           {...fadeIntoView}
         >
-          Dress Your Dog in Style
+          Doggo Apparel
         </H1P>
         <MotionP className="text-xl text-gray-600" {...fadeIntoView}>
           Discover the latest in canine fashion at Doggo Apparel. Because every

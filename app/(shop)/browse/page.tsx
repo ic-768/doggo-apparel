@@ -28,7 +28,7 @@ export default function ShopPage() {
               {category.items.map((item, i) => (
                 <CarouselItem
                   key={item.name + i}
-                  className="md:basis-1/2 lg:basis-1/3 xl:basis-1/5 flex"
+                  className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 flex"
                 >
                   <ItemCard {...item} />
                 </CarouselItem>
