@@ -18,7 +18,6 @@ export default function FavoritesButton({
   const onClick = () => {
     const item = getClothingItemById(id);
 
-    console.log(item);
     if (isFavorite(id)) {
       removeFromFavorites(item.id);
     } else {
