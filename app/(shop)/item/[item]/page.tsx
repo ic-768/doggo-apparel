@@ -46,18 +46,18 @@ export default async function ItemPage({
           <div className="flex flex-col gap-4">
             <div className="flex gap-4 items-center">
               <h1 className="text-3xl font-bold">{item.name}</h1>
+              <PriceTag price={item.price} />
               <FavoritesButton
                 className="fixed top-48 right-2 outline outline-1 outline-red-400 rounded-full size-12 flex justify-center items-center bg-red-100 hover:bg-red-400 sm:static"
                 id={item.id}
               />
             </div>
             <ReviewsScore />
-            <PriceTag price={item.price} />
             <Card className="p-4 text-gray-600 self-start">
               {item.description}
             </Card>
 
-            <div className="flex items-center gap-2">
+            <div className="fiex items-center gap-2">
               <NumberInCart item={item} />
               <InStockBadge />
             </div>
@@ -76,4 +76,3 @@ export default async function ItemPage({
     </Main>
   );
 }
-// TODO: Mobile - make buttons floating
