@@ -17,9 +17,8 @@ export default function HamburgerMenu({ links }: HamburgerMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="md:hidden">
+    <div className="sm:hidden">
       <Button
-        className="duration-400"
         variant="ghost"
         size="icon"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -39,7 +38,7 @@ export default function HamburgerMenu({ links }: HamburgerMenuProps) {
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700"
             >
               {element}
               <span>{label}</span>
