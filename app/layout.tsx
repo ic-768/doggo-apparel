@@ -2,7 +2,6 @@ import { ToastContainer } from "react-toastify";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
-import Header from "@/components/header";
 import Footer from "@/components/landing-page/footer";
 import { ShoppingCartProvider } from "@/context/cart/shopping-cart";
 import { FavoritesProvider } from "@/context/favorites/favorites";
@@ -37,10 +36,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <ShoppingCartProvider>
-          <FavoritesProvider>
-            <Header />
-            {children}
-          </FavoritesProvider>
+          <FavoritesProvider>{children}</FavoritesProvider>
         </ShoppingCartProvider>
         <Footer />
         <ToastContainer position="bottom-right" closeOnClick pauseOnHover />

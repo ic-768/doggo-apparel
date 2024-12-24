@@ -5,7 +5,7 @@ import FavoritesIndicator from "./ui/indicators/favorites-indicator";
 import Link from "./ui/link";
 import MotionLi from "./ui/motion/motion-li";
 
-export default function Header() {
+export default function Header({ withLinks }: { withLinks?: boolean }) {
   const links = [
     { element: <Grid size={24} />, href: "/browse" },
     { element: <FavoritesIndicator />, href: "/favorites" },
@@ -25,13 +25,14 @@ export default function Header() {
       </div>
       <nav>
         <ul className="flex gap-10">
-          {links.map(({ element, href }) => (
-            <MotionLi key={href} whileHover={{ scale: 1.08 }}>
-              <Link className="text-gray-600" href={href}>
-                {element}
-              </Link>
-            </MotionLi>
-          ))}
+          {withLinks &&
+            links.map(({ element, href }) => (
+              <MotionLi key={href} whileHover={{ scale: 1.08 }}>
+                <Link className="text-gray-600" href={href}>
+                  {element}
+                </Link>
+              </MotionLi>
+            ))}
         </ul>
       </nav>
     </header>
