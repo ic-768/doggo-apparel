@@ -15,8 +15,8 @@ export default function DetailTabs({ item }: { item: ClothingItem }) {
     transition: { duration: 0.6 },
   };
   return (
-    <Tabs defaultValue="features" className="w-[400px]">
-      <TabsList className="grid w-full grid-cols-3">
+    <Tabs defaultValue="features">
+      <TabsList className="grid grid-cols-3">
         <TabsTrigger value="features">Features</TabsTrigger>
         <TabsTrigger value="instructions">Instructions</TabsTrigger>
         <TabsTrigger value="policies">Policies</TabsTrigger>
