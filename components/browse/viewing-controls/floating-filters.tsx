@@ -29,32 +29,30 @@ export default function FloatingFilters({
   setIsGridView,
 }: FloatingFiltersProps) {
   return (
-    <div className="fixed bottom-4 right-4 z-50 md:hidden">
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button size="icon" className="rounded-full shadow-lg">
-            <Settings className="h-6 w-6" />
-          </Button>
-        </SheetTrigger>
-        <SheetContent
-          title="test"
-          side="bottom"
-          className="flex h-96 flex-col gap-4"
-        >
-          <SheetTitle>Filters</SheetTitle>
-          <SheetDescription>Narrow down the displayed results</SheetDescription>
-          <div className="h-full overflow-y-auto">
-            <StaticFilters
-              category={category}
-              setCategory={setCategory}
-              priceRange={priceRange}
-              setPriceRange={setPriceRange}
-              isGridView={isGridView}
-              setIsGridView={setIsGridView}
-            />
-          </div>
-        </SheetContent>
-      </Sheet>
-    </div>
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button size="icon" className="size-14 rounded-full shadow-lg">
+          <Settings className="size-10" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent
+        title="test"
+        side="bottom"
+        className="flex h-96 flex-col gap-4"
+      >
+        <SheetTitle>Filters</SheetTitle>
+        <SheetDescription>Narrow down the displayed results</SheetDescription>
+        <div className="h-full overflow-y-auto">
+          <StaticFilters
+            category={category}
+            setCategory={setCategory}
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+            isGridView={isGridView}
+            setIsGridView={setIsGridView}
+          />
+        </div>
+      </SheetContent>
+    </Sheet>
   );
 }

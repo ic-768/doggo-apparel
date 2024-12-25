@@ -27,7 +27,18 @@ export default function ShopPage() {
   return (
     <Main>
       <div>
-        <div className="hidden md:block">
+        <div className="fixed bottom-4 right-4 z-50 lg:hidden">
+          <FloatingFilters
+            category={category}
+            setCategory={setCategory}
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+            isGridView={isGridView}
+            setIsGridView={setIsGridView}
+          />
+        </div>
+
+        <div className="hidden w-96 lg:block">
           <StaticFilters
             category={category}
             setCategory={setCategory}
@@ -37,14 +48,6 @@ export default function ShopPage() {
             setIsGridView={setIsGridView}
           />
         </div>
-        <FloatingFilters
-          category={category}
-          setCategory={setCategory}
-          priceRange={priceRange}
-          setPriceRange={setPriceRange}
-          isGridView={isGridView}
-          setIsGridView={setIsGridView}
-        />
       </div>
       <div className="flex flex-col gap-8">
         {clothingCategories.map((category) => (
