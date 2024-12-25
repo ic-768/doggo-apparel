@@ -39,6 +39,17 @@ export default function ShopPage() {
   const selectedCategory =
     category === "All" ? null : getClothingCategoryByName(category);
 
+  const filteredAll = clothingCategories.map((category) => ({
+    name: category.name,
+    items: category.items.filter((item) => {
+      return item.price >= priceRange[0] && item.price <= priceRange[1];
+    }),
+  }));
+
+  const filteredCategory = selectedCategory?.items.filter((item) => {
+    return item.price >= priceRange[0] && item.price <= priceRange[1];
+  });
+
   return (
     <Main>
       <div className="fixed bottom-4 right-4 z-50 lg:hidden">
@@ -65,7 +76,7 @@ export default function ShopPage() {
 
       <div className="flex flex-col gap-8 lg:pl-52">
         {category === "All" ? (
-          clothingCategories.map((category) => (
+          filteredAll.map((category) => (
             <div className="flex flex-col gap-6" key={category.name}>
               <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
                 {category.name}
@@ -88,7 +99,7 @@ export default function ShopPage() {
           ))
         ) : (
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-5">
-            {selectedCategory?.items.map((item) => (
+            {filteredCategory?.map((item) => (
               <ItemCard key={item.id} {...item} />
             ))}
           </div>
