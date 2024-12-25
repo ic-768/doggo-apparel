@@ -35,6 +35,9 @@ export default function ShopPage() {
   const updateCategory = (newCategory: string) => {
     setCategory(newCategory);
     router.push(`?category=${newCategory}`, { scroll: false });
+    if (newCategory !== "All") {
+      setFilteredItems(getClothingCategoryByName(newCategory)!.items);
+    }
   };
 
   const filterItemsByPrice = (

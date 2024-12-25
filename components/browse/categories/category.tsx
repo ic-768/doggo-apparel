@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 import ItemCard from "@/components/item/card/item-card";
 import { ClothingItem } from "@/lib/types";
 
@@ -11,4 +9,4 @@ function Category({ items = [] }: { items?: ClothingItem[] }) {
   );
 }
 
-export default memo(Category);
+export default Category;
