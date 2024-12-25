@@ -1,3 +1,4 @@
+import { MotionProps } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -16,13 +17,13 @@ import PriceTag from "../price-tag";
 import CartButton from "./cart-button";
 import FavoritesButton from "./favorites-button";
 
-interface ItemCardProps {
+type ItemCardProps = {
   image: string | StaticImageData;
   name: string;
   description: string;
   price: number;
   id: number;
-}
+} & MotionProps;
 
 export default function ItemCard({
   image,
@@ -30,9 +31,18 @@ export default function ItemCard({
   description,
   price,
   id,
+  ...props
 }: ItemCardProps) {
   return (
-    <MotionDiv {...fadeIntoView} whileHover={{ rotate: 1 }} className="h-full">
+    <MotionDiv
+      {...props}
+      {...fadeIntoView}
+      exit={{ opacity: 0 }}
+      layoutId={`${id}`}
+      transition={{ duration: 0.4 }}
+      whileHover={{ rotate: 1 }}
+      className="h-full"
+    >
       <Card className="flex h-full flex-col">
         <Link className="grow" href={`/item/${id}`}>
           <CardHeader className="p-0">
