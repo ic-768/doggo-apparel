@@ -2,16 +2,10 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import AllCategories from "@/components/browse/categories/all";
+import Category from "@/components/browse/categories/category";
 import Filters from "@/components/browse/viewing-controls/filters";
 import MobileFilters from "@/components/browse/viewing-controls/mobile-filters";
-import ItemCard from "@/components/item/card/item-card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import Main from "@/components/ui/main";
 import { clothingCategories } from "@/lib/clothing-categories";
 import { getClothingCategoryByName } from "@/lib/utils";
@@ -76,33 +70,9 @@ export default function ShopPage() {
 
       <div className="flex flex-col gap-8 lg:pl-52">
         {category === "All" ? (
-          filteredAll.map((category) => (
-            <div className="flex flex-col gap-6" key={category.name}>
-              <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
-                {category.name}
-              </h2>
-              <Carousel className="mx-16">
-                <CarouselContent>
-                  {category.items.map((item, i) => (
-                    <CarouselItem
-                      key={item.name + i}
-                      className="flex md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
-                    >
-                      <ItemCard {...item} />
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
-            </div>
-          ))
+          <AllCategories categories={filteredAll} />
         ) : (
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-5">
-            {filteredCategory?.map((item) => (
-              <ItemCard key={item.id} {...item} />
-            ))}
-          </div>
+          <Category items={filteredCategory} />
         )}
       </div>
     </Main>
