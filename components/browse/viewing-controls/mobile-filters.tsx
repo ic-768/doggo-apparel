@@ -14,8 +14,8 @@ import Filters from "./filters";
 interface MobileFiltersProps {
   category: string;
   setCategory: (category: string) => void;
-  priceRange: number[];
-  setPriceRange: (range: number[]) => void;
+  priceRange: [number, number];
+  setPriceRange: (range: [number, number]) => void;
   isGridView: boolean;
   setIsGridView: (isGrid: boolean) => void;
 }

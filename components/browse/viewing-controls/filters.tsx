@@ -13,8 +13,8 @@ import { clothingCategories } from "@/lib/clothing-categories";
 interface FiltersProps {
   category: string;
   setCategory: (category: string) => void;
-  priceRange: number[];
-  setPriceRange: (range: number[]) => void;
+  priceRange: [number, number];
+  setPriceRange: (range: [number, number]) => void;
   isGridView: boolean;
   setIsGridView: (isGrid: boolean) => void;
 }

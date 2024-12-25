@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useCallback, useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import AllCategories from "@/components/browse/categories/all";
@@ -8,12 +8,8 @@ import Filters from "@/components/browse/viewing-controls/filters";
 import MobileFilters from "@/components/browse/viewing-controls/mobile-filters";
 import Main from "@/components/ui/main";
 import { clothingCategories } from "@/lib/clothing-categories";
+import { ClothingItem } from "@/lib/types";
 import { getClothingCategoryByName } from "@/lib/utils";
-
-// TODO
-// export const metadata = {
-//   title: "Browse",
-// };
 
 export default function ShopPage() {
   const searchParams = useSearchParams();
@@ -22,27 +18,49 @@ export default function ShopPage() {
   const initialCategory = searchParams.get("category") || "All";
   const [category, setCategory] = useState(initialCategory);
 
-  const [priceRange, setPriceRange] = useState([0, 100]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
   const [isGridView, setIsGridView] = useState(true);
+
+  const [_isPending, startTransition] = useTransition();
+
+  const selectedCategory =
+    category === "All" ? null : getClothingCategoryByName(category);
+
+  const [filteredItems, setFilteredItems] = useState(
+    selectedCategory?.items || [],
+  );
+  const [filteredCategories, setFilteredCategories] =
+    useState(clothingCategories);
 
   const updateCategory = (newCategory: string) => {
     setCategory(newCategory);
     router.push(`?category=${newCategory}`, { scroll: false });
   };
 
-  const selectedCategory =
-    category === "All" ? null : getClothingCategoryByName(category);
+  const filterItemsByPrice = (
+    items: ClothingItem[],
+    [min, max]: [number, number],
+  ): ClothingItem[] =>
+    items.filter((item) => item.price >= min && item.price <= max);
 
-  const filteredAll = clothingCategories.map((category) => ({
-    name: category.name,
-    items: category.items.filter((item) => {
-      return item.price >= priceRange[0] && item.price <= priceRange[1];
-    }),
-  }));
-
-  const filteredCategory = selectedCategory?.items.filter((item) => {
-    return item.price >= priceRange[0] && item.price <= priceRange[1];
-  });
+  const handlePriceRangeChange = useCallback(
+    (newRange: [number, number]) => {
+      setPriceRange(newRange);
+      startTransition(() => {
+        if (selectedCategory) {
+          const filtered = filterItemsByPrice(selectedCategory.items, newRange);
+          setFilteredItems(filtered);
+        } else {
+          const filtered = clothingCategories.map((category) => ({
+            ...category,
+            items: filterItemsByPrice(category.items, newRange),
+          }));
+          setFilteredCategories(filtered);
+        }
+      });
+    },
+    [selectedCategory],
+  );
 
   return (
     <Main>
@@ -51,7 +69,7 @@ export default function ShopPage() {
           category={category}
           setCategory={updateCategory}
           priceRange={priceRange}
-          setPriceRange={setPriceRange}
+          setPriceRange={handlePriceRangeChange}
           isGridView={isGridView}
           setIsGridView={setIsGridView}
         />
@@ -62,7 +80,7 @@ export default function ShopPage() {
           category={category}
           setCategory={updateCategory}
           priceRange={priceRange}
-          setPriceRange={setPriceRange}
+          setPriceRange={handlePriceRangeChange}
           isGridView={isGridView}
           setIsGridView={setIsGridView}
         />
@@ -70,9 +88,9 @@ export default function ShopPage() {
 
       <div className="flex flex-col gap-8 lg:pl-52">
         {category === "All" ? (
-          <AllCategories categories={filteredAll} />
+          <AllCategories categories={filteredCategories} />
         ) : (
-          <Category items={filteredCategory} />
+          <Category items={filteredItems} />
         )}
       </div>
     </Main>
