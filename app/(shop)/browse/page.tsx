@@ -2,8 +2,8 @@
 import * as React from "react";
 import { useState } from "react";
 
-import FloatingFilters from "@/components/browse/viewing-controls/floating-filters";
-import StaticFilters from "@/components/browse/viewing-controls/static-filters";
+import Filters from "@/components/browse/viewing-controls/filters";
+import MobileFilters from "@/components/browse/viewing-controls/mobile-filters";
 import ItemCard from "@/components/item/card/item-card";
 import {
   Carousel,
@@ -15,6 +15,7 @@ import {
 import Main from "@/components/ui/main";
 import { clothingCategories } from "@/lib/clothing-categories";
 
+// TODO
 // export const metadata = {
 //   title: "Browse",
 // };
@@ -26,30 +27,29 @@ export default function ShopPage() {
 
   return (
     <Main>
-      <div>
-        <div className="fixed bottom-4 right-4 z-50 lg:hidden">
-          <FloatingFilters
-            category={category}
-            setCategory={setCategory}
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
-            isGridView={isGridView}
-            setIsGridView={setIsGridView}
-          />
-        </div>
-
-        <div className="hidden w-96 lg:block">
-          <StaticFilters
-            category={category}
-            setCategory={setCategory}
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
-            isGridView={isGridView}
-            setIsGridView={setIsGridView}
-          />
-        </div>
+      <div className="fixed bottom-4 right-4 z-50 lg:hidden">
+        <MobileFilters
+          category={category}
+          setCategory={setCategory}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          isGridView={isGridView}
+          setIsGridView={setIsGridView}
+        />
       </div>
-      <div className="flex flex-col gap-8">
+
+      <div className="fixed left-4 top-32 hidden w-52 rounded-lg bg-white lg:block">
+        <Filters
+          category={category}
+          setCategory={setCategory}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          isGridView={isGridView}
+          setIsGridView={setIsGridView}
+        />
+      </div>
+
+      <div className="flex flex-col gap-8 lg:pl-52">
         {clothingCategories.map((category) => (
           <div className="flex flex-col gap-6" key={category.name}>
             <h2 className="text-center text-2xl font-semibold text-secondary-foreground">

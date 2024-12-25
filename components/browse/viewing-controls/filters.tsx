@@ -10,7 +10,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { clothingCategories } from "@/lib/clothing-categories";
 
-interface StaticFiltersProps {
+interface FiltersProps {
   category: string;
   setCategory: (category: string) => void;
   priceRange: number[];
@@ -18,14 +18,14 @@ interface StaticFiltersProps {
   isGridView: boolean;
   setIsGridView: (isGrid: boolean) => void;
 }
-export default function StaticFilters({
+export default function Filters({
   category,
   setCategory,
   priceRange,
   setPriceRange,
   isGridView,
   setIsGridView,
-}: StaticFiltersProps) {
+}: FiltersProps) {
   return (
     <div className="space-y-6 rounded-lg border p-4 shadow-sm">
       <div>

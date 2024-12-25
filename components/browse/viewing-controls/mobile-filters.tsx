@@ -9,9 +9,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import StaticFilters from "./static-filters";
+import Filters from "./filters";
 
-interface FloatingFiltersProps {
+interface MobileFiltersProps {
   category: string;
   setCategory: (category: string) => void;
   priceRange: number[];
@@ -20,18 +20,22 @@ interface FloatingFiltersProps {
   setIsGridView: (isGrid: boolean) => void;
 }
 
-export default function FloatingFilters({
+export default function MobileFilters({
   category,
   setCategory,
   priceRange,
   setPriceRange,
   isGridView,
   setIsGridView,
-}: FloatingFiltersProps) {
+}: MobileFiltersProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button size="icon" className="size-14 rounded-full shadow-lg">
+        <Button
+          variant="outline"
+          size="icon"
+          className="size-14 rounded-full shadow-lg outline outline-1 outline-neutral-300"
+        >
           <Settings className="size-10" />
         </Button>
       </SheetTrigger>
@@ -43,7 +47,7 @@ export default function FloatingFilters({
         <SheetTitle>Filters</SheetTitle>
         <SheetDescription>Narrow down the displayed results</SheetDescription>
         <div className="h-full overflow-y-auto">
-          <StaticFilters
+          <Filters
             category={category}
             setCategory={setCategory}
             priceRange={priceRange}
