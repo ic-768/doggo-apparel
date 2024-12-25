@@ -37,7 +37,7 @@ export default function Filters({
           <SelectContent title="Categories">
             <SelectItem value="All">All</SelectItem>
             {clothingCategories.map(({ name }) => (
-              <SelectItem key={name} value={name}>
+              <SelectItem key={name} value={name.toLowerCase()}>
                 {name}
               </SelectItem>
             ))}

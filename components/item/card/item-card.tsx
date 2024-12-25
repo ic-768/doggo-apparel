@@ -34,7 +34,7 @@ export default function ItemCard({
   return (
     <MotionDiv {...fadeIntoView} whileHover={{ rotate: 1 }} className="h-full">
       <Card className="flex h-full flex-col">
-        <Link className="h-full" href={`/item/${id}`}>
+        <Link className="grow" href={`/item/${id}`}>
           <CardHeader className="p-0">
             <Image alt="name" src={image} {...imageProps} />
           </CardHeader>

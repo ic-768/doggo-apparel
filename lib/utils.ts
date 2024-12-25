@@ -29,3 +29,9 @@ export function getRelatedItems(id: number) {
 
   return category.items.filter((item) => item.id !== id);
 }
+
+export function getClothingCategoryByName(name: string) {
+  return clothingCategories.find(
+    (category) => category.name.toLowerCase() === name.toLowerCase(),
+  );
+}
