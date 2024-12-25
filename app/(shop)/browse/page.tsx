@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import AllCategories from "@/components/browse/categories/all";
@@ -43,24 +43,19 @@ export default function ShopPage() {
   ): ClothingItem[] =>
     items.filter((item) => item.price >= min && item.price <= max);
 
-  const handlePriceRangeChange = useCallback(
-    (newRange: [number, number]) => {
-      setPriceRange(newRange);
-      startTransition(() => {
-        if (selectedCategory) {
-          const filtered = filterItemsByPrice(selectedCategory.items, newRange);
-          setFilteredItems(filtered);
-        } else {
-          const filtered = clothingCategories.map((category) => ({
-            ...category,
-            items: filterItemsByPrice(category.items, newRange),
-          }));
-          setFilteredCategories(filtered);
-        }
-      });
-    },
-    [selectedCategory],
-  );
+  const handlePriceRangeChange = (newRange: [number, number]) => {
+    startTransition(() => {
+      selectedCategory
+        ? setFilteredItems(filterItemsByPrice(selectedCategory.items, newRange))
+        : setFilteredCategories(
+            clothingCategories.map((category) => ({
+              ...category,
+              items: filterItemsByPrice(category.items, newRange),
+            })),
+          );
+    });
+    setPriceRange(newRange);
+  };
 
   return (
     <Main>

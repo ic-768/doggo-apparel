@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import ItemCard from "@/components/item/card/item-card";
 import {
   Carousel,
@@ -8,11 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { ClothingCategory } from "@/lib/types";
 
-export default function CategoryCarousel({
-  category,
-}: {
-  category: ClothingCategory;
-}) {
+function CategoryCarousel({ category }: { category: ClothingCategory }) {
   return (
     <div className="flex flex-col gap-6" key={category.name}>
       <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
@@ -35,3 +33,5 @@ export default function CategoryCarousel({
     </div>
   );
 }
+
+export default memo(CategoryCarousel);
