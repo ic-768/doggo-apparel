@@ -1,7 +1,13 @@
 import { Settings } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 import StaticFilters from "./static-filters";
 
@@ -30,7 +36,13 @@ export default function FloatingFilters({
             <Settings className="h-6 w-6" />
           </Button>
         </SheetTrigger>
-        <SheetContent title="test" side="bottom" className="h-[80vh]">
+        <SheetContent
+          title="test"
+          side="bottom"
+          className="flex h-96 flex-col gap-4"
+        >
+          <SheetTitle>Filters</SheetTitle>
+          <SheetDescription>Narrow down the displayed results</SheetDescription>
           <div className="h-full overflow-y-auto">
             <StaticFilters
               category={category}
