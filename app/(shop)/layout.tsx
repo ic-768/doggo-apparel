@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 
 import Header from "@/components/header";
+import Main from "@/components/ui/main";
 
 export default function ShopLayout({
   children,
@@ -10,7 +11,7 @@ export default function ShopLayout({
   return (
     <>
       <Header withLinks />
-      <Suspense>{children}</Suspense>
+      <Suspense fallback={<Main />}>{children}</Suspense>
     </>
   );
 }

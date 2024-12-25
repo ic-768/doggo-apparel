@@ -7,9 +7,11 @@ import { useShoppingCart } from "@/context/cart/use-shopping-cart";
 import NumberBubble from "./number-bubble";
 
 export default function CartIndicator({ id }: { id?: number }) {
-  const { numItems, getNumInCart } = useShoppingCart();
+  const { cart, numItems, getNumInCart } = useShoppingCart();
 
   const numToShow = id !== undefined ? getNumInCart(id) : numItems;
+
+  if (cart === null) return null;
 
   return (
     <div className="relative">

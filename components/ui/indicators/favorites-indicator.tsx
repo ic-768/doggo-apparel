@@ -17,6 +17,8 @@ export default function FavoritesIndicator({ id }: { id?: number }) {
       ? { fill: "red", stroke: "red" }
       : undefined;
 
+  if (favorites === null) return;
+
   return (
     <div className="relative">
       {showNum && !!numToShow && <NumberBubble number={numToShow} />}
