@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import Header from "@/components/header";
 
 export default function ShopLayout({
@@ -8,7 +10,7 @@ export default function ShopLayout({
   return (
     <>
       <Header withLinks />
-      {children}
+      <Suspense>{children}</Suspense>
     </>
   );
 }

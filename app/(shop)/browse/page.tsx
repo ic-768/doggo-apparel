@@ -1,5 +1,4 @@
 "use client";
-import * as React from "react";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -88,7 +87,7 @@ export default function ShopPage() {
             </div>
           ))
         ) : (
-          <div className="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-5">
             {selectedCategory?.items.map((item) => (
               <ItemCard key={item.id} {...item} />
             ))}
