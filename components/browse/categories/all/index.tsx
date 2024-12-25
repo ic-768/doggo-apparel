@@ -7,7 +7,10 @@ export default function AllCategories({
 }: {
   categories: ClothingCategories;
 }) {
-  return categories.map((category) => (
-    <CategoryCarousel category={category} key={category.name} />
-  ));
+  return categories.map(
+    (category) =>
+      category.items.length !== 0 && (
+        <CategoryCarousel category={category} key={category.name} />
+      ),
+  );
 }
