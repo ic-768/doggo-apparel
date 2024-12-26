@@ -8,7 +8,7 @@ import MotionLi from "../ui/motion/motion-li";
 import HamburgerMenu from "./hamburger-menu";
 import MotionHeader from "./motion-header";
 
-const pacifico = Galada({
+const galada = Galada({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-pacifico",
@@ -37,7 +37,7 @@ export default function Header({ withLinks }: { withLinks?: boolean }) {
           className="flex items-center gap-2 text-xl font-bold sm:text-2xl"
         >
           <PawPrintIcon className="size-8" />
-          <span className={pacifico.className}>Doggo Apparel</span>
+          <span className={galada.className}>Doggo Apparel</span>
         </Link>
         {withLinks && (
           <nav className="relative">
