@@ -16,34 +16,28 @@ export default function ViewModes({
   filteredData,
   category,
 }: ViewModesProps) {
-  let view = null;
+  const isAllCategory = category === "all";
 
-  if (viewType === "grid") {
-    if (category === "all") {
-      view = <AllList categories={filteredData as ClothingCategories} />;
-    } else {
-      view = <ItemList items={filteredData as ClothingItem[]} />;
-    }
-  } else {
-    if (category === "all") {
-      view = (
-        <AllCategoriesCarousels
-          categories={filteredData as ClothingCategories}
-        />
-      );
-    } else {
-      view = (
-        <CategoryCarousel
-          category={{
-            name: category,
-            items: filteredData as ClothingItem[],
-          }}
-        />
-      );
-    }
-  }
+  const renderGridView = () =>
+    isAllCategory ? (
+      <AllList categories={filteredData as ClothingCategories} />
+    ) : (
+      <ItemList items={filteredData as ClothingItem[]} />
+    );
 
-  return view;
+  const renderCarouselView = () =>
+    isAllCategory ? (
+      <AllCategoriesCarousels categories={filteredData as ClothingCategories} />
+    ) : (
+      <CategoryCarousel
+        category={{
+          name: category,
+          items: filteredData as ClothingItem[],
+        }}
+      />
+    );
+
+  return viewType === "grid" ? renderGridView() : renderCarouselView();
 }
 
 function AllList({ categories }: { categories: ClothingCategories }) {
