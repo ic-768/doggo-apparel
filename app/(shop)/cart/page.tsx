@@ -20,7 +20,10 @@ export default function CartPage() {
   if (!cart || !cart.length) {
     return (
       <Main>
-        <NoCartItems />
+        <div className="container flex flex-col gap-12">
+          <BackToBrowse />
+          <NoCartItems />
+        </div>
       </Main>
     );
   }
