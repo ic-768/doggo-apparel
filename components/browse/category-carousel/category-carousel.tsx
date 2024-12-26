@@ -23,7 +23,7 @@ function CategoryCarousel({ category }: { category: ClothingCategory }) {
             {category.items.map((item, i) => (
               <CarouselItem
                 key={item.name + i}
-                className="flex md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
+                className="flex sm:basis-1/2 md:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
               >
                 <ItemCard {...item} />
               </CarouselItem>
