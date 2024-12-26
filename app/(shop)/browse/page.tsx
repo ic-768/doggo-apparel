@@ -20,7 +20,7 @@ export default function ShopPage() {
 
   return (
     <Main>
-      <title>{`Browse ${category}`}</title>{" "}
+      <title>{`Browse ${category}`}</title>
       <FilterControls
         category={category}
         priceRange={priceRange}

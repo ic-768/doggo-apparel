@@ -2,17 +2,15 @@
 
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 
-interface FavoriteItem {
-  id: number;
-  name: string;
-}
+import { ClothingItem } from "@/lib/types";
 
 export interface FavoritesContextType {
-  favorites: FavoriteItem[] | null;
-  addToFavorites: (item: FavoriteItem) => void;
+  favorites: ClothingItem[] | null;
+  addToFavorites: (item: ClothingItem) => void;
   removeFromFavorites: (id: number) => void;
   clearFavorites: () => void;
   isFavorite: (id: number) => boolean;
+  setFavorites: React.Dispatch<React.SetStateAction<ClothingItem[] | null>>;
 }
 
 export const FavoritesContext = createContext<FavoritesContextType | undefined>(
@@ -20,7 +18,7 @@ export const FavoritesContext = createContext<FavoritesContextType | undefined>(
 );
 
 export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
-  const [favorites, setFavorites] = useState<FavoriteItem[] | null>(null);
+  const [favorites, setFavorites] = useState<ClothingItem[] | null>(null);
 
   // Load favorites from localStorage after mounting
   useEffect(() => {
@@ -39,7 +37,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [favorites]);
 
-  const addToFavorites = (item: FavoriteItem) => {
+  const addToFavorites = (item: ClothingItem) => {
     if (!favorites || favorites.find((i) => i.id === item.id)) {
       return; // Item already in favorites
     }
@@ -70,6 +68,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
         removeFromFavorites,
         clearFavorites,
         isFavorite,
+        setFavorites,
       }}
     >
       {children}
