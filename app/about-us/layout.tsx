@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "About Doggo Apparel",
   description: "Your one-stop shop for canine style",
 };
+
 export default function LandingLayout({
   children,
 }: {

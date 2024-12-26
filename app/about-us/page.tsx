@@ -1,4 +1,3 @@
-import { Heart, PawPrint, ShieldCheck, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Main from "@/components/ui/main";
 import MotionDiv from "@/components/ui/motion/motion-div";
 import sportOutfit from "@/images/outfits/sporty.jpg";
+import { aboutUsCards } from "@/lib/constants";
 import { fadeIntoView } from "@/lib/motion";
 
 export default function AboutUs() {
@@ -39,37 +39,12 @@ export default function AboutUs() {
             and their furry friends. That&apos;s why we put so much care into
             every piece we create.
           </p>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6 py-8">
             <h2 className="text-center text-3xl font-semibold">
               Why Choose Doggo Apparel?
             </h2>
             <div className="grid gap-6 sm:grid-cols-2">
-              {[
-                {
-                  icon: PawPrint,
-                  title: "Paw-fect Fit",
-                  description:
-                    "Our sizes are carefully crafted to fit dogs of all shapes and sizes.",
-                },
-                {
-                  icon: Heart,
-                  title: "Made with Love",
-                  description:
-                    "Each piece is designed with care and attention to detail.",
-                },
-                {
-                  icon: Truck,
-                  title: "Fast Shipping",
-                  description:
-                    "Quick delivery to get your pup styling in no time.",
-                },
-                {
-                  icon: ShieldCheck,
-                  title: "Quality Guarantee",
-                  description:
-                    "We stand behind the quality of every item we sell.",
-                },
-              ].map((feature, index) => (
+              {aboutUsCards.map((feature, index) => (
                 <Card key={index}>
                   <CardContent className="flex flex-col items-center p-6 text-center">
                     <feature.icon className="size-12 text-primary" />
@@ -80,7 +55,7 @@ export default function AboutUs() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-4 py-8 text-center">
+            <div className="flex flex-col gap-6 text-center">
               <h2 className="text-3xl font-semibold">
                 Ready to Style Your Pup?
               </h2>
