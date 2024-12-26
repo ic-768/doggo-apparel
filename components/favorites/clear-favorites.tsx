@@ -11,7 +11,7 @@ export default function ClearFavorites() {
       title="Are you absolutely sure?"
       description="Once you clear your favorites, you can't get them back."
       triggerComponent={
-        <Button variant="destructive" className="self-end">
+        <Button variant="destructive" className="ml-auto self-end">
           Clear Favorites
         </Button>
       }

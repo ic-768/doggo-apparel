@@ -21,14 +21,16 @@ export default function ShopPage() {
   return (
     <Main>
       <title>{`Browse ${category}`}</title>
-      <FilterControls
-        category={category}
-        priceRange={priceRange}
-        filteredData={filteredData}
-        setCategory={setCategory}
-        setPriceRange={setPriceRange}
-      />
-      <div className="flex flex-col gap-8 lg:pl-56">{view}</div>
+      <div className="container">
+        <FilterControls
+          category={category}
+          priceRange={priceRange}
+          filteredData={filteredData}
+          setCategory={setCategory}
+          setPriceRange={setPriceRange}
+        />
+        <div className="flex flex-col gap-8 lg:pl-56">{view}</div>
+      </div>
     </Main>
   );
 }

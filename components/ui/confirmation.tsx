@@ -15,6 +15,7 @@ interface ConfirmationProps {
   onClick: () => void;
   title: string;
   description: string;
+  className?: string;
 }
 
 export default function Confirmation({

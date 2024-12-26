@@ -36,11 +36,11 @@ export default function CartPage() {
   return (
     <Main className="items-center">
       <title>Cart</title>
-
-      {cart.length > 0 && <ClearCart />}
-      <div className="container">
-        <BackToBrowse />
-        <h1 className="text-2xl font-bold">Shopping Cart</h1>
+      <div className="container flex flex-col gap-12">
+        <div className="flex">
+          <BackToBrowse />
+          {cart.length > 0 && <ClearCart />}
+        </div>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="col-span-1 flex flex-col lg:col-span-2">
             <ul className="flex flex-col gap-4">
