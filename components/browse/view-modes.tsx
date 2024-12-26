@@ -3,6 +3,7 @@ import ItemList from "@/components/item-list/item-list";
 import { ViewType } from "@/hooks/useFilters";
 import { ClothingCategories, ClothingItem } from "@/lib/types";
 
+import NoFilteredResults from "../item-list/no-filtered-results";
 import AllCategoriesCarousels from "./category-carousel/all-categories-carousels";
 
 interface ViewModesProps {
@@ -18,15 +19,24 @@ export default function ViewModes({
 }: ViewModesProps) {
   const isAllCategory = category === "all";
 
-  const renderGridView = () =>
-    isAllCategory ? (
+  const isEmpty = isAllCategory
+    ? (filteredData as ClothingCategories).every(
+        (cat) => cat.items.length === 0,
+      )
+    : filteredData.length === 0;
+
+  if (isEmpty) return <NoFilteredResults />;
+
+  const renderGridView = () => {
+    return isAllCategory ? (
       <AllList categories={filteredData as ClothingCategories} />
     ) : (
       <ItemList items={filteredData as ClothingItem[]} />
     );
+  };
 
-  const renderCarouselView = () =>
-    isAllCategory ? (
+  const renderCarouselView = () => {
+    return isAllCategory ? (
       <AllCategoriesCarousels categories={filteredData as ClothingCategories} />
     ) : (
       <CategoryCarousel
@@ -36,17 +46,21 @@ export default function ViewModes({
         }}
       />
     );
+  };
 
   return viewType === "grid" ? renderGridView() : renderCarouselView();
 }
 
 function AllList({ categories }: { categories: ClothingCategories }) {
-  return categories.map((category) => (
-    <div className="flex flex-col gap-6" key={category.name}>
-      <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
-        {category.name}
-      </h2>
-      <ItemList items={category.items} />
-    </div>
-  ));
+  return categories.map(
+    (category) =>
+      category.items.length !== 0 && (
+        <div className="flex flex-col gap-6" key={category.name}>
+          <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
+            {category.name}
+          </h2>
+          <ItemList items={category.items} />
+        </div>
+      ),
+  );
 }
