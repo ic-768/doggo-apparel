@@ -6,7 +6,7 @@ import { ClothingItem } from "@/lib/types";
 
 import NoFilteredResults from "./no-filtered-results";
 
-function Category({
+function ItemList({
   items = [],
   noResultElement = <NoFilteredResults />,
 }: {
@@ -24,4 +24,4 @@ function Category({
   );
 }
 
-export default Category;
+export default ItemList;

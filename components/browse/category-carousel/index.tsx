@@ -1,6 +1,6 @@
+import NoFilteredResults from "@/components/item-list/no-filtered-results";
 import { ClothingCategories } from "@/lib/types";
 
-import NoFilteredResults from "../no-filtered-results";
 import CategoryCarousel from "./category-carousel";
 
 export default function AllCategories({

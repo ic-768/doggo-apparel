@@ -1,7 +1,7 @@
 "use client";
 
-import Category from "@/components/browse/categories/category";
 import NoFavorites from "@/components/favorites/no-favorites";
+import ItemList from "@/components/item-list/item-list";
 import { Button } from "@/components/ui/button";
 import Main from "@/components/ui/main";
 import { useFavorites } from "@/context/favorites/use-favorites";
@@ -23,7 +23,7 @@ export default function Favorites() {
           Clear Favorites
         </Button>
       )}
-      <Category items={favorites} noResultElement={<NoFavorites />} />
+      <ItemList items={favorites} noResultElement={<NoFavorites />} />
     </Main>
   );
 }
