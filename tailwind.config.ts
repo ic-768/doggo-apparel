@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        galada: ["var(--font-galada)"],
+      },
       keyframes: {
         shine: {
           "0%": { backgroundPosition: "200% 0" },

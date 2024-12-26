@@ -1,5 +1,4 @@
 import { Grid, PawPrintIcon } from "lucide-react";
-import { Galada } from "next/font/google";
 
 import CartIndicator from "../ui/indicators/cart-indicator";
 import FavoritesIndicator from "../ui/indicators/favorites-indicator";
@@ -7,12 +6,6 @@ import Link from "../ui/link";
 import MotionLi from "../ui/motion/motion-li";
 import HamburgerMenu from "./hamburger-menu";
 import MotionHeader from "./motion-header";
-
-const galada = Galada({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-pacifico",
-});
 
 export default function Header({ withLinks }: { withLinks?: boolean }) {
   const links = [
@@ -37,7 +30,7 @@ export default function Header({ withLinks }: { withLinks?: boolean }) {
           className="flex items-center gap-2 text-xl font-bold sm:text-2xl"
         >
           <PawPrintIcon className="size-8" />
-          <span className={galada.className}>Doggo Apparel</span>
+          <span className="font-galada">Doggo Apparel</span>
         </Link>
         {withLinks && (
           <nav className="relative">

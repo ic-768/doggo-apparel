@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="mb-8 w-full md:mb-0 md:w-1/4">
             <div className="mb-4 flex items-center space-x-2">
               <PawPrintIcon />
-              <span className="text-2xl font-bold text-white">
+              <span className="font-galada text-2xl font-bold text-white">
                 Doggo Apparel
               </span>
             </div>

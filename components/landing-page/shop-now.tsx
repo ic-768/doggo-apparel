@@ -13,7 +13,7 @@ export default function ShopNow() {
     <section className="container mx-auto flex flex-col items-center gap-8 px-4 pb-12 text-center sm:text-start lg:flex-row">
       <div className="flex flex-col items-center gap-8 lg:w-1/2">
         <H1P
-          className="text-5xl font-bold text-gray-800 lg:text-6xl"
+          className="font-galada text-5xl font-bold text-gray-800 lg:text-6xl"
           {...fadeIntoView}
         >
           Doggo Apparel
