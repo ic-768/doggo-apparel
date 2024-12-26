@@ -17,32 +17,34 @@ export default function ViewModes({
   filteredData,
   category,
 }: ViewModesProps) {
-  const isAllCategory = category === "all";
+  const hasAllCategories = (
+    c: ClothingCategories | ClothingItem[],
+  ): c is ClothingCategories => category === "all";
 
-  const isEmpty = isAllCategory
-    ? (filteredData as ClothingCategories).every(
-        (cat) => cat.items.length === 0,
-      )
+  const isAllCategories = hasAllCategories(filteredData);
+
+  const isEmpty = isAllCategories
+    ? filteredData.every((cat) => cat.items.length === 0)
     : filteredData.length === 0;
 
   if (isEmpty) return <NoFilteredResults />;
 
   const renderGridView = () => {
-    return isAllCategory ? (
-      <AllList categories={filteredData as ClothingCategories} />
+    return isAllCategories ? (
+      <AllList categories={filteredData} />
     ) : (
-      <ItemList items={filteredData as ClothingItem[]} />
+      <ItemList items={filteredData} />
     );
   };
 
   const renderCarouselView = () => {
-    return isAllCategory ? (
-      <AllCategoriesCarousels categories={filteredData as ClothingCategories} />
+    return isAllCategories ? (
+      <AllCategoriesCarousels categories={filteredData} />
     ) : (
       <CategoryCarousel
         category={{
           name: category,
-          items: filteredData as ClothingItem[],
+          items: filteredData,
         }}
       />
     );
