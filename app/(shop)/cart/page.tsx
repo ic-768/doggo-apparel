@@ -5,6 +5,7 @@ import { ArrowRightIcon, Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
 import NextLink from "next/link";
 
+import ClearCart from "@/components/cart/clear-cart";
 import BackToBrowse from "@/components/ui/back-to-browse";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -34,6 +35,8 @@ export default function CartPage() {
   return (
     <Main className="items-center">
       <title>Cart</title>
+
+      {cart.length > 0 && <ClearCart />}
       <div className="container">
         <BackToBrowse />
         <h1 className="text-2xl font-bold">Shopping Cart</h1>
