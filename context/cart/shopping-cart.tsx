@@ -2,7 +2,7 @@
 
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 
-interface CartItem {
+export interface CartItem {
   id: number;
   price: number;
   size: string;
@@ -17,6 +17,9 @@ export interface ShoppingCartContextType {
   clearCart: () => void;
   numItems: number;
   getNumInCart: (id: number, size?: string) => number;
+  shipping: number;
+  subtotal: number;
+  total: number;
 }
 
 export const ShoppingCartContext = createContext<
@@ -119,6 +122,13 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
     return itemsInCart?.reduce((total, item) => total + item.quantity, 0) || 0;
   };
 
+  const subtotal =
+    cart?.reduce((sum, item) => sum + item.price * item.quantity, 0) || 0;
+
+  const shipping = 5.99;
+
+  const total = subtotal || 0 + shipping;
+
   return (
     <ShoppingCartContext
       value={{
@@ -129,6 +139,9 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
         numItems,
         getNumInCart,
         clearFromCart,
+        shipping,
+        subtotal,
+        total,
       }}
     >
       {children}
