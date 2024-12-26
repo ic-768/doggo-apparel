@@ -2,20 +2,14 @@
 
 import AllCategories from "@/components/browse/categories/all";
 import Category from "@/components/browse/categories/category";
-import Filters from "@/components/browse/viewing-controls/filters";
-import MobileFilters from "@/components/browse/viewing-controls/mobile-filters";
+import FilterControls from "@/components/browse/filter-controls";
 import Main from "@/components/ui/main";
 import { useFilters } from "@/hooks/useFilters";
 import { ClothingCategories, ClothingItem } from "@/lib/types";
 
 export default function ShopPage() {
-  const {
-    category,
-    priceRange,
-    filteredData,
-    updateCategory,
-    handlePriceRangeChange,
-  } = useFilters();
+  const { category, priceRange, filteredData, setCategory, setPriceRange } =
+    useFilters();
 
   const view =
     category === "All" ? (
@@ -26,24 +20,13 @@ export default function ShopPage() {
 
   return (
     <Main>
-      <div className="fixed bottom-4 right-4 z-50 lg:hidden">
-        <MobileFilters
-          category={category}
-          setCategory={updateCategory}
-          priceRange={priceRange}
-          setPriceRange={handlePriceRangeChange}
-        />
-      </div>
-
-      <div className="fixed left-4 top-32 hidden w-52 rounded-lg bg-white lg:block">
-        <Filters
-          category={category}
-          setCategory={updateCategory}
-          priceRange={priceRange}
-          setPriceRange={handlePriceRangeChange}
-        />
-      </div>
-
+      <FilterControls
+        category={category}
+        priceRange={priceRange}
+        filteredData={filteredData}
+        setCategory={setCategory}
+        setPriceRange={setPriceRange}
+      />
       <div className="flex flex-col gap-8 lg:pl-52">{view}</div>
     </Main>
   );

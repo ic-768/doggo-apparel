@@ -66,7 +66,7 @@ export function useFilters() {
     category: categoryName,
     priceRange,
     filteredData,
-    updateCategory,
-    handlePriceRangeChange,
+    setCategory: updateCategory,
+    setPriceRange: handlePriceRangeChange,
   };
 }
