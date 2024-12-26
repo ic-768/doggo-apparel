@@ -1,6 +1,6 @@
 import { ClothingCategories } from "@/lib/types";
 
-import NoResults from "../no-results";
+import NoFilteredResults from "../no-filtered-results";
 import CategoryCarousel from "./category-carousel";
 
 export default function AllCategories({
@@ -8,7 +8,8 @@ export default function AllCategories({
 }: {
   categories: ClothingCategories;
 }) {
-  if (categories.every((cat) => cat.items.length === 0)) return <NoResults />;
+  if (categories.every((cat) => cat.items.length === 0))
+    return <NoFilteredResults />;
 
   return categories.map(
     (category) =>

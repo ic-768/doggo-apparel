@@ -3,7 +3,7 @@ import { SearchX } from "lucide-react";
 import MotionDiv from "@/components/ui/motion/motion-div";
 import { fadeIntoView } from "@/lib/motion";
 
-export default function NoResults() {
+export default function NoFilteredResults() {
   return (
     <MotionDiv
       {...fadeIntoView}
