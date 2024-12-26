@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { DualRangeSlider } from "@/components/ui/dual-range-slider";
 import { Label } from "@/components/ui/label";
 import {
@@ -7,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ViewType } from "@/hooks/useFilters";
 import { clothingCategories } from "@/lib/clothing-categories";
 
 interface FiltersProps {
@@ -14,12 +16,16 @@ interface FiltersProps {
   setCategory: (category: string) => void;
   priceRange: [number, number];
   setPriceRange: (range: [number, number]) => void;
+  viewType: ViewType;
+  setViewType: (viewType: ViewType) => void;
 }
 export default function Filters({
   category,
   setCategory,
   priceRange,
   setPriceRange,
+  viewType,
+  setViewType,
 }: FiltersProps) {
   return (
     <div className="space-y-6 rounded-lg border p-4 shadow-sm">
@@ -52,6 +58,9 @@ export default function Filters({
           value={priceRange}
           onValueChange={setPriceRange}
         />
+
+        <Button onClick={() => setViewType("grid")}>Grid</Button>
+        <Button onClick={() => setViewType("carousel")}>Carousel</Button>
       </div>
     </div>
   );

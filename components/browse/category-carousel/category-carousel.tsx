@@ -14,7 +14,7 @@ import { ClothingCategory } from "@/lib/types";
 function CategoryCarousel({ category }: { category: ClothingCategory }) {
   return (
     <div className="flex flex-col gap-6" key={category.name}>
-      <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
+      <h2 className="text-center text-2xl font-semibold capitalize text-secondary-foreground">
         {category.name}
       </h2>
       <Carousel className="mx-16">

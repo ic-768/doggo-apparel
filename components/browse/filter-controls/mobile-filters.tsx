@@ -8,6 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ViewType } from "@/hooks/useFilters";
 
 import Filters from "./filters";
 
@@ -16,6 +17,8 @@ interface MobileFiltersProps {
   setCategory: (category: string) => void;
   priceRange: [number, number];
   setPriceRange: (range: [number, number]) => void;
+  viewType: ViewType;
+  setViewType: (viewType: ViewType) => void;
 }
 
 export default function MobileFilters({
@@ -23,6 +26,8 @@ export default function MobileFilters({
   setCategory,
   priceRange,
   setPriceRange,
+  viewType,
+  setViewType,
 }: MobileFiltersProps) {
   return (
     <Sheet>
@@ -48,6 +53,8 @@ export default function MobileFilters({
             setCategory={setCategory}
             priceRange={priceRange}
             setPriceRange={setPriceRange}
+            viewType={viewType}
+            setViewType={setViewType}
           />
         </div>
       </SheetContent>
