@@ -3,7 +3,7 @@ import { ClothingCategories } from "@/lib/types";
 
 import CategoryCarousel from "./category-carousel";
 
-export default function AllCategories({
+export default function AllCategoriesCarousels({
   categories,
 }: {
   categories: ClothingCategories;

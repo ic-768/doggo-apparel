@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button";
+import { LayoutGrid, RefreshCcw } from "lucide-react";
+
 import { DualRangeSlider } from "@/components/ui/dual-range-slider";
 import { Label } from "@/components/ui/label";
 import {
@@ -8,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 import { ViewType } from "@/hooks/useFilters";
 import { clothingCategories } from "@/lib/clothing-categories";
 
@@ -27,8 +29,10 @@ export default function Filters({
   viewType,
   setViewType,
 }: FiltersProps) {
+  const isGrid = viewType === "grid";
+
   return (
-    <div className="space-y-6 rounded-lg border p-4 shadow-sm">
+    <div className="flex flex-col gap-6 rounded-lg border p-4 shadow-sm">
       <div>
         <Label htmlFor="category-select">Category</Label>
         <Select value={category || "all"} onValueChange={setCategory}>
@@ -58,9 +62,21 @@ export default function Filters({
           value={priceRange}
           onValueChange={setPriceRange}
         />
-
-        <Button onClick={() => setViewType("grid")}>Grid</Button>
-        <Button onClick={() => setViewType("carousel")}>Carousel</Button>
+      </div>
+      <div className="flex items-center gap-2">
+        <RefreshCcw
+          className={`size-5 ${!isGrid ? "text-primary" : "text-muted-foreground"}`}
+          aria-hidden="true"
+        />
+        <Switch
+          checked={isGrid}
+          onCheckedChange={(v) => setViewType(v ? "grid" : "carousel")}
+          aria-label="Toggle between grid and carousel view"
+        />
+        <LayoutGrid
+          className={`size-5 ${isGrid ? "text-primary" : "text-muted-foreground"}`}
+          aria-hidden="true"
+        />
       </div>
     </div>
   );
