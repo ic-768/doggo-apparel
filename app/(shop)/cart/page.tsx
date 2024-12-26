@@ -17,10 +17,10 @@ import { getClothingItemById } from "@/lib/utils";
 export default function CartPage() {
   const { cart, removeFromCart, clearFromCart, addToCart } = useShoppingCart();
 
-  if (!cart) {
+  if (!cart || !cart.length) {
     return (
       <Main>
-        <title>Cart</title>
+        <NoCartItems />
       </Main>
     );
   }
@@ -32,14 +32,6 @@ export default function CartPage() {
 
   const shipping = 5.99;
   const total = subtotal + shipping;
-
-  if (!cart.length) {
-    return (
-      <Main>
-        <NoCartItems />;
-      </Main>
-    );
-  }
 
   return (
     <Main className="items-center">
