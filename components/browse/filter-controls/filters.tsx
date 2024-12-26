@@ -33,7 +33,7 @@ export default function Filters({
 
   return (
     <div className="flex flex-col gap-6 rounded-lg border p-4 shadow-sm">
-      <div>
+      <div className="flex flex-col gap-2">
         <Label htmlFor="category-select">Category</Label>
         <Select value={category || "all"} onValueChange={setCategory}>
           <SelectTrigger id="category-select">
@@ -50,9 +50,9 @@ export default function Filters({
         </Select>
       </div>
 
-      <div>
+      <div className="flex flex-col gap-2">
         <Label htmlFor="price-range">
-          Price Range: ${priceRange[0]} - ${priceRange[1]}
+          Price range: ${priceRange[0]} - ${priceRange[1]}
         </Label>
         <DualRangeSlider
           id="price-range"
@@ -63,20 +63,25 @@ export default function Filters({
           onValueChange={setPriceRange}
         />
       </div>
-      <div className="flex items-center gap-2">
-        <RefreshCcw
-          className={`size-5 ${!isGrid ? "text-primary" : "text-muted-foreground"}`}
-          aria-hidden="true"
-        />
-        <Switch
-          checked={isGrid}
-          onCheckedChange={(v) => setViewType(v ? "grid" : "carousel")}
-          aria-label="Toggle between grid and carousel view"
-        />
-        <LayoutGrid
-          className={`size-5 ${isGrid ? "text-primary" : "text-muted-foreground"}`}
-          aria-hidden="true"
-        />
+
+      <div className="flex flex-col gap-2">
+        <Label htmlFor="view-mode">View mode ({viewType})</Label>
+        <div className="flex items-center gap-2">
+          <RefreshCcw
+            className={`size-5 ${!isGrid ? "text-primary" : "text-muted-foreground"}`}
+            aria-hidden="true"
+          />
+          <Switch
+            id="view-mode"
+            checked={isGrid}
+            onCheckedChange={(v) => setViewType(v ? "grid" : "carousel")}
+            aria-label="Toggle between grid and carousel view"
+          />
+          <LayoutGrid
+            className={`size-5 ${isGrid ? "text-primary" : "text-muted-foreground"}`}
+            aria-hidden="true"
+          />
+        </div>
       </div>
     </div>
   );
