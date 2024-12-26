@@ -8,7 +8,7 @@ interface PriceTagProps {
 }
 export default function PriceTag({ className, price }: PriceTagProps) {
   const classes = twMerge(
-    "text-lg font-semibold outline outline-1 outline-neutral-300",
+    "text-md font-semibold outline outline-1 outline-neutral-300 flex items-center justify-center",
     className,
   );
 
