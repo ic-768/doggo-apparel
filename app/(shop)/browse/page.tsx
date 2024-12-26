@@ -28,7 +28,7 @@ export default function ShopPage() {
         setCategory={setCategory}
         setPriceRange={setPriceRange}
       />
-      <div className="flex flex-col gap-8 lg:pl-52">{view}</div>
+      <div className="flex flex-col gap-8 lg:pl-56">{view}</div>
     </Main>
   );
 }

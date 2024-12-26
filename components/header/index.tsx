@@ -9,7 +9,15 @@ import MotionHeader from "./motion-header";
 
 export default function Header({ withLinks }: { withLinks?: boolean }) {
   const links = [
-    { element: <Grid size={24} />, href: "/browse", label: "Browse" },
+    {
+      element: (
+        <div>
+          <Grid />
+        </div>
+      ),
+      href: "/browse",
+      label: "Browse",
+    },
     { element: <FavoritesIndicator />, href: "/favorites", label: "Favorites" },
     { element: <CartIndicator />, href: "/cart", label: "Cart" },
   ];

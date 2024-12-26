@@ -10,7 +10,7 @@ export default function FilterControls(props: ReturnType<typeof useFilters>) {
         <MobileFilters {...props} />
       </div>
 
-      <div className="fixed left-4 top-32 hidden w-52 rounded-lg bg-white lg:block">
+      <div className="fixed left-8 top-32 hidden w-52 rounded-lg bg-white lg:block">
         <Filters {...props} />
       </div>
     </>

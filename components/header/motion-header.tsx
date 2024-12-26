@@ -13,7 +13,7 @@ export default function MotionHeader({
       style={{
         height: headerHeight,
       }}
-      className="fixed left-0 right-0 top-0 z-50 w-full border-b border-zinc-400 bg-gradient-to-b from-blue-100 to-blue-200 px-4 shadow-lg md:px-12"
+      className="fixed left-0 right-0 top-0 z-50 w-full border-b border-zinc-400 bg-gradient-to-b from-blue-100 to-blue-200 px-8 shadow-lg"
     >
       {children}
     </motion.header>
