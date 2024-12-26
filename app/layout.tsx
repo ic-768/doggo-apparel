@@ -1,5 +1,4 @@
 import { ToastContainer } from "react-toastify";
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import Footer from "@/components/landing-page/footer";
@@ -19,11 +18,6 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
-export const metadata: Metadata = {
-  title: "Doggo Apparel",
-  description: "Bow wow indeed!",
-};
 
 export default function RootLayout({
   children,

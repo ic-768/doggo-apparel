@@ -12,7 +12,7 @@ export default function ShopPage() {
     useFilters();
 
   const view =
-    category === "All" ? (
+    category === "all" ? (
       <AllCategories categories={filteredData as ClothingCategories} />
     ) : (
       <Category items={filteredData as ClothingItem[]} />
@@ -20,6 +20,7 @@ export default function ShopPage() {
 
   return (
     <Main>
+      <title>{`Browse ${category}`}</title>{" "}
       <FilterControls
         category={category}
         priceRange={priceRange}

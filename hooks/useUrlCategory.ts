@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
  */
 export function useUrlCategory() {
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get("category") || "All";
+  const initialCategory = searchParams.get("category") || "all";
   const [categoryName, setCategoryName] = useState(initialCategory);
   const router = useRouter();
 

@@ -15,11 +15,11 @@ export function useFilters() {
 
   // null if no specific category
   const selectedCategory =
-    categoryName === "All" ? null : getClothingCategoryByName(categoryName);
+    categoryName === "all" ? null : getClothingCategoryByName(categoryName);
 
   // will have items if category is selected, else categories with items
   const [filteredData, setFilteredData] = useState(
-    categoryName === "All" ? clothingCategories : selectedCategory?.items,
+    categoryName === "all" ? clothingCategories : selectedCategory?.items,
   );
 
   // filter items of a category
@@ -41,7 +41,7 @@ export function useFilters() {
   const updateCategory = (newCategory: string) => {
     setCategoryName(newCategory);
     setFilteredData(
-      newCategory === "All"
+      newCategory === "all"
         ? filterCategoriesByPrice(priceRange)
         : filterItemsByPrice(
             getClothingCategoryByName(newCategory)!.items,

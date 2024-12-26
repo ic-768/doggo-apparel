@@ -25,12 +25,12 @@ export default function Filters({
     <div className="space-y-6 rounded-lg border p-4 shadow-sm">
       <div>
         <Label htmlFor="category-select">Category</Label>
-        <Select value={category || "All"} onValueChange={setCategory}>
+        <Select value={category || "all"} onValueChange={setCategory}>
           <SelectTrigger id="category-select">
-            <SelectValue placeholder="All" />
+            <SelectValue placeholder="all" />
           </SelectTrigger>
           <SelectContent title="Categories">
-            <SelectItem value="All">All</SelectItem>
+            <SelectItem value="all">All</SelectItem>
             {clothingCategories.map(({ name }) => (
               <SelectItem key={name} value={name.toLowerCase()}>
                 {name}
