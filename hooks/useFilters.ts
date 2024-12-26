@@ -17,37 +17,19 @@ export function useFilters() {
   const selectedCategory =
     categoryName === "All" ? null : getClothingCategoryByName(categoryName);
 
-  // filtered category items
-  const [filteredItems, setFilteredItems] = useState(
-    selectedCategory?.items || [],
+  // will have items if category is selected, else categories with items
+  const [filteredData, setFilteredData] = useState(
+    categoryName === "All" ? clothingCategories : selectedCategory?.items,
   );
 
-  // filtered categories ( if showing all )
-  const [filteredCategories, setFilteredCategories] =
-    useState(clothingCategories);
-
-  // when changing a category, take filters into consideration
-  const updateCategory = (newCategory: string) => {
-    setCategoryName(newCategory);
-    if (newCategory !== "All") {
-      const filteredItems = filterItemsByPrice(
-        getClothingCategoryByName(newCategory)!.items,
-        priceRange,
-      );
-      setFilteredItems(filteredItems);
-    } else {
-      setFilteredCategories(filterCategoriesByPrice(priceRange));
-    }
-  };
-
-  // filter a category
+  // filter items of a category
   const filterItemsByPrice = (
     items: ClothingItem[],
     [min, max]: [number, number],
   ): ClothingItem[] =>
     items.filter((item) => item.price >= min && item.price <= max);
 
-  // filter all categories
+  // filter items of all categories
   const filterCategoriesByPrice = ([min, max]: [number, number]) => {
     return clothingCategories.map((category) => ({
       ...category,
@@ -55,21 +37,35 @@ export function useFilters() {
     }));
   };
 
+  // when changing a category, take filters into consideration
+  const updateCategory = (newCategory: string) => {
+    setCategoryName(newCategory);
+    setFilteredData(
+      newCategory === "All"
+        ? filterCategoriesByPrice(priceRange)
+        : filterItemsByPrice(
+            getClothingCategoryByName(newCategory)!.items,
+            priceRange,
+          ),
+    );
+  };
+
   // filter category items or all categories based on what is being viewed
   const handlePriceRangeChange = (newRange: [number, number]) => {
     setPriceRange(newRange);
     startTransition(() => {
-      selectedCategory
-        ? setFilteredItems(filterItemsByPrice(selectedCategory.items, newRange))
-        : setFilteredCategories(filterCategoriesByPrice(newRange));
+      setFilteredData(
+        selectedCategory
+          ? filterItemsByPrice(selectedCategory.items, newRange)
+          : filterCategoriesByPrice(newRange),
+      );
     });
   };
 
   return {
     category: categoryName,
     priceRange,
-    filteredItems,
-    filteredCategories,
+    filteredData,
     updateCategory,
     handlePriceRangeChange,
   };

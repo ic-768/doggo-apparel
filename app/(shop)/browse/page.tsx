@@ -6,22 +6,22 @@ import Filters from "@/components/browse/viewing-controls/filters";
 import MobileFilters from "@/components/browse/viewing-controls/mobile-filters";
 import Main from "@/components/ui/main";
 import { useFilters } from "@/hooks/useFilters";
+import { ClothingCategories, ClothingItem } from "@/lib/types";
 
 export default function ShopPage() {
   const {
     category,
     priceRange,
-    filteredItems,
-    filteredCategories,
+    filteredData,
     updateCategory,
     handlePriceRangeChange,
   } = useFilters();
 
   const view =
     category === "All" ? (
-      <AllCategories categories={filteredCategories} />
+      <AllCategories categories={filteredData as ClothingCategories} />
     ) : (
-      <Category items={filteredItems} />
+      <Category items={filteredData as ClothingItem[]} />
     );
 
   return (
