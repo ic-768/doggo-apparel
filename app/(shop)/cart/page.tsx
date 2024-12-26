@@ -6,6 +6,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 
 import ClearCart from "@/components/cart/clear-cart";
+import NoCartItems from "@/components/cart/no-cart-items";
 import BackToBrowse from "@/components/ui/back-to-browse";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -31,6 +32,14 @@ export default function CartPage() {
 
   const shipping = 5.99;
   const total = subtotal + shipping;
+
+  if (!cart.length) {
+    return (
+      <Main>
+        <NoCartItems />;
+      </Main>
+    );
+  }
 
   return (
     <Main className="items-center">

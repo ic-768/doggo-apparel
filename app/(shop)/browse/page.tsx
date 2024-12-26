@@ -1,8 +1,8 @@
 "use client";
 
+import Category from "@/components/browse/category";
 import AllCategories from "@/components/browse/category-carousel";
 import FilterControls from "@/components/browse/filter-controls";
-import ItemList from "@/components/item-list/item-list";
 import Main from "@/components/ui/main";
 import { useFilters } from "@/hooks/useFilters";
 import { ClothingCategories, ClothingItem } from "@/lib/types";
@@ -15,7 +15,7 @@ export default function ShopPage() {
     category === "all" ? (
       <AllCategories categories={filteredData as ClothingCategories} />
     ) : (
-      <ItemList items={filteredData as ClothingItem[]} />
+      <Category items={filteredData as ClothingItem[]} />
     );
 
   return (

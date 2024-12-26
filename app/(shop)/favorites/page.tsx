@@ -11,11 +11,17 @@ export default function Favorites() {
 
   if (favorites === null) return <Main />;
 
+  const view = favorites.length ? (
+    <ItemList items={favorites} />
+  ) : (
+    <NoFavorites />
+  );
+
   return (
     <Main>
       <title>Favorites</title>
       {favorites.length > 0 && <ClearFavorites />}
-      <ItemList items={favorites} noResultElement={<NoFavorites />} />
+      {view}
     </Main>
   );
 }
