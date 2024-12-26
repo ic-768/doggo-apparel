@@ -7,7 +7,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
 import { clothingCategories } from "@/lib/clothing-categories";
 
 interface FiltersProps {
@@ -15,16 +14,12 @@ interface FiltersProps {
   setCategory: (category: string) => void;
   priceRange: [number, number];
   setPriceRange: (range: [number, number]) => void;
-  isGridView: boolean;
-  setIsGridView: (isGrid: boolean) => void;
 }
 export default function Filters({
   category,
   setCategory,
   priceRange,
   setPriceRange,
-  isGridView,
-  setIsGridView,
 }: FiltersProps) {
   return (
     <div className="space-y-6 rounded-lg border p-4 shadow-sm">
@@ -57,17 +52,6 @@ export default function Filters({
           value={priceRange}
           onValueChange={setPriceRange}
         />
-      </div>
-
-      <div className="flex items-center space-x-2">
-        <Switch
-          id="view-toggle"
-          checked={isGridView}
-          onCheckedChange={setIsGridView}
-        />
-        <Label htmlFor="view-toggle">
-          {isGridView ? "Grid View" : "Carousel View"}
-        </Label>
       </div>
     </div>
   );

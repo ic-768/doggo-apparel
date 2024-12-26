@@ -16,8 +16,6 @@ interface MobileFiltersProps {
   setCategory: (category: string) => void;
   priceRange: [number, number];
   setPriceRange: (range: [number, number]) => void;
-  isGridView: boolean;
-  setIsGridView: (isGrid: boolean) => void;
 }
 
 export default function MobileFilters({
@@ -25,8 +23,6 @@ export default function MobileFilters({
   setCategory,
   priceRange,
   setPriceRange,
-  isGridView,
-  setIsGridView,
 }: MobileFiltersProps) {
   return (
     <Sheet>
@@ -52,8 +48,6 @@ export default function MobileFilters({
             setCategory={setCategory}
             priceRange={priceRange}
             setPriceRange={setPriceRange}
-            isGridView={isGridView}
-            setIsGridView={setIsGridView}
           />
         </div>
       </SheetContent>
