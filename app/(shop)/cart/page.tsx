@@ -11,11 +11,8 @@ import { useShoppingCart } from "@/context/cart/use-shopping-cart";
 
 export default function CartPage() {
   const { cart, shipping, subtotal, total } = useShoppingCart();
-  console.log(cart);
 
   if (cart === null) return <Main />;
-
-  console.log(cart.length);
 
   const view = cart.length ? (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
