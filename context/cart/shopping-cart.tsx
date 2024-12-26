@@ -125,9 +125,9 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
   const subtotal =
     cart?.reduce((sum, item) => sum + item.price * item.quantity, 0) || 0;
 
-  const shipping = 5.99;
+  const shipping = subtotal > 50 ? 0 : 5.99;
 
-  const total = subtotal || 0 + shipping;
+  const total = (subtotal || 0) + shipping;
 
   return (
     <ShoppingCartContext

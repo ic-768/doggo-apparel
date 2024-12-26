@@ -25,7 +25,13 @@ export default function OrderSummary({
         </div>
         <div className="flex justify-between">
           <span className="text-gray-600">Shipping</span>
-          <span>${shipping.toFixed(2)}</span>
+          <motion.span
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            key={shipping}
+          >
+            ${shipping.toFixed(2)}
+          </motion.span>
         </div>
         <div className="mt-2 border-t pt-2">
           <div className="flex justify-between font-bold">
