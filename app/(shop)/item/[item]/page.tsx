@@ -41,7 +41,7 @@ export default async function ItemPage({
             />
           </div>
 
-          <div className="flex flex-col items-center gap-4 sm:items-start">
+          <div className="flex flex-col items-center gap-4 md:items-start">
             <div className="flex items-center gap-4">
               <h1 className="text-3xl font-bold">{item.name}</h1>
               <PriceTag price={item.price} />
@@ -53,13 +53,15 @@ export default async function ItemPage({
             <ReviewsScore />
             <Card className="p-4 text-gray-600">{item.description}</Card>
 
-            <div className="flex items-center gap-2">
-              <NumberInCart item={item} />
-              <InStockBadge />
-            </div>
+            <div className="flex flex-col gap-8">
+              <div className="flex justify-center gap-2 md:justify-start">
+                <NumberInCart item={item} />
+                <InStockBadge />
+              </div>
 
-            <PurchaseControls item={item} />
-            <DetailTabs item={item} />
+              <PurchaseControls item={item} />
+              <DetailTabs item={item} />
+            </div>
           </div>
         </div>
 

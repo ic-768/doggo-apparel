@@ -20,14 +20,12 @@ export default function PurchaseControls({ item }: { item: ClothingItem }) {
         />
       )}
 
-      <div className="flex gap-4">
-        <CartButton
-          withText
-          size={selectedSize}
-          className="fixed right-2 top-32 flex size-12 items-center justify-center gap-4 rounded-full bg-indigo-700 text-primary-foreground outline outline-1 outline-indigo-950 hover:bg-indigo-800 sm:static sm:size-auto sm:px-4"
-          id={item.id}
-        />
-      </div>
+      <CartButton
+        withText
+        size={selectedSize}
+        className="fixed right-2 top-32 flex size-12 items-center justify-center gap-4 rounded-full bg-indigo-700 text-primary-foreground outline outline-1 outline-indigo-900 hover:bg-indigo-800 sm:static sm:size-auto sm:px-4"
+        id={item.id}
+      />
     </>
   );
 }

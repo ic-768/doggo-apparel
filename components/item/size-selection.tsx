@@ -13,7 +13,9 @@ export default function SizeSelection({
 }: SizeSelectionProps) {
   return (
     <div>
-      <h2 className="text-lg font-semibold">Select Size</h2>
+      <h2 className="pb-2 text-center text-lg font-semibold md:text-start">
+        Select Size
+      </h2>
       <RadioGroup
         value={size}
         defaultValue={size}
