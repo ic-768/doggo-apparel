@@ -13,12 +13,12 @@ export function useFilters() {
   const [viewType, setViewType] = useState<ViewType>("grid");
   const [categoryName, setCategoryName] = useUrlCategory();
 
-  const selectedCategory =
-    categoryName === "all" ? null : getClothingCategoryByName(categoryName);
+  const viewingAll = categoryName === "all";
 
   const applyFilters = () => {
-    const categories =
-      categoryName === "all" ? clothingCategories : [selectedCategory!];
+    const categories = viewingAll
+      ? clothingCategories
+      : [getClothingCategoryByName(categoryName)!];
 
     // apply all filters
     return categories.map((category) => ({
@@ -44,12 +44,11 @@ export function useFilters() {
     setTextFilter(newText);
   };
 
-  const filteredData =
-    categoryName === "all"
-      ? // apply filters and return categories
-        applyFilters()
-      : // apply filters and return just items
-        applyFilters().flatMap((category) => category.items);
+  const filteredData = viewingAll
+    ? // apply filters and return categories
+      applyFilters()
+    : // apply filters and return just items
+      applyFilters().flatMap((category) => category.items);
 
   return {
     category: categoryName,
