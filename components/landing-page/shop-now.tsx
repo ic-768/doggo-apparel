@@ -24,7 +24,7 @@ export default function ShopNow() {
           dog deserves to look their best!
         </MotionP>
         <Button
-          className="rounded-full bg-blue-600 text-lg font-bold"
+          className="rounded-full bg-blue-600 text-lg font-bold duration-1000"
           asChild
           effect="shine"
         >
