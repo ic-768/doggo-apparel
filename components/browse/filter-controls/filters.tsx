@@ -1,6 +1,5 @@
 import { LayoutGrid, RefreshCcw } from "lucide-react";
 
-import { DualRangeSlider } from "@/components/ui/dual-range-slider";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -13,6 +12,8 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { ViewType } from "@/hooks/useFilters";
 import { clothingCategories } from "@/lib/clothing-categories";
+
+import PriceRangeSlider from "./price-range-slider";
 
 interface FiltersProps {
   category: string;
@@ -63,20 +64,7 @@ export default function Filters({
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="price-range">
-          Price range: ${priceRange[0]} - ${priceRange[1]}
-        </Label>
-        <DualRangeSlider
-          id="price-range"
-          min={0}
-          max={100}
-          step={1}
-          value={priceRange}
-          onValueChange={setPriceRange}
-        />
-      </div>
-
+      <PriceRangeSlider priceRange={priceRange} setPriceRange={setPriceRange} />
       <div className="flex flex-col gap-2">
         <Label htmlFor="view-mode">View mode ({viewType})</Label>
         <div className="flex items-center gap-2">

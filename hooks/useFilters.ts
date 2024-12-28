@@ -39,12 +39,13 @@ export function useFilters() {
       applyFilters().flatMap((category) => category.items);
 
   const debouncedTextSearch = debounce(setTextFilter);
+  const debouncedPriceSearch = debounce(setPriceRange, 100);
 
   return {
     category: category,
     setCategory,
     priceRange,
-    setPriceRange,
+    setPriceRange: debouncedPriceSearch,
     viewType,
     setViewType,
     textFilter,
