@@ -7,7 +7,7 @@ export default function MotionHeader({
   children: React.ReactNode;
 }) {
   const { scrollY } = useScroll();
-  const headerHeight = useTransform(scrollY, [0, 90], [96, 64]);
+  const headerHeight = useTransform(scrollY, [120, 400], [80, 50]);
   return (
     <motion.header
       style={{

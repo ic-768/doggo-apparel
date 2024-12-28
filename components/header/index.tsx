@@ -36,7 +36,11 @@ export default function Header({ withLinks }: { withLinks?: boolean }) {
           <nav className="relative">
             <ul className="hidden gap-10 sm:flex">
               {links.map(({ element, href }) => (
-                <MotionLi key={href} whileHover={{ scale: 1.08 }}>
+                <MotionLi
+                  className="flex items-center"
+                  key={href}
+                  whileHover={{ scale: 1.08 }}
+                >
                   <Link className="text-gray-600" href={href}>
                     {element}
                   </Link>

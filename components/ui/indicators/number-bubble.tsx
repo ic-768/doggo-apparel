@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function NumberBubble({ number }: { number: number }) {
   return (
     <motion.span
-      className="absolute -right-3 -top-3 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white"
+      className="absolute -right-2 -top-2 flex size-4 items-center justify-center rounded-full bg-red-500 text-xs text-white"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.2 }}
