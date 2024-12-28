@@ -14,7 +14,7 @@ const Link = ({ children, href }: LinkProps) => (
 
 export default function QuickLinks() {
   return (
-    <FooterSection title="Quick Links">
+    <FooterSection title="Links">
       <ul>
         <Link href="/">Home</Link>
         <Link href="/browse">Shop</Link>

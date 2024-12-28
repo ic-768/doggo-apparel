@@ -16,9 +16,9 @@ export default function OrderSummary({
   shipping,
 }: OrderSummaryProps) {
   return (
-    <Card className="flex flex-col gap-4 p-6">
+    <Card className="flex flex-col gap-4 self-start p-6">
       <h2 className="text-xl font-bold">Order Summary</h2>
-      <div className="mb-4 space-y-2">
+      <div className="flex flex-col gap-2">
         <div className="flex justify-between">
           <span className="text-gray-600">Subtotal</span>
           <span>${subtotal.toFixed(2)}</span>
