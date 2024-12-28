@@ -15,7 +15,7 @@ export function useUrlCategory() {
   const updateCategoryName = useCallback(
     (newCategory: string) => {
       setCategoryName(newCategory);
-      router.push(`?category=${newCategory}`, { scroll: false });
+      router.replace(`?category=${newCategory}`, { scroll: false });
     },
     [router, setCategoryName],
   );
