@@ -27,7 +27,7 @@ export default function AboutUs() {
           className="flex flex-col items-center gap-6 lg:w-1/2"
         >
           <h2 className="text-4xl font-bold text-gray-800">
-            About <span className="font-galada">Doggo Apparel</span>
+            About <span className="text-nowrap font-galada">Doggo Apparel</span>
           </h2>
           <p className="text-xl text-gray-600">
             At Doggo Apparel, we believe that every dog deserves to feel
