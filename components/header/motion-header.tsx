@@ -1,19 +1,33 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function MotionHeader({
   children,
+  startInvisible,
 }: {
   children: React.ReactNode;
+  startInvisible: boolean;
 }) {
-  const { scrollY } = useScroll();
-  const headerHeight = useTransform(scrollY, [120, 400], [80, 50]);
+  const initialHeight = startInvisible ? 0 : 80;
+  const [headerHeight, setHeaderHeight] = useState(initialHeight);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const newHeight = window.scrollY < 200 ? initialHeight : 50;
+      setHeaderHeight(newHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [startInvisible, initialHeight]);
+
   return (
     <motion.header
       style={{
         height: headerHeight,
       }}
-      className="fixed left-0 right-0 top-0 z-50 w-full border-b border-zinc-400 bg-gradient-to-b from-blue-100 to-blue-200 px-8 shadow-lg"
+      className="fixed left-0 right-0 top-0 z-50 w-full overflow-hidden border-b border-zinc-400 bg-gradient-to-b from-blue-100 to-blue-200 px-8 shadow-lg transition-all duration-500"
     >
       {children}
     </motion.header>

@@ -7,7 +7,13 @@ import MotionLi from "../ui/motion/motion-li";
 import HamburgerMenu from "./hamburger-menu";
 import MotionHeader from "./motion-header";
 
-export default function Header({ withLinks }: { withLinks?: boolean }) {
+export default function Header({
+  withLinks,
+  startInvisible = false,
+}: {
+  withLinks?: boolean;
+  startInvisible?: boolean;
+}) {
   const links = [
     {
       element: (
@@ -23,7 +29,7 @@ export default function Header({ withLinks }: { withLinks?: boolean }) {
   ];
 
   return (
-    <MotionHeader>
+    <MotionHeader startInvisible={startInvisible}>
       <div className="flex h-full items-center justify-between">
         <Link
           href="/"
