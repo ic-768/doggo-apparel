@@ -14,7 +14,7 @@ export default function LandingLayout({
 }) {
   return (
     <>
-      <Header />
+      <Header visibilityThreshold={600} />
       {children}
     </>
   );
