@@ -1,127 +1,66 @@
-import { useState, useTransition } from "react";
+import { useState } from "react";
 
 import { clothingCategories } from "@/lib/clothing-categories";
-import { ClothingCategories, ClothingItem } from "@/lib/types";
 import { getClothingCategoryByName } from "@/lib/utils";
 
 import { useUrlCategory } from "./useUrlCategory";
 
 export type ViewType = "carousel" | "grid";
-export function useFilters() {
-  const [_, startTransition] = useTransition();
-  const [textFilter, setTextFilter] = useState("");
 
-  // get category name
-  const [categoryName, setCategoryName] = useUrlCategory();
+export function useFilters() {
+  const [textFilter, setTextFilter] = useState("");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
   const [viewType, setViewType] = useState<ViewType>("grid");
+  const [categoryName, setCategoryName] = useUrlCategory();
 
-  // null if no specific category
   const selectedCategory =
     categoryName === "all" ? null : getClothingCategoryByName(categoryName);
 
-  // will have items if category is selected, else categories with items
-  const [filteredData, setFilteredData] = useState<
-    ClothingCategories | ClothingItem[]
-  >(
-    categoryName === "all" ? clothingCategories : selectedCategory?.items || [],
-  );
+  const applyFilters = () => {
+    const categories =
+      categoryName === "all" ? clothingCategories : [selectedCategory!];
 
-  // filter items of a category
-  const filterItemsByPrice = (
-    [min, max]: [number, number],
-    items: ClothingItem[],
-  ): ClothingItem[] =>
-    items.filter((item) => item.price >= min && item.price <= max);
-
-  // filter items of all categories
-  const filterCategoriesByPrice = (
-    [min, max]: [number, number],
-    categories = clothingCategories,
-  ) => {
+    // apply all filters
     return categories.map((category) => ({
       ...category,
-      items: filterItemsByPrice([min, max], category.items),
+      items: category.items
+        .filter(
+          (item) => item.price >= priceRange[0] && item.price <= priceRange[1],
+        )
+        .filter((item) =>
+          item.name.toLowerCase().includes(textFilter.toLowerCase()),
+        ),
     }));
   };
 
-  const filterItemsByText = (text: string, items: ClothingItem[]) =>
-    items.filter((item) =>
-      item.name.toLowerCase().includes(text.toLowerCase()),
-    );
-
-  const filterCategoriesByText = (
-    text: string,
-    categories = clothingCategories,
-  ) =>
-    categories.map((category) => ({
-      ...category,
-      items: filterItemsByText(text, category.items),
-    }));
-
-  // when changing a category, take filters into consideration
   const updateCategory = (newCategory: string) => {
     setCategoryName(newCategory);
-    setFilteredData(
-      newCategory === "all"
-        ? filterCategoriesByText(
-            textFilter,
-            filterCategoriesByPrice(priceRange),
-          )
-        : filterItemsByText(
-            textFilter,
-            filterItemsByPrice(
-              priceRange,
-              getClothingCategoryByName(newCategory)!.items,
-            ),
-          ),
-    );
   };
 
-  // filter category items or all categories based on what is being viewed
   const handlePriceRangeChange = (newRange: [number, number]) => {
     setPriceRange(newRange);
-    startTransition(() => {
-      setFilteredData(
-        selectedCategory
-          ? filterItemsByText(
-              textFilter,
-              filterItemsByPrice(newRange, selectedCategory.items),
-            )
-          : filterCategoriesByText(
-              textFilter,
-              filterCategoriesByPrice(newRange),
-            ),
-      );
-    });
   };
 
   const handleTextFilterChange = (newText: string) => {
     setTextFilter(newText);
-    startTransition(() => {
-      setFilteredData(
-        selectedCategory
-          ? filterItemsByText(
-              newText,
-              filterItemsByPrice(priceRange, selectedCategory.items),
-            )
-          : filterCategoriesByText(
-              newText,
-              filterCategoriesByPrice(priceRange),
-            ),
-      );
-    });
   };
+
+  const filteredData =
+    categoryName === "all"
+      ? // apply filters and return categories
+        applyFilters()
+      : // apply filters and return just items
+        applyFilters().flatMap((category) => category.items);
 
   return {
     category: categoryName,
-    priceRange,
-    filteredData,
     setCategory: updateCategory,
+    priceRange,
     setPriceRange: handlePriceRangeChange,
     viewType,
     setViewType,
     textFilter,
     setTextFilter: handleTextFilterChange,
+    filteredData,
   };
 }
