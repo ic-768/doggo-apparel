@@ -4,6 +4,7 @@ import Link from "next/link";
 import dog from "@/images/glasses/glasses-3.jpg";
 import { fadeIntoView } from "@/lib/motion";
 
+import { Button } from "../ui/button";
 import MotionDiv from "../ui/motion/motion-div";
 import H1P from "../ui/motion/motion-h";
 import MotionP from "../ui/motion/motion-p";
@@ -22,12 +23,13 @@ export default function ShopNow() {
           Discover the latest in canine fashion at Doggo Apparel. Because every
           dog deserves to look their best!
         </MotionP>
-        <Link
-          className="rounded-full bg-blue-600 px-6 py-3 text-lg font-bold text-white transition-colors hover:bg-blue-700"
-          href="/browse"
+        <Button
+          className="rounded-full bg-blue-600 text-lg font-bold"
+          asChild
+          effect="shine"
         >
-          Shop Now
-        </Link>
+          <Link href="/browse">Shop Now</Link>
+        </Button>
       </div>
       <MotionDiv
         className="lg:w-1/2"
