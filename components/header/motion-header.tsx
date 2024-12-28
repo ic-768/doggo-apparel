@@ -5,22 +5,25 @@ import { motion } from "framer-motion";
 export default function MotionHeader({
   children,
   startInvisible,
+  visibilityThreshold,
 }: {
   children: React.ReactNode;
   startInvisible: boolean;
+  visibilityThreshold: number;
 }) {
   const initialHeight = startInvisible ? 0 : 80;
   const [headerHeight, setHeaderHeight] = useState(initialHeight);
 
   useEffect(() => {
     const handleScroll = () => {
-      const newHeight = window.scrollY < 200 ? initialHeight : 50;
+      const newHeight =
+        window.scrollY < visibilityThreshold ? initialHeight : 50;
       setHeaderHeight(newHeight);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [startInvisible, initialHeight]);
+  }, [visibilityThreshold, startInvisible, initialHeight]);
 
   return (
     <motion.header

@@ -10,9 +10,11 @@ import MotionHeader from "./motion-header";
 export default function Header({
   withLinks,
   startInvisible = false,
+  visibilityThreshold = 200,
 }: {
   withLinks?: boolean;
   startInvisible?: boolean;
+  visibilityThreshold?: number;
 }) {
   const links = [
     {
@@ -29,7 +31,10 @@ export default function Header({
   ];
 
   return (
-    <MotionHeader startInvisible={startInvisible}>
+    <MotionHeader
+      startInvisible={startInvisible}
+      visibilityThreshold={visibilityThreshold}
+    >
       <div className="flex h-full items-center justify-between">
         <Link
           href="/"
