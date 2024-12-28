@@ -11,14 +11,14 @@ export function useFilters() {
   const [textFilter, setTextFilter] = useState("");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
   const [viewType, setViewType] = useState<ViewType>("grid");
-  const [categoryName, setCategoryName] = useUrlCategory();
+  const [category, setCategory] = useUrlCategory();
 
-  const viewingAll = categoryName === "all";
+  const viewingAll = category === "all";
 
   const applyFilters = () => {
     const categories = viewingAll
       ? clothingCategories
-      : [getClothingCategoryByName(categoryName)!];
+      : [getClothingCategoryByName(category)!];
 
     // apply all filters
     return categories.map((category) => ({
@@ -32,18 +32,6 @@ export function useFilters() {
     }));
   };
 
-  const updateCategory = (newCategory: string) => {
-    setCategoryName(newCategory);
-  };
-
-  const handlePriceRangeChange = (newRange: [number, number]) => {
-    setPriceRange(newRange);
-  };
-
-  const handleTextFilterChange = (newText: string) => {
-    setTextFilter(newText);
-  };
-
   const filteredData = viewingAll
     ? // apply filters and return categories
       applyFilters()
@@ -51,14 +39,14 @@ export function useFilters() {
       applyFilters().flatMap((category) => category.items);
 
   return {
-    category: categoryName,
-    setCategory: updateCategory,
+    category: category,
+    setCategory,
     priceRange,
-    setPriceRange: handlePriceRangeChange,
+    setPriceRange,
     viewType,
     setViewType,
     textFilter,
-    setTextFilter: handleTextFilterChange,
+    setTextFilter,
     filteredData,
   };
 }
