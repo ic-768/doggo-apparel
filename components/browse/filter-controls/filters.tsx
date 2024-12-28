@@ -1,6 +1,7 @@
 import { LayoutGrid, RefreshCcw } from "lucide-react";
 
 import { DualRangeSlider } from "@/components/ui/dual-range-slider";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -20,7 +21,10 @@ interface FiltersProps {
   setPriceRange: (range: [number, number]) => void;
   viewType: ViewType;
   setViewType: (viewType: ViewType) => void;
+  textFilter: string;
+  setTextFilter: (text: string) => void;
 }
+
 export default function Filters({
   category,
   setCategory,
@@ -28,6 +32,8 @@ export default function Filters({
   setPriceRange,
   viewType,
   setViewType,
+  textFilter,
+  setTextFilter,
 }: FiltersProps) {
   const isGrid = viewType === "grid";
 
@@ -82,6 +88,15 @@ export default function Filters({
             aria-hidden="true"
           />
         </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <Label htmlFor="view-mode">Search by name</Label>
+        <Input
+          id="text-filter"
+          onChange={(e) => setTextFilter(e.target.value)}
+          value={textFilter}
+        />
       </div>
     </div>
   );

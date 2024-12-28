@@ -9,6 +9,7 @@ import { useUrlCategory } from "./useUrlCategory";
 export type ViewType = "carousel" | "grid";
 export function useFilters() {
   const [_, startTransition] = useTransition();
+  const [textFilter, setTextFilter] = useState("");
 
   // get category name
   const [categoryName, setCategoryName] = useUrlCategory();
@@ -28,28 +29,51 @@ export function useFilters() {
 
   // filter items of a category
   const filterItemsByPrice = (
-    items: ClothingItem[],
     [min, max]: [number, number],
+    items: ClothingItem[],
   ): ClothingItem[] =>
     items.filter((item) => item.price >= min && item.price <= max);
 
   // filter items of all categories
-  const filterCategoriesByPrice = ([min, max]: [number, number]) => {
-    return clothingCategories.map((category) => ({
+  const filterCategoriesByPrice = (
+    [min, max]: [number, number],
+    categories = clothingCategories,
+  ) => {
+    return categories.map((category) => ({
       ...category,
-      items: filterItemsByPrice(category.items, [min, max]),
+      items: filterItemsByPrice([min, max], category.items),
     }));
   };
+
+  const filterItemsByText = (text: string, items: ClothingItem[]) =>
+    items.filter((item) =>
+      item.name.toLowerCase().includes(text.toLowerCase()),
+    );
+
+  const filterCategoriesByText = (
+    text: string,
+    categories = clothingCategories,
+  ) =>
+    categories.map((category) => ({
+      ...category,
+      items: filterItemsByText(text, category.items),
+    }));
 
   // when changing a category, take filters into consideration
   const updateCategory = (newCategory: string) => {
     setCategoryName(newCategory);
     setFilteredData(
       newCategory === "all"
-        ? filterCategoriesByPrice(priceRange)
-        : filterItemsByPrice(
-            getClothingCategoryByName(newCategory)!.items,
-            priceRange,
+        ? filterCategoriesByText(
+            textFilter,
+            filterCategoriesByPrice(priceRange),
+          )
+        : filterItemsByText(
+            textFilter,
+            filterItemsByPrice(
+              priceRange,
+              getClothingCategoryByName(newCategory)!.items,
+            ),
           ),
     );
   };
@@ -60,8 +84,25 @@ export function useFilters() {
     startTransition(() => {
       setFilteredData(
         selectedCategory
-          ? filterItemsByPrice(selectedCategory.items, newRange)
-          : filterCategoriesByPrice(newRange),
+          ? filterItemsByText(
+              textFilter,
+              filterItemsByPrice(newRange, selectedCategory.items),
+            )
+          : filterCategoriesByText(
+              textFilter,
+              filterCategoriesByPrice(newRange),
+            ),
+      );
+    });
+  };
+
+  const handleTextFilterChange = (newText: string) => {
+    setTextFilter(newText);
+    startTransition(() => {
+      setFilteredData(
+        selectedCategory
+          ? filterItemsByText(newText, selectedCategory.items)
+          : filterCategoriesByText(newText),
       );
     });
   };
@@ -74,5 +115,7 @@ export function useFilters() {
     setPriceRange: handlePriceRangeChange,
     viewType,
     setViewType,
+    textFilter,
+    setTextFilter: handleTextFilterChange,
   };
 }

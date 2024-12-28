@@ -19,6 +19,8 @@ interface MobileFiltersProps {
   setPriceRange: (range: [number, number]) => void;
   viewType: ViewType;
   setViewType: (viewType: ViewType) => void;
+  textFilter: string;
+  setTextFilter: (text: string) => void;
 }
 
 export default function MobileFilters({
@@ -28,6 +30,8 @@ export default function MobileFilters({
   setPriceRange,
   viewType,
   setViewType,
+  textFilter,
+  setTextFilter,
 }: MobileFiltersProps) {
   return (
     <Sheet>
@@ -55,6 +59,8 @@ export default function MobileFilters({
             setPriceRange={setPriceRange}
             viewType={viewType}
             setViewType={setViewType}
+            textFilter={textFilter}
+            setTextFilter={setTextFilter}
           />
         </div>
       </SheetContent>

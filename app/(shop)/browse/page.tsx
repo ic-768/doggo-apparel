@@ -14,6 +14,8 @@ export default function ShopPage() {
     setPriceRange,
     viewType,
     setViewType,
+    textFilter,
+    setTextFilter,
   } = useFilters();
 
   return (
@@ -28,6 +30,8 @@ export default function ShopPage() {
           setPriceRange={setPriceRange}
           viewType={viewType}
           setViewType={setViewType}
+          textFilter={textFilter}
+          setTextFilter={setTextFilter}
         />
         <div className="flex flex-col gap-8 lg:pl-56">
           <ViewModes
