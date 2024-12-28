@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 
 import { DualRangeSlider } from "@/components/ui/dual-range-slider";
@@ -9,15 +8,18 @@ interface PriceRangeSliderProps {
   setPriceRange: (range: [number, number]) => void;
 }
 
-export default function PriceRangeSlider(props: PriceRangeSliderProps) {
+export default function PriceRangeSlider({
+  priceRange,
+  setPriceRange,
+}: PriceRangeSliderProps) {
   // to keep track of pricing without being held back by the debounced priceRange value
-  const [realTimeValue, setRealTimeValue] = useState(props.priceRange);
+  const [realTimeValue, setRealTimeValue] = useState(priceRange);
 
   const onChange = (v: [number, number]) => {
     // update for ui
     setRealTimeValue(v);
     // debounced call
-    props.setPriceRange(v);
+    setPriceRange(v);
   };
   return (
     <div className="flex flex-col gap-2">
