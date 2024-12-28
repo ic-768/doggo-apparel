@@ -1,3 +1,5 @@
+"use client";
+import { useState, useTransition } from "react";
 import { MotionProps } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -33,14 +35,36 @@ export default function ItemCard({
   id,
   ...props
 }: ItemCardProps) {
+  const [rotate, setRotate] = useState(0);
+  const [_, startTransition] = useTransition();
+
+  // tilt card left or right depending on mouse position - fun!
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    startTransition(() => {
+      const card = e.currentTarget.getBoundingClientRect();
+      const halfWidth = card.width / 2;
+      const cardCenterX = card.left + halfWidth;
+      const mouseX = e.clientX;
+      const distanceFromCenter = mouseX - cardCenterX;
+      const maxRotation = 3; // rotation in degrees
+      const rotation = (distanceFromCenter / halfWidth) * maxRotation;
+      setRotate(rotation);
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setRotate(0);
+  };
   return (
     <MotionDiv
       {...props}
       {...fadeIntoView}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       exit={{ opacity: 0 }}
+      animate={{ rotate }}
       layoutId={`${id}`}
       transition={{ duration: 0.4 }}
-      whileHover={{ rotate: 1 }}
       className="h-full"
     >
       <Card className="flex h-full flex-col">
