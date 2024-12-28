@@ -35,3 +35,24 @@ export function getClothingCategoryByName(name: string) {
     (category) => category.name.toLowerCase() === name.toLowerCase(),
   );
 }
+
+export function debounce<T extends (...args: any[]) => void>(
+  fn: T,
+  delay = 300,
+) {
+  let timeout: NodeJS.Timeout | null = null;
+
+  const debouncedFunction = (...args: Parameters<T>) => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
+
+  debouncedFunction.cancel = () => {
+    if (timeout) clearTimeout(timeout);
+    timeout = null;
+  };
+
+  return debouncedFunction;
+}

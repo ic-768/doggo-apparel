@@ -32,7 +32,6 @@ export default function Filters({
   setPriceRange,
   viewType,
   setViewType,
-  textFilter,
   setTextFilter,
 }: FiltersProps) {
   const isGrid = viewType === "grid";
@@ -61,7 +60,6 @@ export default function Filters({
         <Input
           id="text-filter"
           onChange={(e) => setTextFilter(e.target.value)}
-          value={textFilter}
         />
       </div>
 

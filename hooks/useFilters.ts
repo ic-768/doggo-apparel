@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { clothingCategories } from "@/lib/clothing-categories";
-import { getClothingCategoryByName } from "@/lib/utils";
+import { debounce, getClothingCategoryByName } from "@/lib/utils";
 
 import { useUrlCategory } from "./useUrlCategory";
 
@@ -38,6 +38,8 @@ export function useFilters() {
     : // apply filters and return just items
       applyFilters().flatMap((category) => category.items);
 
+  const debouncedTextSearch = debounce(setTextFilter);
+
   return {
     category: category,
     setCategory,
@@ -46,7 +48,7 @@ export function useFilters() {
     viewType,
     setViewType,
     textFilter,
-    setTextFilter,
+    setTextFilter: debouncedTextSearch,
     filteredData,
   };
 }
