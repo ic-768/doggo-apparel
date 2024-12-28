@@ -12,7 +12,7 @@ import { fadeIntoView } from "@/lib/motion";
 export default function AboutUs() {
   return (
     <Main>
-      <div className="container flex flex-col items-center justify-center gap-6 px-4 text-center">
+      <div className="container flex w-full flex-col items-center justify-center gap-6 px-4 text-center">
         <MotionDiv {...fadeIntoView} className="">
           <Image
             className="rounded-lg"

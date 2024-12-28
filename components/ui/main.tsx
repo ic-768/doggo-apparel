@@ -6,7 +6,7 @@ interface MainProps {
 }
 export default function Main({ className, ...props }: MainProps) {
   const classes = twMerge(
-    "bg-blue-50 flex flex-col gap-8 pt-28 pb-4 px-8 grow",
+    "bg-blue-50 flex flex-col gap-8 pt-28 pb-4 px-8 grow w-full",
     className,
   );
   return <main className={classes} {...props} />;
