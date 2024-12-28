@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="w-full bg-gray-800 py-12 text-white sm:py-8 md:py-4">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between pb-4">
-          <div className="w-full md:w-1/4">
+          <div className="flex w-full flex-col gap-2 pb-4 md:w-1/4">
             <div className="flex items-center gap-2">
               <PawPrintIcon />
               <span className="font-galada text-2xl font-bold text-white">
