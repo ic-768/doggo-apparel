@@ -101,8 +101,14 @@ export function useFilters() {
     startTransition(() => {
       setFilteredData(
         selectedCategory
-          ? filterItemsByText(newText, selectedCategory.items)
-          : filterCategoriesByText(newText),
+          ? filterItemsByText(
+              newText,
+              filterItemsByPrice(priceRange, selectedCategory.items),
+            )
+          : filterCategoriesByText(
+              newText,
+              filterCategoriesByPrice(priceRange),
+            ),
       );
     });
   };

@@ -57,6 +57,15 @@ export default function Filters({
       </div>
 
       <div className="flex flex-col gap-2">
+        <Label htmlFor="view-mode">Search by name</Label>
+        <Input
+          id="text-filter"
+          onChange={(e) => setTextFilter(e.target.value)}
+          value={textFilter}
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
         <Label htmlFor="price-range">
           Price range: ${priceRange[0]} - ${priceRange[1]}
         </Label>
@@ -88,15 +97,6 @@ export default function Filters({
             aria-hidden="true"
           />
         </div>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="view-mode">Search by name</Label>
-        <Input
-          id="text-filter"
-          onChange={(e) => setTextFilter(e.target.value)}
-          value={textFilter}
-        />
       </div>
     </div>
   );

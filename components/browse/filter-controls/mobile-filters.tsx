@@ -47,11 +47,11 @@ export default function MobileFilters({
       <SheetContent
         title="test"
         side="bottom"
-        className="flex h-96 flex-col gap-4"
+        className="flex h-[27rem] flex-col gap-4"
       >
         <SheetTitle>Filters</SheetTitle>
         <SheetDescription>Narrow down the displayed results</SheetDescription>
-        <div className="h-full overflow-y-auto">
+        <div className="overflow-y-auto">
           <Filters
             category={category}
             setCategory={setCategory}
