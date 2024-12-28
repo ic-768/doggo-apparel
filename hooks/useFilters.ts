@@ -23,13 +23,12 @@ export function useFilters() {
     // apply all filters
     return categories.map((category) => ({
       ...category,
-      items: category.items
-        .filter(
-          (item) => item.price >= priceRange[0] && item.price <= priceRange[1],
-        )
-        .filter((item) =>
-          item.name.toLowerCase().includes(textFilter.toLowerCase()),
-        ),
+      items: category.items.filter(
+        (item) =>
+          item.name.toLowerCase().includes(textFilter.toLowerCase()) &&
+          item.price >= priceRange[0] &&
+          item.price <= priceRange[1],
+      ),
     }));
   };
 
