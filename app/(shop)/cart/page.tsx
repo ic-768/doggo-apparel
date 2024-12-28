@@ -20,7 +20,7 @@ export default function CartPage() {
         <ul className="flex flex-col gap-4">
           <AnimatePresence>
             {cart.map((item) => (
-              <CartItem key={item.id} item={item} />
+              <CartItem key={`${item.id}${item.size}`} item={item} />
             ))}
           </AnimatePresence>
         </ul>
