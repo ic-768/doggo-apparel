@@ -12,7 +12,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { imageProps } from "@/lib/constants";
-import { fadeIntoView } from "@/lib/motion";
 
 import MotionDiv from "../../ui/motion/motion-div";
 import PriceTag from "../price-tag";
@@ -25,6 +24,7 @@ type ItemCardProps = {
   description: string;
   price: number;
   id: number;
+  withEnterAnimation?: boolean;
 } & MotionProps;
 
 export default function ItemCard({
@@ -55,10 +55,10 @@ export default function ItemCard({
   const handleMouseLeave = () => {
     setRotate(0);
   };
+
   return (
     <MotionDiv
       {...props}
-      {...fadeIntoView}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       exit={{ opacity: 0 }}

@@ -18,6 +18,6 @@ const HWithFramerProps = <T extends HeadingLevels = "h1">({
 };
 
 // Wrapping in `motion` for animation
-const MotionH = motion(HWithFramerProps);
+const MotionH = motion.create(HWithFramerProps);
 
 export default MotionH;

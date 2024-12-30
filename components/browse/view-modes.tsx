@@ -1,9 +1,11 @@
 import CategoryCarousel from "@/components/browse/category-carousel/category-carousel";
 import ItemList from "@/components/item-list/item-list";
 import { ViewType } from "@/hooks/useFilters";
+import { fadeIntoView } from "@/lib/motion";
 import { ClothingCategories, ClothingItem } from "@/lib/types";
 
 import NoFilteredResults from "../item-list/no-filtered-results";
+import MotionDiv from "../ui/motion/motion-div";
 import AllCategoriesCarousels from "./category-carousel/all-categories-carousels";
 
 interface ViewModesProps {
@@ -55,14 +57,18 @@ export default function ViewModes({
 
 function AllList({ categories }: { categories: ClothingCategories }) {
   return categories.map(
-    (category) =>
+    (category, i) =>
       category.items.length !== 0 && (
-        <div className="flex flex-col gap-6" key={category.name}>
+        <MotionDiv
+          key={category.name + i}
+          {...fadeIntoView}
+          className="flex flex-col gap-6"
+        >
           <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
             {category.name}
           </h2>
           <ItemList items={category.items} />
-        </div>
+        </MotionDiv>
       ),
   );
 }
