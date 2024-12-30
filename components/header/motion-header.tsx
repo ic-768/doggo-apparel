@@ -30,7 +30,7 @@ export default function MotionHeader({
       style={{
         height: headerHeight,
       }}
-      className="fixed left-0 right-0 top-0 z-50 w-full overflow-hidden border-b border-zinc-400 bg-gradient-to-b from-blue-100 to-blue-200 px-8 shadow-lg transition-all duration-500"
+      className="fixed left-0 right-0 top-0 z-50 w-full overflow-hidden border-b border-zinc-400 bg-gradient-to-b from-blue-100/40 to-blue-200/60 px-8 shadow-lg backdrop-blur-sm transition-all duration-500"
     >
       {children}
     </motion.header>
