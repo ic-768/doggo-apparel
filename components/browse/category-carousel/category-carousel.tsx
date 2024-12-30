@@ -9,11 +9,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import MotionDiv from "@/components/ui/motion/motion-div";
+import { fadeIntoView } from "@/lib/motion";
 import { ClothingCategory } from "@/lib/types";
 
 function CategoryCarousel({ category }: { category: ClothingCategory }) {
   return (
-    <div className="flex flex-col gap-6" key={category.name}>
+    <MotionDiv
+      key={category.name}
+      {...fadeIntoView}
+      className="flex flex-col gap-6"
+    >
       <h2 className="text-center text-2xl font-semibold capitalize text-secondary-foreground">
         {category.name}
       </h2>
@@ -33,7 +39,7 @@ function CategoryCarousel({ category }: { category: ClothingCategory }) {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-    </div>
+    </MotionDiv>
   );
 }
 
