@@ -1,5 +1,5 @@
 "use client";
-import { MotionProps, useMotionValue, useSpring } from "framer-motion";
+import { MotionProps, useSpring } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -34,8 +34,7 @@ export default function ItemCard({
   id,
   ...props
 }: ItemCardProps) {
-  const rotate = useMotionValue("0deg");
-  const springyRotate = useSpring(rotate);
+  const springyRotate = useSpring(0);
 
   // tilt card left or right depending on mouse position - fun!
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -46,11 +45,11 @@ export default function ItemCard({
     const distanceFromCenter = mouseX - cardCenterX;
     const maxRotation = 3; // rotation in degrees
     const rotation = (distanceFromCenter / halfWidth) * maxRotation;
-    rotate.set(`${rotation}deg`);
+    springyRotate.set(rotation);
   };
 
   const handleMouseLeave = () => {
-    rotate.set(`0deg`);
+    springyRotate.set(0);
   };
 
   return (
