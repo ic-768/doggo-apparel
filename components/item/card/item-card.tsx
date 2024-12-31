@@ -1,5 +1,5 @@
 "use client";
-import { MotionProps, useSpring } from "framer-motion";
+import { motion, MotionProps, useSpring } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -32,9 +32,10 @@ export default function ItemCard({
   description,
   price,
   id,
+  textFilter,
   ...props
 }: ItemCardProps) {
-  const springyRotate = useSpring(0);
+  const rotate = useSpring(0);
 
   // tilt card left or right depending on mouse position - fun!
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -43,13 +44,34 @@ export default function ItemCard({
     const cardCenterX = card.left + halfWidth;
     const mouseX = e.clientX;
     const distanceFromCenter = mouseX - cardCenterX;
-    const maxRotation = 3; // rotation in degrees
+    const maxRotation = 2; // rotation in degrees
     const rotation = (distanceFromCenter / halfWidth) * maxRotation;
-    springyRotate.set(rotation);
+    rotate.set(rotation);
   };
 
   const handleMouseLeave = () => {
-    springyRotate.set(0);
+    rotate.set(0);
+  };
+
+  // relative initial span for matches, with an underline element for full width.
+  // animate width transition
+  const getHighlightedText = (text: string) => {
+    if (!textFilter) return text;
+
+    const regex = new RegExp(`(${textFilter})`, "gi");
+    return text.split(regex).map((part, index) => {
+      return part.toLowerCase() === textFilter.toLowerCase() ? (
+        <span className="relative" key={index}>
+          <motion.span
+            layoutId={`underline-${id}-${index}`}
+            className="absolute bottom-0 left-0 h-0.5 w-full bg-orange-300"
+          ></motion.span>
+          {part}
+        </span>
+      ) : (
+        <span key={index}>{part}</span>
+      );
+    });
   };
 
   return (
@@ -60,8 +82,8 @@ export default function ItemCard({
       exit={{ opacity: 0 }}
       layoutId={`${id}`}
       transition={{ duration: 0.4 }}
-      style={{ rotate: springyRotate }}
-      className="h-full"
+      style={{ rotate }}
+      className="h-96"
     >
       <Card className="flex h-full flex-col">
         <Link className="grow" href={`/item/${id}`}>
@@ -74,11 +96,10 @@ export default function ItemCard({
             />
           </CardHeader>
           <CardContent className="flex grow flex-col gap-2 p-2">
-            <div className="flex items-center">
-              <CardTitle className="text-md col-span-2 flex items-center">
-                {name}
-              </CardTitle>
-            </div>
+            <CardTitle className="text-md">
+              {getHighlightedText(name)}
+            </CardTitle>
+
             <p className="text-sm text-muted-foreground">{description}</p>
           </CardContent>
         </Link>

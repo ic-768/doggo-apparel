@@ -18,6 +18,7 @@ export default function ViewModes({
   viewType,
   filteredData,
   category,
+  textFilter,
 }: ViewModesProps) {
   const hasAllCategories = (
     c: ClothingCategories | ClothingItem[],
@@ -35,7 +36,7 @@ export default function ViewModes({
     return isAllCategories ? (
       <AllList categories={filteredData} />
     ) : (
-      <ItemList items={filteredData} />
+      <ItemList textFilter={textFilter} items={filteredData} />
     );
   };
 

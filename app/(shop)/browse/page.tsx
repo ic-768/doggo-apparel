@@ -36,6 +36,7 @@ export default function ShopPage() {
         <div className="flex flex-col gap-8 lg:pl-56">
           <ViewModes
             viewType={viewType}
+            textFilter={textFilter}
             filteredData={filteredData}
             category={category}
           />
