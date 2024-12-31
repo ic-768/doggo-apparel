@@ -81,7 +81,7 @@ export default function ItemCard({
       layoutId={`${id}`}
       transition={{ duration: 0.4 }}
       style={{ rotate }}
-      className="h-96"
+      className="h-full"
     >
       <Card className="flex h-full flex-col">
         <Link className="grow" href={`/item/${id}`}>
