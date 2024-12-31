@@ -13,7 +13,13 @@ import MotionDiv from "@/components/ui/motion/motion-div";
 import { fadeIntoView } from "@/lib/motion";
 import { ClothingCategory } from "@/lib/types";
 
-function CategoryCarousel({ category }: { category: ClothingCategory }) {
+function CategoryCarousel({
+  category,
+  textFilter,
+}: {
+  category: ClothingCategory;
+  textFilter?: string;
+}) {
   return (
     <MotionDiv
       key={category.name}
@@ -31,7 +37,7 @@ function CategoryCarousel({ category }: { category: ClothingCategory }) {
                 key={item.name + i}
                 className="flex sm:basis-1/2 md:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
               >
-                <ItemCard {...item} />
+                <ItemCard {...item} textFilter={textFilter} />
               </CarouselItem>
             ))}
           </AnimatePresence>

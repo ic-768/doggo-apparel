@@ -23,7 +23,7 @@ type ItemCardProps = {
   description: string;
   price: number;
   id: number;
-  withEnterAnimation?: boolean;
+  textFilter?: string;
 } & MotionProps;
 
 export default function ItemCard({
@@ -53,8 +53,6 @@ export default function ItemCard({
     rotate.set(0);
   };
 
-  // relative initial span for matches, with an underline element for full width.
-  // animate width transition
   const getHighlightedText = (text: string) => {
     if (!textFilter) return text;
 
@@ -65,7 +63,7 @@ export default function ItemCard({
           <motion.span
             layoutId={`underline-${id}-${index}`}
             className="absolute bottom-0 left-0 h-0.5 w-full bg-orange-300"
-          ></motion.span>
+          />
           {part}
         </span>
       ) : (

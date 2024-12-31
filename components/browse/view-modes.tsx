@@ -12,6 +12,7 @@ interface ViewModesProps {
   viewType: ViewType;
   filteredData: ClothingCategories | ClothingItem[];
   category: string;
+  textFilter?: string;
 }
 
 export default function ViewModes({
@@ -34,7 +35,7 @@ export default function ViewModes({
 
   const renderGridView = () => {
     return isAllCategories ? (
-      <AllList categories={filteredData} />
+      <AllList textFilter={textFilter} categories={filteredData} />
     ) : (
       <ItemList textFilter={textFilter} items={filteredData} />
     );
@@ -42,9 +43,13 @@ export default function ViewModes({
 
   const renderCarouselView = () => {
     return isAllCategories ? (
-      <AllCategoriesCarousels categories={filteredData} />
+      <AllCategoriesCarousels
+        textFilter={textFilter}
+        categories={filteredData}
+      />
     ) : (
       <CategoryCarousel
+        textFilter={textFilter}
         category={{
           name: category,
           items: filteredData,
@@ -56,7 +61,13 @@ export default function ViewModes({
   return viewType === "grid" ? renderGridView() : renderCarouselView();
 }
 
-function AllList({ categories }: { categories: ClothingCategories }) {
+function AllList({
+  categories,
+  textFilter,
+}: {
+  categories: ClothingCategories;
+  textFilter?: string;
+}) {
   return categories.map(
     (category, i) =>
       category.items.length !== 0 && (
@@ -68,7 +79,7 @@ function AllList({ categories }: { categories: ClothingCategories }) {
           <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
             {category.name}
           </h2>
-          <ItemList items={category.items} />
+          <ItemList textFilter={textFilter} items={category.items} />
         </MotionDiv>
       ),
   );
