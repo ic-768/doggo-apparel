@@ -8,31 +8,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ViewType } from "@/hooks/useFilters";
 
 import Filters from "./filters";
 
-interface MobileFiltersProps {
-  category: string;
-  setCategory: (category: string) => void;
-  priceRange: [number, number];
-  setPriceRange: (range: [number, number]) => void;
-  viewType: ViewType;
-  setViewType: (viewType: ViewType) => void;
-  textFilter: string;
-  setTextFilter: (text: string) => void;
-}
-
-export default function MobileFilters({
-  category,
-  setCategory,
-  priceRange,
-  setPriceRange,
-  viewType,
-  setViewType,
-  textFilter,
-  setTextFilter,
-}: MobileFiltersProps) {
+export default function MobileFilters() {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -52,16 +31,7 @@ export default function MobileFilters({
         <SheetTitle>Filters</SheetTitle>
         <SheetDescription>Narrow down the displayed results</SheetDescription>
         <div className="overflow-y-auto">
-          <Filters
-            category={category}
-            setCategory={setCategory}
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
-            viewType={viewType}
-            setViewType={setViewType}
-            textFilter={textFilter}
-            setTextFilter={setTextFilter}
-          />
+          <Filters />
         </div>
       </SheetContent>
     </Sheet>

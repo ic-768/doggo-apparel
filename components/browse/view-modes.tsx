@@ -1,6 +1,6 @@
 import CategoryCarousel from "@/components/browse/category-carousel/category-carousel";
 import ItemList from "@/components/item-list/item-list";
-import { ViewType } from "@/hooks/useFilters";
+import { useFilters } from "@/context/filters/use-filters";
 import { fadeIntoView } from "@/lib/motion";
 import { ClothingCategories, ClothingItem } from "@/lib/types";
 
@@ -8,19 +8,9 @@ import NoFilteredResults from "../item-list/no-filtered-results";
 import MotionDiv from "../ui/motion/motion-div";
 import AllCategoriesCarousels from "./category-carousel/all-categories-carousels";
 
-interface ViewModesProps {
-  viewType: ViewType;
-  filteredData: ClothingCategories | ClothingItem[];
-  category: string;
-  textFilter?: string;
-}
+export default function ViewModes() {
+  const { viewType, category, textFilter, filteredData } = useFilters();
 
-export default function ViewModes({
-  viewType,
-  filteredData,
-  category,
-  textFilter,
-}: ViewModesProps) {
   const hasAllCategories = (
     c: ClothingCategories | ClothingItem[],
   ): c is ClothingCategories => category === "all";

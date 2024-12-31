@@ -1,13 +1,32 @@
-import { useState } from "react";
+"use client";
 
+import { useState } from "react";
+import React, { createContext, ReactNode } from "react";
+
+import { useUrlCategory } from "@/hooks/useUrlCategory";
 import { clothingCategories } from "@/lib/clothing-categories";
+import { ClothingCategories, ClothingItem } from "@/lib/types";
 import { debounce, getClothingCategoryByName } from "@/lib/utils";
 
-import { useUrlCategory } from "./useUrlCategory";
+type ViewType = "grid" | "carousel";
 
-export type ViewType = "carousel" | "grid";
+export interface FiltersContextType {
+  category: string;
+  setCategory: (category: string) => void;
+  priceRange: [number, number];
+  setPriceRange: (priceRange: [number, number]) => void;
+  viewType: ViewType;
+  setViewType: (viewType: ViewType) => void;
+  textFilter: string;
+  setTextFilter: (textFilter: string) => void;
+  filteredData: ClothingCategories | ClothingItem[];
+}
 
-export function useFilters() {
+export const FiltersContext = createContext<FiltersContextType | undefined>(
+  undefined,
+);
+
+export const FiltersProvider = ({ children }: { children: ReactNode }) => {
   const [textFilter, setTextFilter] = useState("");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
   const [viewType, setViewType] = useState<ViewType>("grid");
@@ -41,15 +60,21 @@ export function useFilters() {
   const debouncedTextSearch = debounce(setTextFilter);
   const debouncedPriceSearch = debounce(setPriceRange, 100);
 
-  return {
-    category: category,
-    setCategory,
-    priceRange,
-    setPriceRange: debouncedPriceSearch,
-    viewType,
-    setViewType,
-    textFilter,
-    setTextFilter: debouncedTextSearch,
-    filteredData,
-  };
-}
+  return (
+    <FiltersContext.Provider
+      value={{
+        category: category,
+        setCategory,
+        priceRange,
+        setPriceRange: debouncedPriceSearch,
+        viewType,
+        setViewType,
+        textFilter,
+        setTextFilter: debouncedTextSearch,
+        filteredData,
+      }}
+    >
+      {children}
+    </FiltersContext.Provider>
+  );
+};

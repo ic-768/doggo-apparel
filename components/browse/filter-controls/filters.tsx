@@ -10,34 +10,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { ViewType } from "@/hooks/useFilters";
+import { useFilters } from "@/context/filters/use-filters";
 import { clothingCategories } from "@/lib/clothing-categories";
 
 import PriceRangeSlider from "./price-range-slider";
 
-interface FiltersProps {
-  category: string;
-  setCategory: (category: string) => void;
-  priceRange: [number, number];
-  setPriceRange: (range: [number, number]) => void;
-  viewType: ViewType;
-  setViewType: (viewType: ViewType) => void;
-  textFilter: string;
-  setTextFilter: (text: string) => void;
-}
+export default function Filters() {
+  const {
+    viewType,
+    setViewType,
+    category,
+    setCategory,
+    textFilter,
+    setTextFilter,
+    priceRange,
+    setPriceRange,
+  } = useFilters();
 
-export default function Filters({
-  category,
-  setCategory,
-  priceRange,
-  setPriceRange,
-  viewType,
-  setViewType,
-  textFilter,
-  setTextFilter,
-}: FiltersProps) {
   const isGrid = viewType === "grid";
-
   return (
     <div className="flex flex-col gap-6 rounded-lg border p-4 shadow-sm">
       <div className="flex flex-col gap-2">
