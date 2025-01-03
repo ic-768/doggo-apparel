@@ -56,7 +56,7 @@ export default function ItemCard({
   const getHighlightedText = (text: string) => {
     if (!textFilter) return text;
 
-    // Escape special characters in the textFilter
+    // Add a literal backslash before each special character ($& is the  matched char)
     const escapedFilter = textFilter.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const regex = new RegExp(`(${escapedFilter})`, "gi");
     return text.split(regex).map((part, index) => {
