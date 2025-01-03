@@ -56,7 +56,9 @@ export default function ItemCard({
   const getHighlightedText = (text: string) => {
     if (!textFilter) return text;
 
-    const regex = new RegExp(`(${textFilter})`, "gi");
+    // Escape special characters in the textFilter
+    const escapedFilter = textFilter.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(`(${escapedFilter})`, "gi");
     return text.split(regex).map((part, index) => {
       return part.toLowerCase() === textFilter.toLowerCase() ? (
         <span className="relative" key={index}>
