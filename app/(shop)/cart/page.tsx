@@ -9,20 +9,17 @@ import OrderSummary from "@/components/cart/order-summary";
 import BackToBrowse from "@/components/ui/back-to-browse";
 import Main from "@/components/ui/main";
 import { useShoppingCart } from "@/context/cart/use-shopping-cart";
-import { ClothingItem } from "@/lib/types";
+import { fetchItems } from "@/lib/fetch";
 
 export default function CartPage() {
   const { cart, shipping, subtotal, total } = useShoppingCart();
 
-  const getData = async (): Promise<ClothingItem[]> => {
-    const ids = cart?.map((item) => item.id);
-    const res = await fetch(`/api/items?ids=${ids}`);
-    return res.json();
-  };
-
   const { data: items = [], isFetching } = useQuery({
     queryKey: ["cart"],
-    queryFn: getData,
+    queryFn: () => {
+      const ids = cart!.map((item) => item.id);
+      return fetchItems(ids);
+    },
     enabled: !!cart?.length,
   });
 
