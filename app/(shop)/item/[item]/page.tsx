@@ -20,8 +20,10 @@ export default async function ItemPage({
   params: Promise<{ item: string }>;
 }) {
   const itemId = (await params).item;
+  console.log("itemId", itemId);
 
   const item = getClothingItemById(Number(itemId));
+  console.log("item", item);
 
   if (!item) {
     notFound();

@@ -13,6 +13,7 @@ import MotionLi from "../ui/motion/motion-li";
 
 export default function CartItem({ item }: { item: CartItem & ClothingItem }) {
   const { removeFromCart, clearFromCart, addToCart } = useShoppingCart();
+
   const onReduce = () => {
     removeFromCart(item);
   };
