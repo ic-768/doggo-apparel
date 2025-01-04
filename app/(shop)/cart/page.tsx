@@ -20,13 +20,13 @@ export default function CartPage() {
     return res.json();
   };
 
-  const { data: items } = useQuery({
+  const { data: items = [], isFetching } = useQuery({
     queryKey: ["cart"],
     queryFn: getData,
     enabled: !!cart?.length,
   });
 
-  if (cart === null || !items) return <Main />;
+  if (cart === null || !items || isFetching) return <Main />;
 
   const view = cart.length ? (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">

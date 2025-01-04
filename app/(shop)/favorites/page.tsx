@@ -18,13 +18,13 @@ export default function Favorites() {
     return res.json();
   };
 
-  const { data: items } = useQuery({
+  const { data: items, isFetching } = useQuery({
     queryKey: ["favorites"],
     queryFn: getData,
     enabled: !!favorites?.length,
   });
 
-  if (favorites === null) return <Main />;
+  if (favorites === null || isFetching) return <Main />;
 
   const view = favorites.length ? <ItemList items={items} /> : <NoFavorites />;
 
