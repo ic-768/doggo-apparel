@@ -1,24 +1,23 @@
 "use client";
+
 import { twMerge } from "tailwind-merge";
 
 import FavoritesIndicator from "@/components/ui/indicators/favorites-indicator";
 import { useFavorites } from "@/context/favorites/use-favorites";
-import { getClothingItemById } from "@/lib/utils";
+import { ClothingItem } from "@/lib/types";
 
 interface FavoritesButtonProps {
   className?: string;
-  id: number;
+  item: ClothingItem;
 }
 export default function FavoritesButton({
-  id,
   className,
+  item,
 }: FavoritesButtonProps) {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
 
   const onClick = () => {
-    const item = getClothingItemById(id);
-
-    if (isFavorite(id)) {
+    if (isFavorite(item.id)) {
       removeFromFavorites(item.id);
     } else {
       addToFavorites(item);
@@ -31,7 +30,7 @@ export default function FavoritesButton({
   );
   return (
     <button className={classes} onClick={onClick}>
-      <FavoritesIndicator id={id} />
+      <FavoritesIndicator id={item.id} />
     </button>
   );
 }

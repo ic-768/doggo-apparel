@@ -47,7 +47,7 @@ export default async function ItemPage({
               <PriceTag price={item.price} />
               <FavoritesButton
                 className="fixed right-2 top-48 flex size-12 items-center justify-center rounded-full bg-red-100 outline outline-1 outline-red-400 hover:bg-red-200 sm:static"
-                id={item.id}
+                item={item}
               />
             </div>
             <ReviewsScore />

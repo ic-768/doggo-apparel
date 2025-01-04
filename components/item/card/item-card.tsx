@@ -1,6 +1,6 @@
 "use client";
 import { motion, MotionProps, useSpring } from "framer-motion";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { imageProps } from "@/lib/constants";
+import { ClothingItem } from "@/lib/types";
 
 import MotionDiv from "../../ui/motion/motion-div";
 import PriceTag from "../price-tag";
@@ -18,24 +19,19 @@ import CartButton from "./cart-button";
 import FavoritesButton from "./favorites-button";
 
 type ItemCardProps = {
-  image: string | StaticImageData;
-  name: string;
-  description: string;
-  price: number;
-  id: number;
+  item: ClothingItem;
   textFilter?: string;
 } & MotionProps;
 
 export default function ItemCard({
-  image,
-  name,
-  description,
-  price,
-  id,
+  item,
   textFilter,
   ...props
 }: ItemCardProps) {
   const rotate = useSpring(0);
+  if (!item) return;
+
+  const { image, name, description, price, id } = item;
 
   // tilt card left or right depending on mouse position - fun!
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -104,8 +100,8 @@ export default function ItemCard({
           </CardContent>
         </Link>
         <CardFooter className="flex justify-between">
-          <FavoritesButton id={id} />
-          <CartButton id={id} />
+          <FavoritesButton item={item} />
+          <CartButton item={item} />
         </CardFooter>
       </Card>
     </MotionDiv>

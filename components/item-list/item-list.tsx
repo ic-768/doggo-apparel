@@ -13,7 +13,7 @@ function ItemList({ items = [], textFilter }: ItemListProps) {
     <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 2xl:grid-cols-5">
       <AnimatePresence>
         {items?.map((item) => (
-          <ItemCard key={item.id} {...item} textFilter={textFilter} />
+          <ItemCard key={item.id} item={item} textFilter={textFilter} />
         ))}
       </AnimatePresence>
     </div>

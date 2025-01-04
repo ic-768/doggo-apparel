@@ -24,7 +24,7 @@ export default function Suggestions({ itemId }: { itemId: number }) {
               key={item.name}
               className="flex md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
             >
-              <ItemCard {...item} />
+              <ItemCard item={item} />
             </CarouselItem>
           ))}
         </CarouselContent>

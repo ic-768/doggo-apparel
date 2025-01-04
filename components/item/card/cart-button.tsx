@@ -2,7 +2,7 @@
 import { twMerge } from "tailwind-merge";
 
 import { useShoppingCart } from "@/context/cart/use-shopping-cart";
-import { getClothingItemById } from "@/lib/utils";
+import { ClothingItem } from "@/lib/types";
 
 import CartIndicator from "../../ui/indicators/cart-indicator";
 
@@ -10,19 +10,18 @@ interface CartButtonProps {
   className?: string;
   size?: string;
   withText?: boolean;
-  id: number;
+  item: ClothingItem;
 }
 
 export default function CartButton({
-  id,
   className,
   size,
   withText,
+  item,
 }: CartButtonProps) {
   const { addToCart } = useShoppingCart();
 
   const onClick = () => {
-    const item = getClothingItemById(id);
     addToCart({ ...item, quantity: 1, size: size || "M" });
   };
 
@@ -33,7 +32,7 @@ export default function CartButton({
 
   return (
     <button className={classes} onClick={onClick}>
-      <CartIndicator id={id} />
+      <CartIndicator id={item.id} />
       {withText && <span className="hidden sm:inline">Add to cart</span>}
     </button>
   );
