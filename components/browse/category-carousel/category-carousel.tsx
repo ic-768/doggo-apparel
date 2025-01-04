@@ -37,7 +37,7 @@ function CategoryCarousel({
                 key={item.name + i}
                 className="flex sm:basis-1/2 md:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
               >
-                <ItemCard {...item} textFilter={textFilter} />
+                <ItemCard item={item} textFilter={textFilter} />
               </CarouselItem>
             ))}
           </AnimatePresence>

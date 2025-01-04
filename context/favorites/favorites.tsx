@@ -2,15 +2,14 @@
 
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 
-import { ClothingItem } from "@/lib/types";
-
 export interface FavoritesContextType {
-  favorites: ClothingItem[] | null;
-  addToFavorites: (item: ClothingItem) => void;
+  // id array
+  favorites: number[] | null;
+  addToFavorites: (id: number) => void;
   removeFromFavorites: (id: number) => void;
   clearFavorites: () => void;
   isFavorite: (id: number) => boolean;
-  setFavorites: React.Dispatch<React.SetStateAction<ClothingItem[] | null>>;
+  setFavorites: React.Dispatch<React.SetStateAction<number[] | null>>;
 }
 
 export const FavoritesContext = createContext<FavoritesContextType | undefined>(
@@ -18,7 +17,7 @@ export const FavoritesContext = createContext<FavoritesContextType | undefined>(
 );
 
 export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
-  const [favorites, setFavorites] = useState<ClothingItem[] | null>(null);
+  const [favorites, setFavorites] = useState<number[] | null>(null);
 
   // Load favorites from localStorage after mounting
   useEffect(() => {
@@ -37,18 +36,18 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [favorites]);
 
-  const addToFavorites = (item: ClothingItem) => {
-    if (!favorites || favorites.find((i) => i.id === item.id)) {
+  const addToFavorites = (id: number) => {
+    if (!favorites || favorites.find((i) => i === id)) {
       return; // Item already in favorites
     }
     setFavorites((prevFavorites) =>
-      prevFavorites ? [...prevFavorites, item] : [item],
+      prevFavorites ? [...prevFavorites, id] : [id],
     );
   };
 
   const removeFromFavorites = (id: number) => {
     setFavorites((prevFavorites) =>
-      prevFavorites ? prevFavorites.filter((i) => i.id !== id) : [],
+      prevFavorites ? prevFavorites.filter((i) => i !== id) : [],
     );
   };
 
@@ -57,7 +56,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const isFavorite = (id: number) => {
-    return favorites?.some((item) => item.id === id) || false;
+    return favorites?.some((i) => i === id) || false;
   };
 
   return (

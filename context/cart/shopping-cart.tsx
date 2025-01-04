@@ -4,7 +4,6 @@ import React, { createContext, ReactNode, useEffect, useState } from "react";
 
 export interface CartItem {
   id: number;
-  price: number;
   size: string;
   quantity: number;
 }
@@ -122,8 +121,10 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
     return itemsInCart?.reduce((total, item) => total + item.quantity, 0) || 0;
   };
 
+  // TODO fetch prices from backend
+  const price = 10.95;
   const subtotal =
-    cart?.reduce((sum, item) => sum + item.price * item.quantity, 0) || 0;
+    cart?.reduce((sum, item) => sum + price * item.quantity, 0) || 0;
 
   const shipping = subtotal > 50 ? 0 : 5.99;
 

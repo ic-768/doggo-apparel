@@ -22,7 +22,7 @@ export default function CartButton({
   const { addToCart } = useShoppingCart();
 
   const onClick = () => {
-    addToCart({ ...item, quantity: 1, size: size || "M" });
+    addToCart({ id: item.id, quantity: 1, size: size || "M" });
   };
 
   const classes = twMerge(

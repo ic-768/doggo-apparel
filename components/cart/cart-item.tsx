@@ -7,14 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import type { CartItem } from "@/context/cart/shopping-cart";
 import { useShoppingCart } from "@/context/cart/use-shopping-cart";
-import { getClothingItemById } from "@/lib/utils";
+import { ClothingItem } from "@/lib/types";
 
 import MotionLi from "../ui/motion/motion-li";
 
-export default function CartItem({ item }: { item: CartItem }) {
+export default function CartItem({ item }: { item: CartItem & ClothingItem }) {
   const { removeFromCart, clearFromCart, addToCart } = useShoppingCart();
-  const { image, name } = getClothingItemById(item.id);
-
   const onReduce = () => {
     removeFromCart(item);
   };
@@ -38,8 +36,8 @@ export default function CartItem({ item }: { item: CartItem }) {
         <div className="flex gap-4">
           <NextLink href={`/item/${item.id}`} key={item.id}>
             <Image
-              src={image}
-              alt={name}
+              src={item.image}
+              alt={item.name}
               height={150}
               className="h-24 w-24 rounded-md"
             />
@@ -47,7 +45,7 @@ export default function CartItem({ item }: { item: CartItem }) {
 
           <div className="flex flex-1 flex-col gap-2">
             <div className="flex justify-between">
-              <h3 className="font-semibold">{name}</h3>
+              <h3 className="font-semibold">{item.name}</h3>
               <button
                 onClick={onClear}
                 className="text-gray-400 hover:text-gray-600"

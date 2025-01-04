@@ -1,5 +1,6 @@
 "use client";
 
+import { useQueryClient } from "@tanstack/react-query";
 import { twMerge } from "tailwind-merge";
 
 import FavoritesIndicator from "@/components/ui/indicators/favorites-indicator";
@@ -8,19 +9,30 @@ import { ClothingItem } from "@/lib/types";
 
 interface FavoritesButtonProps {
   className?: string;
-  item: ClothingItem;
+  id: number;
 }
 export default function FavoritesButton({
   className,
-  item,
+  id,
 }: FavoritesButtonProps) {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+  const queryClient = useQueryClient();
 
-  const onClick = () => {
-    if (isFavorite(item.id)) {
-      removeFromFavorites(item.id);
+  const onClick = async () => {
+    if (isFavorite(id)) {
+      removeFromFavorites(id);
+
+      const favorites = queryClient.getQueryData([
+        "favorites",
+      ]) as ClothingItem[];
+
+      const updatedFavorites = favorites?.filter((item) => {
+        return item.id !== id;
+      });
+
+      await queryClient.setQueryData(["favorites"], updatedFavorites);
     } else {
-      addToFavorites(item);
+      addToFavorites(id);
     }
   };
 
@@ -30,7 +42,7 @@ export default function FavoritesButton({
   );
   return (
     <button className={classes} onClick={onClick}>
-      <FavoritesIndicator id={item.id} />
+      <FavoritesIndicator id={id} />
     </button>
   );
 }

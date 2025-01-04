@@ -18,6 +18,16 @@ export function getClothingItemById(id: number) {
   throw new Error(`Item with id ${id} not found`);
 }
 
+export function getClothingItemsByIds(ids: number[]) {
+  const result = [];
+
+  for (const id of ids) {
+    result.push(getClothingItemById(id));
+  }
+
+  return result;
+}
+
 export function getRelatedItems(id: number) {
   const category = clothingCategories.find(
     (category) => category.items.find((item) => item.id === id) !== undefined,

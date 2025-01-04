@@ -100,7 +100,7 @@ export default function ItemCard({
           </CardContent>
         </Link>
         <CardFooter className="flex justify-between">
-          <FavoritesButton item={item} />
+          <FavoritesButton id={item.id} />
           <CartButton item={item} />
         </CardFooter>
       </Card>
