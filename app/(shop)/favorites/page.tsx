@@ -6,6 +6,7 @@ import ClearFavorites from "@/components/favorites/clear-favorites";
 import NoFavorites from "@/components/favorites/no-favorites";
 import ItemList from "@/components/item-list/item-list";
 import BackToBrowse from "@/components/ui/back-to-browse";
+import { Loader } from "@/components/ui/loader";
 import Main from "@/components/ui/main";
 import { useFavorites } from "@/context/favorites/use-favorites";
 import { fetchItems } from "@/lib/fetch";
@@ -19,7 +20,12 @@ export default function Favorites() {
     enabled: !!favorites?.length,
   });
 
-  if (favorites === null || isFetching) return <Main />;
+  if (favorites === null || isFetching)
+    return (
+      <Main className="justify-center">
+        <Loader />
+      </Main>
+    );
 
   const view = favorites.length ? <ItemList items={items} /> : <NoFavorites />;
 

@@ -1,4 +1,5 @@
 "use client";
+
 import CategoryCarousel from "@/components/browse/category-carousel/category-carousel";
 import ItemList from "@/components/item-list/item-list";
 import { useFilters } from "@/context/filters/use-filters";

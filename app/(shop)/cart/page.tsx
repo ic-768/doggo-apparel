@@ -7,6 +7,7 @@ import ClearCart from "@/components/cart/clear-cart";
 import NoCartItems from "@/components/cart/no-cart-items";
 import OrderSummary from "@/components/cart/order-summary";
 import BackToBrowse from "@/components/ui/back-to-browse";
+import { Loader } from "@/components/ui/loader";
 import Main from "@/components/ui/main";
 import { useShoppingCart } from "@/context/cart/use-shopping-cart";
 import { fetchItems } from "@/lib/fetch";
@@ -23,7 +24,12 @@ export default function CartPage() {
     enabled: !!cart?.length,
   });
 
-  if (cart === null || !items || isFetching) return <Main />;
+  if (cart === null || !items || isFetching)
+    return (
+      <Main className="justify-center">
+        <Loader />
+      </Main>
+    );
 
   const view = cart.length ? (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
