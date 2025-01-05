@@ -64,7 +64,7 @@ export const outfits = {
       image: IndianShihtzu,
       description: "Elegant outfit for festive occasions.",
       id: 44,
-      sizes: ["SX", "S"],
+      sizes: ["XS", "S"],
     },
     {
       name: "Jacket",
@@ -79,7 +79,7 @@ export const outfits = {
       image: Kimono2,
       description: "A small kimono for to immerse in style.",
       id: 46,
-      sizes: ["SX", "S"],
+      sizes: ["XS", "S"],
     },
     {
       name: "Kimono",

@@ -22,7 +22,11 @@ export default function CartButton({
   const { addToCart } = useShoppingCart();
 
   const onClick = () => {
-    addToCart({ id: item.id, quantity: 1, size: size || "M" });
+    // if size not provided, default to M if it exists, otherwise first size
+    const selectedSize =
+      size || (item.sizes?.includes("M") ? "M" : item.sizes?.[0] || "M");
+
+    addToCart({ id: item.id, quantity: 1, size: selectedSize });
   };
 
   const classes = twMerge(
