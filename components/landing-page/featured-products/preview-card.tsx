@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 import {
   Card,
@@ -7,9 +8,8 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import MotionDiv from "@/components/ui/motion/motion-div";
-import MotionLink from "@/components/ui/motion/motion-link";
 import { imageProps } from "@/lib/constants";
-import { fadeIntoView, tapScale } from "@/lib/motion";
+import { fadeIntoView } from "@/lib/motion";
 
 interface PreviewCardProps {
   alt: string;
@@ -37,14 +37,12 @@ export default function PreviewCard({
           <p className="grow text-gray-600">{description}</p>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <MotionLink
-            {...tapScale}
+          <Link
             href={`item/${id}`}
-            prefetch={false}
             className="w-full rounded-full bg-blue-600 p-2 text-center text-white transition-colors hover:bg-blue-700"
           >
             View
-          </MotionLink>
+          </Link>
         </CardFooter>
       </Card>
     </MotionDiv>
