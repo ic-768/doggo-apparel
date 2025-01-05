@@ -1,3 +1,5 @@
+"use client";
+
 import MotionH from "@/components/ui/motion/motion-h";
 import hat11 from "@/images/hats/hat-11.jpg";
 import batdog from "@/images/outfits/batman.jpg";
