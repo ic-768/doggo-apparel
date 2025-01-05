@@ -24,12 +24,6 @@ const geistSans = localFont({
   weight: "100 900",
 });
 
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${galada.variable} ${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col items-center antialiased`}
+        className={`${galada.variable} ${geistSans.variable} font-geistSans flex min-h-screen flex-col items-center antialiased`}
       >
         <ShoppingCartProvider>
           <FavoritesProvider>

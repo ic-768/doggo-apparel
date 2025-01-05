@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         galada: ["var(--font-galada)"],
+        geistSans: ["var(--font-geist-sans)"],
       },
       keyframes: {
         shine: {
