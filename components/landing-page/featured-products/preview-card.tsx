@@ -37,7 +37,7 @@ export default function PreviewCard({
         </CardContent>
         <CardFooter className="flex justify-between">
           {
-            // using a <Link> here creates issues on production. navigating to a page doesn't render the whole page. TODO..
+            // using a <Link> here creates issues on production - an empty main tag is rendered. TODO..
           }
           <a
             href={`/item/${id}`}

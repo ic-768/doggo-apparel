@@ -21,6 +21,7 @@ export default async function ItemPage({
 }) {
   const itemId = (await params).item;
   const item = getClothingItemById(Number(itemId));
+
   if (!item) {
     notFound();
   }
