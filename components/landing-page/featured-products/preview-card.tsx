@@ -38,7 +38,7 @@ export default function PreviewCard({
         </CardContent>
         <CardFooter className="flex justify-between">
           <Link
-            href={`item/${id}`}
+            href={`/item/${id}`}
             className="w-full rounded-full bg-blue-600 p-2 text-center text-white transition-colors hover:bg-blue-700"
           >
             View
