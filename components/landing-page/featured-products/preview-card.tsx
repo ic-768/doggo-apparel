@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
 
 import {
   Card,
@@ -37,12 +36,12 @@ export default function PreviewCard({
           <p className="grow text-gray-600">{description}</p>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Link
+          <a
             href={`/item/${id}`}
             className="w-full rounded-full bg-blue-600 p-2 text-center text-white transition-colors hover:bg-blue-700"
           >
             View
-          </Link>
+          </a>
         </CardFooter>
       </Card>
     </MotionDiv>
