@@ -9,35 +9,34 @@ import NumberBubble from "./number-bubble";
 
 interface FavoritesIndicatorProps {
   id?: number;
-  pingOnIdle?: boolean;
+  rotateOnIdle?: boolean;
 }
 
 export default function FavoritesIndicator({
   id,
-  pingOnIdle = false,
+  rotateOnIdle = false,
 }: FavoritesIndicatorProps) {
   const { favorites, isFavorite } = useFavorites();
-  const [ping, setPing] = useState<boolean>(false);
+  const [rotate, setRotate] = useState<boolean>(false);
 
   const isFavorited = id !== undefined && isFavorite(id);
 
   useEffect(() => {
     let id = null;
-    console.log(pingOnIdle, isFavorited);
 
-    if (pingOnIdle && !isFavorited) {
+    if (rotateOnIdle && !isFavorited) {
       id = setTimeout(() => {
-        setPing(true);
+        setRotate(true);
       }, 20_000);
     }
 
     return () => {
       if (id !== null) {
         clearTimeout(id);
-        setPing(false);
+        setRotate(false);
       }
     };
-  }, [pingOnIdle, isFavorited]);
+  }, [rotateOnIdle, isFavorited]);
 
   const showNum = id === undefined;
   const numToShow = favorites?.length || 0;
@@ -50,7 +49,7 @@ export default function FavoritesIndicator({
     <div className="relative flex size-full items-center justify-center">
       {showNum && !!numToShow && <NumberBubble number={numToShow} />}
       <Heart
-        className={ping ? "animate-wiggle" : ""}
+        className={rotate ? "animate-wiggle" : ""}
         size={24}
         {...iconProps}
       />
