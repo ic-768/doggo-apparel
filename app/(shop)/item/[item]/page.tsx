@@ -30,7 +30,7 @@ export default async function ItemPage({
   return (
     <Suspense>
       <Main className="items-center">
-        <div className="container flex flex-col gap-6">
+        <div className="container flex flex-col gap-8">
           <BackToBrowse />
 
           <div className="grid gap-8 md:grid-cols-2">
@@ -66,7 +66,6 @@ export default async function ItemPage({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2"></div>
           <Suggestions itemId={Number(item.id)} />
         </div>
       </Main>
