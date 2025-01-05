@@ -13,7 +13,7 @@ import { useShoppingCart } from "@/context/cart/use-shopping-cart";
 import { fetchItems } from "@/lib/fetch";
 
 export default function CartPage() {
-  const { cart, shipping, subtotal, total } = useShoppingCart();
+  const { cart } = useShoppingCart();
 
   const { data: items = [], isFetching } = useQuery({
     queryKey: ["cart"],
@@ -31,21 +31,28 @@ export default function CartPage() {
       </Main>
     );
 
+  // combine cart data (size, quantity) with full item data
+  const enrichedItems = cart.map((item) => {
+    return {
+      ...item,
+      ...items.find((i) => i.id === item.id)!,
+    };
+  });
+
+  const subtotal = enrichedItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
+  const shipping = subtotal > 50 ? 0 : 5;
+  const total = subtotal + shipping;
+
   const view = cart.length ? (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div className="col-span-1 flex flex-col lg:col-span-2">
         <ul className="flex flex-col gap-4">
           <AnimatePresence>
-            {cart.map((item) => {
-              // enrich cart data
-              const fullItemData = {
-                ...item,
-                ...items.find((i) => i.id === item.id)!,
-              };
-
-              return (
-                <CartItem key={`${item.id}${item.size}`} item={fullItemData} />
-              );
+            {enrichedItems.map((item) => {
+              return <CartItem key={`${item.id}${item.size}`} item={item} />;
             })}
           </AnimatePresence>
         </ul>
