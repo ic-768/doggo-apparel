@@ -3,16 +3,21 @@ import ViewModes from "@/components/browse/view-modes";
 import Main from "@/components/ui/main";
 import { FiltersProvider } from "@/context/filters/filters";
 
-export default async function ShopPage({
+// or Dynamic metadata
+export async function generateMetadata({
   searchParams,
 }: {
   searchParams: Promise<{ category?: string }>;
 }) {
-  const category = (await searchParams).category;
+  const { category } = await searchParams;
+  return {
+    title: `Browse ${category}`,
+  };
+}
 
+export default async function ShopPage() {
   return (
     <Main>
-      <title>{`Browse ${category || ""}`}</title>
       <div className="container">
         <FiltersProvider>
           <FilterControls />

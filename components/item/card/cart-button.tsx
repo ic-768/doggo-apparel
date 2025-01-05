@@ -22,9 +22,12 @@ export default function CartButton({
   const { addToCart } = useShoppingCart();
 
   const onClick = () => {
-    // if size not provided, default to M if it exists, otherwise first size
-    const selectedSize =
-      size || (item.sizes?.includes("M") ? "M" : item.sizes?.[0] || "M");
+    // if size not provided, default to M if it's available, otherwise first size
+    const defaultSize = item.sizes?.includes("M")
+      ? "M"
+      : item.sizes?.[0] || "M";
+
+    const selectedSize = size || defaultSize;
 
     addToCart({ id: item.id, quantity: 1, size: selectedSize });
   };
