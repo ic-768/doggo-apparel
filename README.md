@@ -1,6 +1,6 @@
 # Doggo Apparel
 
-![Image](https://i.imgur.com/Z1uDeaP.png)
+![Image](https://i.imgur.com/gwLNNOz.png)
 
 Well, the time is finally here. AI is going to take over. So, I figured, why not make a few funny dog images, throw some dog clothes on them, and call it an e-shop?
 
