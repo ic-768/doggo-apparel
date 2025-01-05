@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
 import { Galada } from "next/font/google";
 import localFont from "next/font/local";
 
 import Footer from "@/components/landing-page/footer";
+import { Loader } from "@/components/ui/loader";
 import { ShoppingCartProvider } from "@/context/cart/shopping-cart";
 import { FavoritesProvider } from "@/context/favorites/favorites";
 import { QueryProvider } from "@/context/query/query";
@@ -40,7 +42,9 @@ export default function RootLayout({
       >
         <ShoppingCartProvider>
           <FavoritesProvider>
-            <QueryProvider>{children}</QueryProvider>
+            <QueryProvider>
+              <Suspense fallback={<Loader />}>{children}</Suspense>
+            </QueryProvider>
           </FavoritesProvider>
         </ShoppingCartProvider>
         <Footer />
