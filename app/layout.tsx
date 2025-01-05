@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${galada.variable} ${geistSans.variable} font-geistSans flex min-h-screen flex-col items-center antialiased`}
+        className={`${galada.variable} ${geistSans.variable} flex min-h-screen flex-col items-center font-geistSans antialiased`}
       >
         <ShoppingCartProvider>
           <FavoritesProvider>
