@@ -40,6 +40,7 @@ export default function PreviewCard({
           <MotionLink
             {...tapScale}
             href={`item/${id}`}
+            prefetch={false}
             className="w-full rounded-full bg-blue-600 p-2 text-center text-white transition-colors hover:bg-blue-700"
           >
             View
