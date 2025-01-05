@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Heart } from "lucide-react";
 
 import { useFavorites } from "@/context/favorites/use-favorites";
+import { useIdleAnimation } from "@/hooks/useTimer";
 
 import NumberBubble from "./number-bubble";
 
@@ -17,31 +17,15 @@ export default function FavoritesIndicator({
   rotateOnIdle = false,
 }: FavoritesIndicatorProps) {
   const { favorites, isFavorite } = useFavorites();
-  const [rotate, setRotate] = useState<boolean>(false);
-
-  const isFavorited = id !== undefined && isFavorite(id);
-
-  useEffect(() => {
-    let id = null;
-
-    if (rotateOnIdle && !isFavorited) {
-      id = setTimeout(() => {
-        setRotate(true);
-      }, 20_000);
-    }
-
-    return () => {
-      if (id !== null) {
-        clearTimeout(id);
-        setRotate(false);
-      }
-    };
-  }, [rotateOnIdle, isFavorited]);
 
   const showNum = id === undefined;
   const numToShow = favorites?.length || 0;
 
+  const isFavorited = id !== undefined && isFavorite(id);
+
   const iconProps = isFavorited ? { fill: "red", stroke: "red" } : undefined;
+
+  const animate = useIdleAnimation(rotateOnIdle && !isFavorited);
 
   if (favorites === null) return;
 
@@ -49,7 +33,7 @@ export default function FavoritesIndicator({
     <div className="relative flex size-full items-center justify-center">
       {showNum && !!numToShow && <NumberBubble number={numToShow} />}
       <Heart
-        className={rotate ? "animate-wiggle" : ""}
+        className={animate ? "animate-wiggle" : ""}
         size={24}
         {...iconProps}
       />
