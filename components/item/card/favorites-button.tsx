@@ -9,11 +9,13 @@ import { ClothingItem } from "@/lib/types";
 
 interface FavoritesButtonProps {
   className?: string;
+  pingOnIdle?: boolean;
   id: number;
 }
 export default function FavoritesButton({
   className,
   id,
+  pingOnIdle = false,
 }: FavoritesButtonProps) {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
   const queryClient = useQueryClient();
@@ -42,7 +44,7 @@ export default function FavoritesButton({
   );
   return (
     <button className={classes} onClick={onClick}>
-      <FavoritesIndicator id={id} />
+      <FavoritesIndicator pingOnIdle={pingOnIdle} id={id} />
     </button>
   );
 }

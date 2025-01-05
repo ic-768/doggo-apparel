@@ -20,9 +20,16 @@ const config: Config = {
           "25%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "-200% 0" },
         },
+        wiggle: {
+          "0%": { rotate: "0deg" },
+          "25%": { rotate: "-25deg" },
+          "75%": { rotate: "25deg" },
+          "100%": { rotate: "0deg" },
+        },
       },
       animation: {
         shine: "shine 3s ease-out infinite",
+        wiggle: "wiggle 3s linear infinite",
       },
       colors: {
         background: "hsl(var(--background))",

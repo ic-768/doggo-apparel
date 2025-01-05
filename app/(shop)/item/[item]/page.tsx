@@ -45,6 +45,7 @@ export default async function ItemPage({
               <h1 className="text-3xl font-bold">{item.name}</h1>
               <PriceTag price={item.price} />
               <FavoritesButton
+                pingOnIdle
                 className="fixed right-2 top-48 flex size-12 items-center justify-center rounded-full bg-red-100 outline outline-1 outline-red-400 hover:bg-red-200 sm:static"
                 id={item.id}
               />
