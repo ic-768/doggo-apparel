@@ -9,7 +9,7 @@ export async function generateMetadata({
 }: {
   searchParams: Promise<{ category?: string }>;
 }) {
-  const { category } = await searchParams;
+  const { category = "" } = await searchParams;
   return {
     title: `Browse ${category}`,
   };
