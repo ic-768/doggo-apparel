@@ -26,7 +26,11 @@ export default function Header({
       href: "/browse",
       label: "Browse",
     },
-    { element: <FavoritesIndicator />, href: "/favorites", label: "Favorites" },
+    {
+      element: <FavoritesIndicator className="size-auto" />,
+      href: "/favorites",
+      label: "Favorites",
+    },
     { element: <CartIndicator />, href: "/cart", label: "Cart" },
   ];
 
