@@ -3,7 +3,6 @@ import ViewModes from "@/components/browse/view-modes";
 import Main from "@/components/ui/main";
 import { FiltersProvider } from "@/context/filters/filters";
 
-// or Dynamic metadata
 export async function generateMetadata({
   searchParams,
 }: {
