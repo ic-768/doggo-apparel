@@ -31,7 +31,7 @@ function CategoryCarousel({
       </h2>
       <Carousel className="mx-16">
         <CarouselContent>
-          <AnimatePresence>
+          <AnimatePresence mode="popLayout">
             {category.items.map((item, i) => (
               <CarouselItem
                 key={item.name + i}
