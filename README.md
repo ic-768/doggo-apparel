@@ -22,7 +22,7 @@ Welcome to **The Doggo Apparel E-Shop**, a revolutionary online store (not reall
 
 ## Live link
 
-[Browse Dog Apparel](https://doggo-apparel.vercel.app)
+[Browse Doggo Apparel](https://doggo-apparel.vercel.app)
 
 ## Running locally
 
