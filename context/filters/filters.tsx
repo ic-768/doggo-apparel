@@ -41,27 +41,27 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
 
   const searchParams = useSearchParams();
 
-  const category = searchParams.get("category") || "all";
-  const text = searchParams.get("text") || "";
-  const priceFrom = Number(searchParams.get("priceFrom") || 0);
-  const priceTo = Number(searchParams.get("priceTo") || 100);
+  const urlCategory = searchParams.get("category") || "all";
+  const urlText = searchParams.get("text") || "";
+  const urlPriceFrom = Number(searchParams.get("priceFrom") || 0);
+  const urlPriceTo = Number(searchParams.get("priceTo") || 100);
 
   const [viewType, setViewType] = useState<ViewType>("grid");
-  const viewingAll = category === "all";
+  const viewingAll = urlCategory === "all";
 
   const applyFilters = () => {
     const categories = viewingAll
       ? clothingCategories
-      : [getClothingCategoryByName(category)!];
+      : [getClothingCategoryByName(urlCategory)!];
 
     // apply all filters
     return categories.map((category) => ({
       ...category,
       items: category.items.filter(
         (item) =>
-          item.name.toLowerCase().includes(text.toLowerCase()) &&
-          item.price >= Number(priceFrom || 0) &&
-          item.price <= Number(priceTo || 100),
+          item.name.toLowerCase().includes(urlText.toLowerCase()) &&
+          item.price >= Number(urlPriceFrom || 0) &&
+          item.price <= Number(urlPriceTo || 100),
       ),
     }));
   };
@@ -72,6 +72,7 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
     : // apply filters and return just items
       applyFilters().flatMap((category) => category.items);
 
+  // set filters as query params in the url
   const setFilters = ({
     categoryFilter,
     textFilter,
@@ -81,11 +82,16 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
     textFilter?: string;
     priceRange?: [number, number];
   }) => {
+    // try to get filters from changed values, default to values from url
+    const [priceMin, priceMax] = priceRange || [urlPriceFrom, urlPriceTo];
+
     const url = addQueryParams("/browse", {
-      category: categoryFilter ?? category,
-      text: textFilter ?? text,
-      priceFrom: priceRange?.[0] ?? priceFrom,
-      priceTo: priceRange?.[1] ?? priceTo,
+      category: categoryFilter,
+      text: textFilter ?? urlText,
+      // if 0 then ignore
+      priceFrom: priceMin || undefined,
+      // if 100 then ignore
+      priceTo: priceMax === 100 ? undefined : urlPriceTo,
     });
 
     router.replace(url);
@@ -94,12 +100,12 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
   return (
     <FiltersContext.Provider
       value={{
-        category,
-        priceRange: [priceFrom, priceTo],
+        category: urlCategory,
+        priceRange: [urlPriceFrom, urlPriceTo],
         setFilters: debounce(setFilters),
         viewType,
         setViewType,
-        textFilter: text,
+        textFilter: urlText,
         filteredData,
       }}
     >
