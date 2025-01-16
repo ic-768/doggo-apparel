@@ -2,24 +2,34 @@
 
 import { useState } from "react";
 import React, { createContext, ReactNode } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
-import { useUrlCategory } from "@/hooks/useUrlCategory";
 import { clothingCategories } from "@/lib/clothing-categories";
 import { ClothingCategories, ClothingItem } from "@/lib/types";
-import { debounce, getClothingCategoryByName } from "@/lib/utils";
+import {
+  addQueryParams,
+  debounce,
+  getClothingCategoryByName,
+} from "@/lib/utils";
 
 type ViewType = "grid" | "carousel";
 
 export interface FiltersContextType {
-  category: string;
-  setCategory: (category: string) => void;
-  priceRange: [number, number];
-  setPriceRange: (priceRange: [number, number]) => void;
   viewType: ViewType;
   setViewType: (viewType: ViewType) => void;
-  textFilter: string;
-  setTextFilter: (textFilter: string) => void;
   filteredData: ClothingCategories | ClothingItem[];
+  category: string;
+  textFilter: string;
+  priceRange: [number, number];
+  setFilters: ({
+    categoryFilter,
+    textFilter,
+    priceRange,
+  }: {
+    categoryFilter?: string;
+    textFilter?: string;
+    priceRange?: [number, number];
+  }) => void;
 }
 
 export const FiltersContext = createContext<FiltersContextType | undefined>(
@@ -27,11 +37,16 @@ export const FiltersContext = createContext<FiltersContextType | undefined>(
 );
 
 export const FiltersProvider = ({ children }: { children: ReactNode }) => {
-  const [textFilter, setTextFilter] = useState("");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
-  const [viewType, setViewType] = useState<ViewType>("grid");
-  const [category, setCategory] = useUrlCategory();
+  const router = useRouter();
 
+  const searchParams = useSearchParams();
+
+  const category = searchParams.get("category") || "all";
+  const text = searchParams.get("text") || "";
+  const priceFrom = searchParams.get("priceFrom") || 0;
+  const priceTo = searchParams.get("priceTo") || 100;
+
+  const [viewType, setViewType] = useState<ViewType>("grid");
   const viewingAll = category === "all";
 
   const applyFilters = () => {
@@ -44,9 +59,9 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
       ...category,
       items: category.items.filter(
         (item) =>
-          item.name.toLowerCase().includes(textFilter.toLowerCase()) &&
-          item.price >= priceRange[0] &&
-          item.price <= priceRange[1],
+          item.name.toLowerCase().includes(text.toLowerCase()) &&
+          item.price >= Number(priceFrom || 0) &&
+          item.price <= Number(priceTo || 100),
       ),
     }));
   };
@@ -57,20 +72,34 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
     : // apply filters and return just items
       applyFilters().flatMap((category) => category.items);
 
-  const debouncedTextSearch = debounce(setTextFilter);
-  const debouncedPriceSearch = debounce(setPriceRange, 100);
+  const setFilters = ({
+    categoryFilter,
+    textFilter,
+    priceRange,
+  }: {
+    categoryFilter?: string;
+    textFilter?: string;
+    priceRange?: [number, number];
+  }) => {
+    const url = addQueryParams("/browse", {
+      category: categoryFilter ?? category,
+      text: textFilter ?? text,
+      priceFrom: priceRange?.[0] ?? priceFrom,
+      priceTo: priceRange?.[1] ?? priceTo,
+    });
+
+    router.replace(url);
+  };
 
   return (
     <FiltersContext.Provider
       value={{
-        category: category,
-        setCategory,
-        priceRange,
-        setPriceRange: debouncedPriceSearch,
+        category,
+        priceRange: [Number(priceFrom || 0), Number(priceTo || 100)],
+        setFilters: debounce(setFilters),
         viewType,
         setViewType,
-        textFilter,
-        setTextFilter: debouncedTextSearch,
+        textFilter: text,
         filteredData,
       }}
     >

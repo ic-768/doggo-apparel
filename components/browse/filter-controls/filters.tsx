@@ -21,11 +21,9 @@ export default function Filters() {
     viewType,
     setViewType,
     category,
-    setCategory,
     textFilter,
-    setTextFilter,
     priceRange,
-    setPriceRange,
+    setFilters,
   } = useFilters();
 
   const isGrid = viewType === "grid";
@@ -33,7 +31,12 @@ export default function Filters() {
     <div className="flex flex-col gap-6 rounded-lg border p-4 shadow-sm">
       <div className="flex flex-col gap-2">
         <Label htmlFor="category-select">Category</Label>
-        <Select value={category || "all"} onValueChange={setCategory}>
+        <Select
+          value={category || "all"}
+          onValueChange={(v) => {
+            setFilters({ categoryFilter: v });
+          }}
+        >
           <SelectTrigger id="category-select">
             <SelectValue placeholder="all" />
           </SelectTrigger>
@@ -52,12 +55,12 @@ export default function Filters() {
         <Label htmlFor="view-mode">Search by name</Label>
         <Input
           id="text-filter"
-          onChange={(e) => setTextFilter(e.target.value)}
+          onChange={(e) => setFilters({ textFilter: e.target.value })}
           defaultValue={textFilter}
         />
       </div>
 
-      <PriceRangeSlider priceRange={priceRange} setPriceRange={setPriceRange} />
+      <PriceRangeSlider priceRange={priceRange} setFilters={setFilters} />
       <div className="flex flex-col gap-2">
         <Label htmlFor="view-mode">View mode ({viewType})</Label>
         <div className="flex items-center gap-2">

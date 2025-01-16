@@ -5,12 +5,12 @@ import { Label } from "@/components/ui/label";
 
 interface PriceRangeSliderProps {
   priceRange: [number, number];
-  setPriceRange: (range: [number, number]) => void;
+  setFilters: ({ priceRange }: { priceRange?: [number, number] }) => void;
 }
 
 export default function PriceRangeSlider({
   priceRange,
-  setPriceRange,
+  setFilters,
 }: PriceRangeSliderProps) {
   // to keep track of pricing without being held back by the debounced priceRange value
   const [realTimeValue, setRealTimeValue] = useState(priceRange);
@@ -19,7 +19,7 @@ export default function PriceRangeSlider({
     // update for ui
     setRealTimeValue(v);
     // debounced call
-    setPriceRange(v);
+    setFilters({ priceRange: v });
   };
   return (
     <div className="flex flex-col gap-2">

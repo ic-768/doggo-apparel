@@ -66,3 +66,40 @@ export function debounce<T extends (...args: any[]) => void>(
 
   return debouncedFunction;
 }
+
+type QueryParams = {
+  [key: string]:
+    | string
+    | number
+    | null
+    | boolean
+    | undefined
+    | (string | number | null | boolean | undefined)[];
+};
+
+export const addQueryParams = (
+  baseUrl: string,
+  params: QueryParams,
+): string => {
+  const [path, queryString] = baseUrl.split("?");
+  const existingParams = new URLSearchParams(queryString || "");
+
+  // Merge new parameters with existing ones
+  for (const key in params) {
+    const value = params[key];
+    if (Array.isArray(value)) {
+      existingParams.delete(key); // Remove existing key before appending
+      value.forEach((item) => {
+        if (item !== undefined && item !== null && item !== "") {
+          existingParams.append(key, item.toString());
+        }
+      });
+    } else if (value !== undefined && value !== null && value !== "") {
+      existingParams.set(key, value.toString());
+    } else {
+      existingParams.delete(key); // Remove key if value is null/undefined/empty
+    }
+  }
+
+  return `${path}?${existingParams.toString()}`;
+};
