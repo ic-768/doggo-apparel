@@ -32,7 +32,7 @@ export default function Filters() {
       <div className="flex flex-col gap-2">
         <Label htmlFor="category-select">Category</Label>
         <Select
-          value={category || "all"}
+          defaultValue={category || "all"}
           onValueChange={(v) => {
             setFilters({ categoryFilter: v });
           }}

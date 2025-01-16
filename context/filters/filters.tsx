@@ -43,8 +43,8 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
 
   const category = searchParams.get("category") || "all";
   const text = searchParams.get("text") || "";
-  const priceFrom = searchParams.get("priceFrom") || 0;
-  const priceTo = searchParams.get("priceTo") || 100;
+  const priceFrom = Number(searchParams.get("priceFrom") || 0);
+  const priceTo = Number(searchParams.get("priceTo") || 100);
 
   const [viewType, setViewType] = useState<ViewType>("grid");
   const viewingAll = category === "all";
@@ -95,7 +95,7 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
     <FiltersContext.Provider
       value={{
         category,
-        priceRange: [Number(priceFrom || 0), Number(priceTo || 100)],
+        priceRange: [priceFrom, priceTo],
         setFilters: debounce(setFilters),
         viewType,
         setViewType,
