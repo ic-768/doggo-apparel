@@ -86,7 +86,7 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
     const [priceMin, priceMax] = priceRange || [urlPriceFrom, urlPriceTo];
 
     const url = addQueryParams("/browse", {
-      category: categoryFilter,
+      category: categoryFilter === "all" ? undefined : categoryFilter,
       text: textFilter ?? urlText,
       // if 0 then ignore
       priceFrom: priceMin || undefined,
