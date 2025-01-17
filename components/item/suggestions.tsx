@@ -18,7 +18,7 @@ export default function Suggestions({ itemId }: { itemId: number }) {
     <MotionDiv {...fadeIntoView} className="flex flex-col gap-4">
       <h2 className="text-center text-2xl font-bold">You May Also Like</h2>
       <Carousel opts={{ loop: true }} className="mx-16">
-        <CarouselContent>
+        <CarouselContent className="p-3">
           {relatedItems.map((item) => (
             <CarouselItem
               key={item.name}
