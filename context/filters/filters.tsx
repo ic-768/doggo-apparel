@@ -43,8 +43,11 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
 
   const urlCategory = searchParams.get("category") || "all";
   const urlText = searchParams.get("text") || "";
-  const urlPriceFrom = Number(searchParams.get("priceFrom") || 0);
-  const urlPriceTo = Number(searchParams.get("priceTo") || 100);
+
+  const urlPriceRange: [number, number] = [
+    Number(searchParams.get("priceFrom") || 0),
+    Number(searchParams.get("priceTo") || 100),
+  ];
 
   const [viewType, setViewType] = useState<ViewType>("grid");
   const viewingAll = urlCategory === "all";
@@ -60,8 +63,8 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
       items: category.items.filter(
         (item) =>
           item.name.toLowerCase().includes(urlText.toLowerCase()) &&
-          item.price >= Number(urlPriceFrom || 0) &&
-          item.price <= Number(urlPriceTo || 100),
+          item.price >= Number(urlPriceRange[0] || 0) &&
+          item.price <= Number(urlPriceRange[1] || 100),
       ),
     }));
   };
@@ -83,15 +86,15 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
     priceRange?: [number, number];
   }) => {
     // try to get filters from changed values, default to values from url
-    const [priceMin, priceMax] = priceRange || [urlPriceFrom, urlPriceTo];
+    const [priceMin, priceMax] = priceRange || urlPriceRange;
+    const category = categoryFilter || urlCategory;
 
     const url = addQueryParams("/browse", {
-      category: categoryFilter === "all" ? undefined : categoryFilter,
       text: textFilter ?? urlText,
-      // if 0 then ignore
+      // omit default values from url
+      category: category === "all" ? undefined : category,
       priceFrom: priceMin || undefined,
-      // if 100 then ignore
-      priceTo: priceMax === 100 ? undefined : urlPriceTo,
+      priceTo: priceMax === 100 ? undefined : priceMax,
     });
 
     router.replace(url);
@@ -101,7 +104,7 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
     <FiltersContext.Provider
       value={{
         category: urlCategory,
-        priceRange: [urlPriceFrom, urlPriceTo],
+        priceRange: urlPriceRange,
         setFilters: debounce(setFilters),
         viewType,
         setViewType,
