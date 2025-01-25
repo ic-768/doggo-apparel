@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -47,12 +48,13 @@ export default function OrderSummary({
         </div>
       </div>
       <Button
+        asChild
         className="self-center"
         effect="expandIcon"
         icon={ArrowRightIcon}
         iconPlacement="right"
       >
-        Proceed To Checkout
+        <Link href="checkout">Proceed To Checkout</Link>
       </Button>
     </Card>
   );
