@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { Lock } from "lucide-react";
 
 import { submitOrder } from "@/actions/submit-order";
@@ -42,6 +43,8 @@ export default function CheckoutPage() {
     setIsProcessing(true);
     await submitOrder(data);
     setIsProcessing(false);
+    toast.success("Order placed successfully! Thank you very much!");
+    // TODO redirect to success page
   };
 
   if (isLoading)
