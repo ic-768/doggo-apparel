@@ -9,12 +9,14 @@ interface OrderSummaryProps {
   subtotal: number;
   total: number;
   shipping: number;
+  withProceed?: boolean;
 }
 
 export default function OrderSummary({
   subtotal,
   total,
   shipping,
+  withProceed = false,
 }: OrderSummaryProps) {
   return (
     <Card className="flex flex-col gap-4 self-start p-6">
@@ -47,15 +49,17 @@ export default function OrderSummary({
           </div>
         </div>
       </div>
-      <Button
-        asChild
-        className="self-center"
-        effect="expandIcon"
-        icon={ArrowRightIcon}
-        iconPlacement="right"
-      >
-        <Link href="checkout">Proceed To Checkout</Link>
-      </Button>
+      {withProceed ? (
+        <Button
+          asChild
+          className="self-center"
+          effect="expandIcon"
+          icon={ArrowRightIcon}
+          iconPlacement="right"
+        >
+          <Link href="checkout">Proceed To Checkout</Link>
+        </Button>
+      ) : null}
     </Card>
   );
 }

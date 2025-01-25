@@ -4,16 +4,18 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CreditCard, Lock } from "lucide-react";
 
-import { submitOrder } from "@/app/actions/submit-order";
+import { submitOrder } from "@/actions/submit-order";
+import OrderSummary from "@/components/cart/order-summary";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Loader } from "@/components/ui/loader";
 import Main from "@/components/ui/main";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useCartDetails } from "@/hooks/useCartDetails";
 
-// TODO
-export type CheckoutFormData = {
+type CheckoutFormData = {
   email: string;
   firstName: string;
   lastName: string;
@@ -27,6 +29,9 @@ export type CheckoutFormData = {
 };
 
 export default function CheckoutPage() {
+  const { cart, subtotal, items, shipping, total, isFetchingCartDetails } =
+    useCartDetails();
+
   const [isProcessing, setIsProcessing] = useState(false);
   const {
     register,
@@ -36,14 +41,16 @@ export default function CheckoutPage() {
 
   const onSubmit = async (data: CheckoutFormData) => {
     setIsProcessing(true);
-    // Simulate API call
-    console.log("client", data);
-    const res = await submitOrder(data);
-    console.log("client", res);
+    await submitOrder(data);
     setIsProcessing(false);
   };
 
-  console.log("ISPROCESSING", isProcessing);
+  if (cart === null || !items || isFetchingCartDetails)
+    return (
+      <Main className="justify-center">
+        <Loader />
+      </Main>
+    );
 
   return (
     <Main>
@@ -231,27 +238,7 @@ export default function CheckoutPage() {
           </Button>
         </form>
 
-        <div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Order Summary</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex justify-between">
-                <span>Subtotal</span>
-                <span>$89.94</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Shipping</span>
-                <span>$0.00</span>
-              </div>
-              <div className="flex justify-between font-semibold">
-                <span>Total</span>
-                <span>$89.94</span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+        <OrderSummary subtotal={subtotal} shipping={shipping} total={total} />
       </div>
     </Main>
   );
