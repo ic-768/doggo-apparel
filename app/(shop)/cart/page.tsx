@@ -11,22 +11,22 @@ import Main from "@/components/ui/main";
 import { useCartDetails } from "@/hooks/useCartDetails";
 
 export default function CartPage() {
-  const { cart, items, isFetchingCartDetails, subtotal, shipping, total } =
+  const { cart, items, isLoading, subtotal, shipping, total } =
     useCartDetails();
 
-  if (cart === null || !items || isFetchingCartDetails)
+  if (isLoading)
     return (
       <Main className="justify-center">
         <Loader />
       </Main>
     );
 
-  const view = cart.length ? (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+  const view = cart!.length ? (
+    <div className="grid gap-8 lg:grid-cols-3">
       <div className="col-span-1 flex flex-col lg:col-span-2">
         <ul className="flex flex-col gap-4">
           <AnimatePresence>
-            {items.map((item) => (
+            {items!.map((item) => (
               <CartItem key={`${item.id}${item.size}`} item={item} />
             ))}
           </AnimatePresence>
@@ -49,7 +49,7 @@ export default function CartPage() {
       <div className="container flex flex-col gap-12">
         <div className="flex">
           <BackToBrowse />
-          {cart.length > 0 && <ClearCart />}
+          {cart!.length > 0 && <ClearCart />}
         </div>
         {view}
       </div>

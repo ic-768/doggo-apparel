@@ -17,7 +17,7 @@ export default function FeaturedProducts() {
         >
           Featured Products
         </MotionH>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <PreviewCard
             alt="awesome dog in an awesome hat"
             src={hat11}

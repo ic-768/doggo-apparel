@@ -28,8 +28,11 @@ export function useCartDetails() {
       (total, item) => total + item.price * item.quantity,
       0,
     ) || 0;
+
   const shipping = subtotal > 50 ? 0 : 5;
   const total = subtotal + shipping;
+
+  const isLoading = cart === null || !items || isFetchingCartDetails;
 
   return {
     cart,
@@ -37,6 +40,6 @@ export function useCartDetails() {
     subtotal,
     total,
     shipping,
-    isFetchingCartDetails,
+    isLoading,
   };
 }

@@ -28,8 +28,7 @@ type CheckoutFormData = {
 };
 
 export default function CheckoutPage() {
-  const { cart, subtotal, items, shipping, total, isFetchingCartDetails } =
-    useCartDetails();
+  const { subtotal, shipping, total, isLoading } = useCartDetails();
 
   const [isProcessing, setIsProcessing] = useState(false);
   const {
@@ -44,7 +43,7 @@ export default function CheckoutPage() {
     setIsProcessing(false);
   };
 
-  if (cart === null || !items || isFetchingCartDetails)
+  if (isLoading)
     return (
       <Main className="justify-center">
         <Loader />
@@ -53,6 +52,7 @@ export default function CheckoutPage() {
 
   return (
     <Main>
+      <title>Checkout</title>
       <div className="flex items-center gap-2">
         <Lock className="size-4 text-muted-foreground" />
         <h1 className="text-xl font-semibold">Secure Checkout</h1>
