@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { CreditCard, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
 
 import { submitOrder } from "@/actions/submit-order";
 import OrderSummary from "@/components/cart/order-summary";
@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader } from "@/components/ui/loader";
 import Main from "@/components/ui/main";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useCartDetails } from "@/hooks/useCartDetails";
 
 type CheckoutFormData = {
@@ -54,22 +53,22 @@ export default function CheckoutPage() {
 
   return (
     <Main>
-      <div className="mb-8 flex items-center gap-2">
-        <Lock className="h-4 w-4 text-muted-foreground" />
+      <div className="flex items-center gap-2">
+        <Lock className="size-4 text-muted-foreground" />
         <h1 className="text-xl font-semibold">Secure Checkout</h1>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-3">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-8 lg:col-span-2"
+          className="flex flex-col gap-8 lg:col-span-2"
         >
           <Card>
             <CardHeader>
               <CardTitle>Contact Information</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
+            <CardContent>
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
@@ -89,9 +88,9 @@ export default function CheckoutPage() {
             <CardHeader>
               <CardTitle>Shipping Address</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="firstName">First Name</Label>
                   <Input
                     id="firstName"
@@ -105,7 +104,7 @@ export default function CheckoutPage() {
                     </p>
                   )}
                 </div>
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="lastName">Last Name</Label>
                   <Input
                     id="lastName"
@@ -121,7 +120,7 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="address">Address</Label>
                 <Input
                   id="address"
@@ -134,7 +133,7 @@ export default function CheckoutPage() {
                 )}
               </div>
 
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="apartment">
                   Apartment, suite, etc. (optional)
                 </Label>
@@ -142,7 +141,7 @@ export default function CheckoutPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="city">City</Label>
                   <Input
                     id="city"
@@ -155,7 +154,7 @@ export default function CheckoutPage() {
                   )}
                 </div>
 
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="zipCode">ZIP Code</Label>
                   <Input
                     id="zipCode"
@@ -175,7 +174,7 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="phone">Phone</Label>
                 <Input
                   id="phone"
@@ -195,36 +194,27 @@ export default function CheckoutPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Payment Method</CardTitle>
+              <CardTitle>Card Details</CardTitle>
             </CardHeader>
             <CardContent>
-              <RadioGroup defaultValue="card" className="space-y-4">
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="card" id="card" />
-                  <Label htmlFor="card" className="flex items-center gap-2">
-                    <CreditCard className="h-4 w-4" />
-                    Credit Card
-                  </Label>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-col gap-2">
+                  <Label>Card Number</Label>
+                  <Input placeholder="1234 1234 1234 1234" />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label>Card Number</Label>
-                    <Input placeholder="1234 1234 1234 1234" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Name on Card</Label>
-                    <Input placeholder="John Doe" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Expiration Date</Label>
-                    <Input placeholder="MM/YY" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>CVV</Label>
-                    <Input placeholder="123" />
-                  </div>
+                <div className="flex flex-col gap-2">
+                  <Label>Name on Card</Label>
+                  <Input placeholder="John Doe" />
                 </div>
-              </RadioGroup>
+                <div className="flex flex-col gap-2">
+                  <Label>Expiration Date</Label>
+                  <Input placeholder="MM/YY" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label>CVV</Label>
+                  <Input placeholder="123" />
+                </div>
+              </div>
             </CardContent>
           </Card>
 
