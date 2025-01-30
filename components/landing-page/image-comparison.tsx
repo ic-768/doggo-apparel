@@ -42,54 +42,52 @@ export default function ImageComparison() {
 
   return (
     <div className="relative" ref={containerRef}>
-      <div className="">
-        {/* img1 */}
+      {/* img1 */}
+      <Image
+        className="pointer-events-none inset-0 select-none rounded-lg"
+        alt="cutely dressed dog"
+        src={dog}
+        width={500}
+        height={500}
+      />
+
+      {/* img 2 */}
+      <div
+        className="absolute inset-0"
+        style={{
+          clipPath: `inset(0 0 0 ${position}%)`,
+        }}
+      >
         <Image
-          className="inset-0 rounded-lg"
+          className="pointer-events-none select-none rounded-lg"
           alt="cutely dressed dog"
-          src={dog}
+          src={plainDog}
           width={500}
           height={500}
         />
+      </div>
 
-        {/* img 2 */}
-        <div
-          className="absolute inset-0"
-          style={{
-            clipPath: `inset(0 0 0 ${position}%)`,
-          }}
-        >
-          <Image
-            className="rounded-lg"
-            alt="cutely dressed dog"
-            src={plainDog}
-            width={500}
-            height={500}
-          />
-        </div>
-
-        {/* Divider line */}
-        <div
-          className="absolute inset-y-0"
-          style={{ left: `${position}%` }}
-          onMouseDown={() => (isDragging.current = true)}
-          onTouchStart={() => (isDragging.current = true)}
-        >
-          <div className="absolute inset-y-0 -left-px w-0.5 bg-blue-500" />
-          <div className="absolute left-1/2 top-1/2 size-8 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize rounded-full bg-blue-500 p-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-white"
-            >
-              <path d="M21 12H3M3 12l5-5M3 12l5 5M21 12l-5-5M21 12l-5 5" />
-            </svg>
-          </div>
+      {/* Divider line */}
+      <div
+        className="absolute inset-y-0"
+        style={{ left: `${position}%` }}
+        onMouseDown={() => (isDragging.current = true)}
+        onTouchStart={() => (isDragging.current = true)}
+      >
+        <div className="absolute inset-y-0 -left-px w-0.5 bg-blue-500" />
+        <div className="absolute left-1/2 top-1/2 size-8 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize rounded-full bg-blue-500 p-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-white"
+          >
+            <path d="M21 12H3M3 12l5-5M3 12l5 5M21 12l-5-5M21 12l-5 5" />
+          </svg>
         </div>
       </div>
     </div>
