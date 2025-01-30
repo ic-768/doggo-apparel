@@ -1,13 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
 
-import dog from "@/images/glasses/glasses-3.jpg";
 import { fadeIntoView } from "@/lib/motion";
 
 import { Button } from "../ui/button";
 import MotionDiv from "../ui/motion/motion-div";
 import H1P from "../ui/motion/motion-h";
 import MotionP from "../ui/motion/motion-p";
+import ImageComparison from "./image-comparison";
 
 export default function ShopNow() {
   return (
@@ -32,18 +31,11 @@ export default function ShopNow() {
         </Button>
       </div>
       <MotionDiv
-        className="lg:w-1/2"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <Image
-          className="rounded-lg"
-          alt="cutely dressed dog"
-          src={dog}
-          width={500}
-          height={500}
-        />
+        <ImageComparison />
       </MotionDiv>
     </section>
   );
