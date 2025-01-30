@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import dog from "@/images/glasses/glasses-3.jpg";
-import plainDog from "@/images/plain-dog.png";
+import plainDog from "@/images/plain-dog.jpg";
 
 export default function ImageComparison() {
   const [position, setPosition] = useState(50);
