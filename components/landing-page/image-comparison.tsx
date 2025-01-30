@@ -75,7 +75,7 @@ export default function ImageComparison() {
         onTouchStart={() => (isDragging.current = true)}
       >
         <div className="absolute inset-y-0 -left-px w-0.5 bg-blue-500" />
-        <div className="absolute left-1/2 top-1/2 size-8 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize rounded-full bg-blue-500 p-2">
+        <div className="absolute left-1/2 top-1/2 size-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize rounded-full bg-blue-500 p-2 sm:size-8">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
