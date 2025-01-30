@@ -44,7 +44,7 @@ export default function ImageComparison() {
     <div className="relative" ref={containerRef}>
       {/* img1 */}
       <Image
-        className="pointer-events-none select-none rounded-lg"
+        className="pointer-events-none inset-0 select-none rounded-lg"
         alt="cutely dressed dog"
         src={dog}
         width={500}
@@ -69,13 +69,13 @@ export default function ImageComparison() {
 
       {/* Divider line */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-y-0"
         style={{ left: `${position}%` }}
         onMouseDown={() => (isDragging.current = true)}
         onTouchStart={() => (isDragging.current = true)}
       >
-        <div className="absolute inset-y-0 w-0.5 -translate-x-1/2 bg-blue-500" />
-        <div className="absolute inset-y-0 my-auto size-10 -translate-x-1/2 cursor-ew-resize rounded-full bg-blue-500 p-2 sm:size-8">
+        <div className="absolute inset-y-0 my-auto w-0.5 -translate-x-1/2 bg-blue-500" />
+        <div className="absolute inset-0 m-auto size-10 -translate-x-1/2 cursor-ew-resize rounded-full bg-blue-500 p-2 sm:size-8">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
