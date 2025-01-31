@@ -33,7 +33,7 @@ export default function CartButton({
   };
 
   const classes = twMerge(
-    "hover:bg-neutral-200 p-2 rounded-lg transition-all",
+    "hover:bg-neutral-200 p-3 sm:p-2 rounded-lg transition-all outline outline-1 outline-neutral-300 sm:outline-none",
     className,
   );
 

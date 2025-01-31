@@ -47,7 +47,7 @@ export default async function ItemPage({
               <PriceTag price={item.price} />
               <FavoritesButton
                 rotateOnIdle
-                className="fixed right-2 top-48 flex size-12 items-center justify-center rounded-full bg-red-100 outline outline-1 outline-red-400 hover:bg-red-200 sm:static"
+                className="fixed right-2 top-48 flex size-12 items-center justify-center rounded-full bg-red-100 outline-1 outline-red-400 hover:bg-red-200 sm:static sm:outline"
                 id={item.id}
               />
             </div>
