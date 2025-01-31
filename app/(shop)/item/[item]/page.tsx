@@ -28,6 +28,7 @@ export default async function ItemPage({
 
   return (
     <Main className="items-center">
+      <title>{item.name}</title>
       <div className="container flex flex-col gap-8">
         <BackToBrowse />
 
