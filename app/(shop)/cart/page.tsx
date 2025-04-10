@@ -1,14 +1,14 @@
 "use client";
 import { AnimatePresence } from "framer-motion";
 
-import CartItem from "@/components/cart/cart-item";
-import ClearCart from "@/components/cart/clear-cart";
-import NoCartItems from "@/components/cart/no-cart-items";
-import OrderSummary from "@/components/cart/order-summary";
 import BackToBrowse from "@/components/ui/back-to-browse";
 import { Loader } from "@/components/ui/loader";
 import Main from "@/components/ui/main";
 import { useCartDetails } from "@/hooks/useCartDetails";
+
+import ClearCart from "./components/clear-cart";
+import NoCartItems from "./components/no-cart-items";
+import OrderSummary from "./components/order-summary";
 
 export default function CartPage() {
   const { cart, items, isLoading, subtotal, shipping, total } =
@@ -27,7 +27,7 @@ export default function CartPage() {
         <ul className="flex flex-col gap-4">
           <AnimatePresence>
             {items!.map((item) => (
-              <CartItem key={`${item.id}${item.size}`} item={item} />
+              <NoCartItems key={`${item.id}${item.size}`} />
             ))}
           </AnimatePresence>
         </ul>

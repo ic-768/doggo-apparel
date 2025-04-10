@@ -2,14 +2,15 @@
 
 import { useQuery } from "@tanstack/react-query";
 
-import ClearFavorites from "@/components/favorites/clear-favorites";
-import NoFavorites from "@/components/favorites/no-favorites";
 import ItemList from "@/components/item-list/item-list";
 import BackToBrowse from "@/components/ui/back-to-browse";
 import { Loader } from "@/components/ui/loader";
 import Main from "@/components/ui/main";
 import { useFavorites } from "@/context/favorites/use-favorites";
 import { fetchItems } from "@/lib/fetch";
+
+import ClearFavorites from "./components/clear-favorites";
+import NoFavorites from "./components/no-favorites";
 
 export default function Favorites() {
   const { favorites } = useFavorites();

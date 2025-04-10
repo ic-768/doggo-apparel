@@ -1,7 +1,8 @@
-import FilterControls from "@/components/browse/filter-controls";
-import ViewModes from "@/components/browse/view-modes";
 import Main from "@/components/ui/main";
 import { FiltersProvider } from "@/context/filters/filters";
+
+import FilterControls from "./components/filter-controls";
+import ViewModes from "./components/view-modes";
 
 export async function generateMetadata({
   searchParams,

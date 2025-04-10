@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 import { Galada } from "next/font/google";
 import localFont from "next/font/local";
 
-import Footer from "@/components/landing-page/footer";
+import Footer from "@/components/footer";
 import { Loader } from "@/components/ui/loader";
 import { ShoppingCartProvider } from "@/context/cart/shopping-cart";
 import { FavoritesProvider } from "@/context/favorites/favorites";
@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${galada.variable} ${geistSans.variable} font-geistSans flex min-h-screen flex-col items-center antialiased`}
+        className={`${galada.variable} ${geistSans.variable} flex min-h-screen flex-col items-center font-geistSans antialiased`}
       >
         <ShoppingCartProvider>
           <FavoritesProvider>

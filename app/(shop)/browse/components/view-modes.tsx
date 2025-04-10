@@ -1,14 +1,14 @@
 "use client";
 
-import CategoryCarousel from "@/components/browse/category-carousel/category-carousel";
 import ItemList from "@/components/item-list/item-list";
+import NoFilteredResults from "@/components/item-list/no-filtered-results";
+import MotionDiv from "@/components/ui/motion/motion-div";
 import { useFilters } from "@/context/filters/use-filters";
 import { fadeIntoView } from "@/lib/motion";
 import { ClothingCategories, ClothingItem } from "@/lib/types";
 
-import NoFilteredResults from "../item-list/no-filtered-results";
-import MotionDiv from "../ui/motion/motion-div";
 import AllCategoriesCarousels from "./category-carousel/all-categories-carousels";
+import CategoryCarousel from "./category-carousel/category-carousel";
 
 export default function ViewModes() {
   const { viewType, category, textFilter, filteredData } = useFilters();

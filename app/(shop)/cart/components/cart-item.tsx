@@ -5,11 +5,10 @@ import NextLink from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import MotionLi from "@/components/ui/motion/motion-li";
 import type { CartItem } from "@/context/cart/shopping-cart";
 import { useShoppingCart } from "@/context/cart/use-shopping-cart";
 import { ClothingItem } from "@/lib/types";
-
-import MotionLi from "../ui/motion/motion-li";
 
 export default function CartItem({ item }: { item: CartItem & ClothingItem }) {
   const { removeFromCart, clearFromCart, addToCart } = useShoppingCart();

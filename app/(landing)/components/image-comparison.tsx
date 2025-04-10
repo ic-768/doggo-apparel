@@ -38,7 +38,7 @@ export default function ImageComparison() {
       window.removeEventListener("mouseup", handleMouseUp);
       window.removeEventListener("touchend", handleMouseUp);
     };
-  }, []); // Added handleMove to the dependency array
+  }, []);
 
   return (
     <div className="relative" ref={containerRef}>

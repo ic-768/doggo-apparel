@@ -1,6 +1,6 @@
-import FeaturedProducts from "@/components/landing-page/featured-products";
-import ShopNow from "@/components/landing-page/shop-now";
-import Testimonials from "@/components/landing-page/testimonials";
+import FeaturedProducts from "./components/featured-products";
+import ShopNow from "./components/shop-now";
+import Testimonials from "./components/testimonials";
 
 export default function LandingPage() {
   return (

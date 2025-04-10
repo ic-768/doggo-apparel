@@ -2,9 +2,8 @@ import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import MotionDiv from "@/components/ui/motion/motion-div";
 import { fadeIntoView } from "@/lib/motion";
-
-import MotionDiv from "../ui/motion/motion-div";
 
 export default function NoCartItems() {
   return (

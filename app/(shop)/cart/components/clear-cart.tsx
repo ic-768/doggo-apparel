@@ -1,9 +1,8 @@
 import { useQueryClient } from "@tanstack/react-query";
 
+import { Button } from "@/components/ui/button";
+import Confirmation from "@/components/ui/confirmation";
 import { useShoppingCart } from "@/context/cart/use-shopping-cart";
-
-import { Button } from "../ui/button";
-import Confirmation from "../ui/confirmation";
 
 export default function ClearCart() {
   const { clearCart } = useShoppingCart();

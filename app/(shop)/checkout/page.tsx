@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import { Lock } from "lucide-react";
 
 import { submitOrder } from "@/actions/submit-order";
-import OrderSummary from "@/components/cart/order-summary";
 import BackToBrowse from "@/components/ui/back-to-browse";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,6 +14,8 @@ import { Label } from "@/components/ui/label";
 import { Loader } from "@/components/ui/loader";
 import Main from "@/components/ui/main";
 import { useCartDetails } from "@/hooks/useCartDetails";
+
+import OrderSummary from "../cart/components/order-summary";
 
 type CheckoutFormData = {
   email: string;

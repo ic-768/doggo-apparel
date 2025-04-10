@@ -1,9 +1,8 @@
 import { useQueryClient } from "@tanstack/react-query";
 
+import { Button } from "@/components/ui/button";
+import Confirmation from "@/components/ui/confirmation";
 import { useFavorites } from "@/context/favorites/use-favorites";
-
-import { Button } from "../ui/button";
-import Confirmation from "../ui/confirmation";
 
 export default function ClearFavorites() {
   const { clearFavorites } = useFavorites();

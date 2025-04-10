@@ -1,16 +1,16 @@
-import MotionH from "@/components/ui/motion/motion-h";
-import selfie1 from "@/images/user-selfies/selfie-1.jpg";
-import selfie2 from "@/images/user-selfies/selfie-2.jpg";
-import selfie3 from "@/images/user-selfies/selfie-3.webp";
-import { fadeIntoView } from "@/lib/motion";
-
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../../ui/carousel";
+} from "@/components/ui/carousel";
+import MotionH from "@/components/ui/motion/motion-h";
+import selfie1 from "@/images/user-selfies/selfie-1.jpg";
+import selfie2 from "@/images/user-selfies/selfie-2.jpg";
+import selfie3 from "@/images/user-selfies/selfie-3.webp";
+import { fadeIntoView } from "@/lib/motion";
+
 import TestimonialCard from "./testimonial-card";
 
 const CarouselCard = ({ children }: { children: React.ReactNode }) => (

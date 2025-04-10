@@ -1,23 +1,24 @@
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+import MotionDiv from "@/components/ui/motion/motion-div";
+import MotionH from "@/components/ui/motion/motion-h";
+import MotionP from "@/components/ui/motion/motion-p";
 import { fadeIntoView } from "@/lib/motion";
 
-import { Button } from "../ui/button";
-import MotionDiv from "../ui/motion/motion-div";
-import H1P from "../ui/motion/motion-h";
-import MotionP from "../ui/motion/motion-p";
 import ImageComparison from "./image-comparison";
 
 export default function ShopNow() {
   return (
     <section className="container mx-auto flex flex-col items-center gap-8 px-4 pb-12 text-center sm:text-start lg:flex-row">
       <div className="flex flex-col items-center gap-8 lg:w-1/2">
-        <H1P
+        <MotionH
+          as="h1"
           className="font-galada text-5xl font-bold text-gray-800 lg:text-6xl"
           {...fadeIntoView}
         >
           Doggo Apparel
-        </H1P>
+        </MotionH>
         <MotionP className="text-xl text-gray-600" {...fadeIntoView}>
           Discover the latest in canine fashion at Doggo Apparel. Because every
           dog deserves to look their best!
