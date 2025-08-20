@@ -26,10 +26,12 @@ CREATE INDEX idx_clothing_items_in_stock ON clothing_items(in_stock);
 
 -- Insert sample categories
 INSERT INTO categories (name) VALUES
+  ('Accessories'),
   ('Fitness'),
-  ('Casual'),
-  ('Formal'),
-  ('Outerwear');
+  ('Glasses'),
+  ('Hats'),
+  ('Loungewear'),
+  ('Outfits');
 
 -- Insert sample clothing items
 INSERT INTO clothing_items (name, price, image_url, description, sizes, category_id) VALUES
