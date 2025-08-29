@@ -2,40 +2,40 @@ INSERT INTO clothing_items (name, price, image_url, description, sizes, category
   (
     'Black Beater',
     19.99,
-    'path/to/beater.jpg',
+    'fitness/beater.jpg',
     'Durable beater for high-intensity workouts.',
     ARRAY['XS', 'S', 'M', 'L', 'XL'],
-    (SELECT id FROM categories WHERE name = 'Fitness')
+    (SELECT id FROM categories WHERE name = 'fitness')
   ),
   (
     'Gray Jacket',
     49.99,
-    'path/to/jacket2.jpg',
+    'fitness/jacket-2.jpg',
     'A lightweight jacket for outdoor activities.',
     NULL,
-    (SELECT id FROM categories WHERE name = 'Fitness')
+    (SELECT id FROM categories WHERE name = 'fitness')
   ),
   (
     'Gray Jacket (mini)',
     49.99,
-    'path/to/jacket.jpg',
+    'fitness/jacket.jpg',
     'Extra-small size jacket for our pocket-friendly friends.',
     NULL,
-    (SELECT id FROM categories WHERE name = 'Fitness')
+    (SELECT id FROM categories WHERE name = 'fitness')
   ),
   (
     'Running shirt',
     69.99,
-    'path/to/runner.jpg',
+    'fitness/runner.jpg',
     'High-performance, absorbent sports tee for any athlete.',
     ARRAY['XS', 'S', 'M', 'L', 'XL'],
-    (SELECT id FROM categories WHERE name = 'Fitness')
+    (SELECT id FROM categories WHERE name = 'fitness')
   ),
   (
     'Treadmill',
     499.99,
-    'path/to/treadmill.jpg',
+    'fitness/treadmill.jpg',
     'A custom-made, state-of-the-art treadmill for home workouts.',
     NULL,
-    (SELECT id FROM categories WHERE name = 'Fitness')
+    (SELECT id FROM categories WHERE name = 'fitness')
   );

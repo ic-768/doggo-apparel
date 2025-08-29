@@ -26,30 +26,30 @@ CREATE INDEX idx_clothing_items_in_stock ON clothing_items(in_stock);
 
 -- Insert sample categories
 INSERT INTO categories (name) VALUES
-  ('Accessories'),
-  ('Fitness'),
-  ('Glasses'),
-  ('Hats'),
-  ('Loungewear'),
-  ('Outfits');
+  ('accessories'),
+  ('fitness'),
+  ('glasses'),
+  ('hats'),
+  ('loungewear'),
+  ('outfits');
 
 -- Insert sample clothing items
 INSERT INTO clothing_items (name, price, image_url, description, sizes, category_id) VALUES
   (
     'Orange Hoodie',
     24.99,
-    'path/to/bball.jpg',
+    'fitness/bball.jpg',
     'Perfect for sports or casual streetwear.',
     ARRAY['S', 'M', 'L', 'XL'],
-    (SELECT id FROM categories WHERE name = 'Fitness')
+    (SELECT id FROM categories WHERE name = 'fitness')
   ),
   (
     'White Beater',
     19.99,
-    'path/to/beater2.jpg',
+    'fitness/beater-2.jpg',
     'A lightweight beater for your fitness routines.',
     NULL,
-    (SELECT id FROM categories WHERE name = 'Fitness')
+    (SELECT id FROM categories WHERE name = 'fitness')
   );
 
 -- Optional: Create a view for easier querying with category names
