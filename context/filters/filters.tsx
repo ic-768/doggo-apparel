@@ -66,7 +66,7 @@ export const FiltersProvider = ({
     // apply all filters
     return filtered_categories.map((category) => ({
       ...category,
-      items: category.clothing_items.filter(
+      clothing_items: category.clothing_items.filter(
         (item) =>
           item.name.toLowerCase().includes(urlText.toLowerCase()) &&
           item.price >= Number(urlPriceRange[0] || 0) &&
