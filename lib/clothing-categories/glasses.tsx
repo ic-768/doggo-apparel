@@ -9,11 +9,11 @@ import Glasses8 from "@/images/glasses/glasses-8.jpg";
 
 export const glasses = {
   name: "Glasses",
-  items: [
+  clothing_items: [
     {
       name: "Classic Black Frames",
       price: 29.99,
-      image: Glasses1,
+      image_url: Glasses1,
       description:
         "A stylish pair of classic black-framed glasses for everyday use.",
       id: 17,
@@ -22,7 +22,7 @@ export const glasses = {
     {
       name: "Vintage Round Glasses",
       price: 24.99,
-      image: Glasses2,
+      image_url: Glasses2,
       description:
         "Retro-inspired round glasses that add a vintage touch to any outfit.",
       id: 18,
@@ -30,7 +30,7 @@ export const glasses = {
     {
       name: "Sporty Wraparound Glasses",
       price: 34.99,
-      image: Glasses3,
+      image_url: Glasses3,
       description:
         "Durable wraparound glasses designed for outdoor sports and activities.",
       id: 19,
@@ -38,7 +38,7 @@ export const glasses = {
     {
       name: "Trendy Oversized Frames",
       price: 32.99,
-      image: Glasses4,
+      image_url: Glasses4,
       description:
         "Oversized frames that offer a trendy style and great sun protection.",
       id: 20,
@@ -47,7 +47,7 @@ export const glasses = {
     {
       name: "Elegant Reading Glasses",
       price: 39.99,
-      image: Glasses5,
+      image_url: Glasses5,
       description:
         "Elegant reading glasses that blend style and functionality.",
       id: 21,
@@ -55,14 +55,14 @@ export const glasses = {
     {
       name: "Sleek Cat Eye Glasses",
       price: 27.99,
-      image: Glasses6,
+      image_url: Glasses6,
       description: "Chic cat-eye glasses for a bold, fashionable look.",
       id: 22,
     },
     {
       name: "Stylish Clear Frame Glasses",
       price: 29.99,
-      image: Glasses7,
+      image_url: Glasses7,
       description:
         "Contemporary clear frame glasses for a sleek, modern appearance.",
       id: 23,
@@ -71,7 +71,7 @@ export const glasses = {
     {
       name: "Luxury Designer Shades",
       price: 89.99,
-      image: Glasses8,
+      image_url: Glasses8,
       description:
         "Exclusive designer sunglasses that combine elegance and luxury.",
       id: 24,

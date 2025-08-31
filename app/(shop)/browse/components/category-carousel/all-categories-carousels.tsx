@@ -11,7 +11,7 @@ export default function AllCategoriesCarousels({
 }) {
   return categories.map(
     (category) =>
-      category.items.length !== 0 && (
+      category.clothing_items.length !== 0 && (
         <CategoryCarousel
           key={category.name}
           category={category}

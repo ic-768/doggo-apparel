@@ -9,6 +9,6 @@ export const useFilters = (): FiltersContextType => {
     throw new Error("useFilters must be used within a FiltersProvider");
   }
 
-  // ! Can guard agains hydration errors using isClient if needed
+  // ! Can guard against hydration errors using isClient if needed
   return context;
 };

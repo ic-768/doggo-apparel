@@ -20,7 +20,7 @@ export default function ViewModes() {
   const isAllCategories = hasAllCategories(filteredData);
 
   const isEmpty = isAllCategories
-    ? filteredData.every((cat) => cat.items.length === 0)
+    ? filteredData.every((cat) => cat.clothing_items.length === 0)
     : filteredData.length === 0;
 
   if (isEmpty) return <NoFilteredResults />;
@@ -44,7 +44,7 @@ export default function ViewModes() {
         textFilter={textFilter}
         category={{
           name: category,
-          items: filteredData,
+          clothing_items: filteredData,
         }}
       />
     );
@@ -62,7 +62,7 @@ function AllList({
 }) {
   return categories.map(
     (category, i) =>
-      category.items.length !== 0 && (
+      category.clothing_items.length !== 0 && (
         <MotionDiv
           key={category.name + i}
           {...fadeIntoView}
@@ -71,7 +71,7 @@ function AllList({
           <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
             {category.name}
           </h2>
-          <ItemList textFilter={textFilter} items={category.items} />
+          <ItemList textFilter={textFilter} items={category.clothing_items} />
         </MotionDiv>
       ),
   );

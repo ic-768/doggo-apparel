@@ -5,11 +5,11 @@ import Robe1 from "@/images/robes/robe-2.jpg";
 
 export const loungewear = {
   name: "Loungewear",
-  items: [
+  clothing_items: [
     {
       name: "White Robe",
       price: 59.99,
-      image: Robe,
+      image_url: Robe,
       description: "Luxurious robe perfect for spa days.",
       id: 36,
       sizes: ["S", "M", "L", "XL"],
@@ -17,7 +17,7 @@ export const loungewear = {
     {
       name: "Cream Robe",
       price: 69.99,
-      image: Robe1,
+      image_url: Robe1,
       description: "Soft and cozy robe for relaxation.",
       id: 37,
       sizes: ["XS", "S", "M", "L", "XL"],
@@ -25,7 +25,7 @@ export const loungewear = {
     {
       name: "Blue Pyjama Set",
       price: 39.99,
-      image: Pyjama1,
+      image_url: Pyjama1,
       description: "Comfortable pajama set for a good night's sleep.",
       id: 38,
       sizes: ["XS", "S", "M", "L", "XL"],
@@ -33,7 +33,7 @@ export const loungewear = {
     {
       name: "Pink Pyjama Set",
       price: 49.99,
-      image: Pyjama2,
+      image_url: Pyjama2,
       description: "Stylish pajama set for lounging.",
       id: 39,
       sizes: ["XS", "S", "M", "L", "XL"],

@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { imageProps } from "@/lib/constants";
+import { imageProps, imagesUrl } from "@/lib/constants";
 import { ClothingItem } from "@/lib/types";
 
 import MotionDiv from "../../ui/motion/motion-div";
@@ -31,7 +31,7 @@ export default function ItemCard({
   const rotate = useSpring(0);
   if (!item) return;
 
-  const { image, name, description, price, id } = item;
+  const { image_url, name, description, price, id } = item;
 
   // tilt card left or right depending on mouse position - fun!
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -84,8 +84,11 @@ export default function ItemCard({
       <Card className="flex h-full flex-col">
         <Link className="grow" href={`/item/${id}`}>
           <CardHeader className="relative p-0">
-            <Image alt="name" src={image} {...imageProps} />
-
+            <Image
+              alt="name"
+              src={`${imagesUrl}/${image_url}`}
+              {...imageProps}
+            />
             <PriceTag
               className="absolute bottom-2 right-2 col-span-1 ml-auto"
               price={price}

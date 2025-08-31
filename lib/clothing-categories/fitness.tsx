@@ -8,11 +8,11 @@ import Treadmill from "@/images/fitness/treadmill.jpg";
 
 export const fitness = {
   name: "Fitness",
-  items: [
+  clothing_items: [
     {
       name: "Orange Hoodie",
       price: 24.99,
-      image: Bball,
+      image_url: Bball,
       description: "Perfect for sports or casual streetwear.",
       id: 10,
       sizes: ["S", "M", "L", "XL"],
@@ -20,14 +20,14 @@ export const fitness = {
     {
       name: "White Beater",
       price: 19.99,
-      image: Beater2,
+      image_url: Beater2,
       description: "A lightweight beater for your fitness routines.",
       id: 11,
     },
     {
       name: "Black Beater",
       price: 19.99,
-      image: Beater,
+      image_url: Beater,
       description: "Durable beater for high-intensity workouts.",
       id: 12,
       sizes: ["XS", "S", "M", "L", "XL"],
@@ -35,21 +35,21 @@ export const fitness = {
     {
       name: "Gray Jacket",
       price: 49.99,
-      image: Jacket2,
+      image_url: Jacket2,
       description: "A lightweight jacket for outdoor activities.",
       id: 13,
     },
     {
       name: "Gray Jacket (mini)",
       price: 49.99,
-      image: Jacket,
+      image_url: Jacket,
       description: "Extra-small size jacket for our pocket-friendly friends.",
       id: 14,
     },
     {
       name: "Running shirt",
       price: 69.99,
-      image: Runner,
+      image_url: Runner,
       description: "High-performance, absorbant sports tee for any athlete.",
       id: 15,
       sizes: ["XS", "S", "M", "L", "XL"],
@@ -57,7 +57,7 @@ export const fitness = {
     {
       name: "Treadmill",
       price: 499.99,
-      image: Treadmill,
+      image_url: Treadmill,
       description:
         "A custom-made, state-of-the-art treadmill for home workouts.",
       id: 16,

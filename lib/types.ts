@@ -1,5 +1,16 @@
-import { clothingCategories } from "./clothing-categories";
+import { StaticImageData } from "next/image";
 
-export type ClothingCategories = typeof clothingCategories;
+export type ClothingCategories = {
+  name: string;
+  clothing_items: {
+    name: string;
+    price: number;
+    image_url: StaticImageData;
+    description: string;
+    id: number;
+    sizes?: string[];
+  }[];
+}[];
+
 export type ClothingCategory = ClothingCategories[number];
-export type ClothingItem = ClothingCategory["items"][number];
+export type ClothingItem = ClothingCategory["clothing_items"][number];

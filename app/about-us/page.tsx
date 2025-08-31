@@ -1,3 +1,4 @@
+import { Heart, PawPrint, ShieldCheck, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,8 +7,31 @@ import { Card, CardContent } from "@/components/ui/card";
 import Main from "@/components/ui/main";
 import MotionDiv from "@/components/ui/motion/motion-div";
 import sportOutfit from "@/images/outfits/sporty.jpg";
-import { aboutUsCards } from "@/lib/constants";
 import { fadeIntoView } from "@/lib/motion";
+
+const aboutUsCards = [
+  {
+    icon: PawPrint,
+    title: "Paw-fect Fit",
+    description:
+      "Our sizes are carefully crafted to fit dogs of all shapes and sizes.",
+  },
+  {
+    icon: Heart,
+    title: "Made with Love",
+    description: "Each piece is designed with care and attention to detail.",
+  },
+  {
+    icon: Truck,
+    title: "Fast Shipping",
+    description: "Quick delivery to get your pup styling in no time.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Quality Guarantee",
+    description: "We stand behind the quality of every item we sell.",
+  },
+];
 
 export default function AboutUs() {
   return (

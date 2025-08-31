@@ -12,11 +12,11 @@ import Hat11 from "@/images/hats/hat-11.jpg";
 
 export const hats = {
   name: "Hats",
-  items: [
+  clothing_items: [
     {
       name: "Adventure Wide-Brim Hat",
       price: 19.99,
-      image: Hat1,
+      image_url: Hat1,
       description: "Perfect for outdoor adventures and sun protection.",
       id: 25,
       sizes: ["S", "M", "L", "XL"],
@@ -24,7 +24,7 @@ export const hats = {
     {
       name: "Warm Beanie",
       price: 24.99,
-      image: Hat10,
+      image_url: Hat10,
       description:
         "Comfortable and insulated material, perfect for wintery days.",
       id: 26,
@@ -33,7 +33,7 @@ export const hats = {
     {
       name: "Casual Cap",
       price: 29.99,
-      image: Hat11,
+      image_url: Hat11,
       description: "Simple design for a laid-back look.",
       id: 27,
       sizes: ["XS", "S", "M", "L", "XL"],
@@ -41,7 +41,7 @@ export const hats = {
     {
       name: "Classic Cap",
       price: 19.99,
-      image: Hat2,
+      image_url: Hat2,
       description: "A timeless cap for that signature look.",
       id: 28,
       sizes: ["XS", "S", "M", "L", "XL"],
@@ -49,7 +49,7 @@ export const hats = {
     {
       name: "Lightweight Sun Hat",
       price: 22.99,
-      image: Hat3,
+      image_url: Hat3,
       description: "Lightweight and durable for outdoor fun.",
       id: 29,
       sizes: ["XS", "S", "M", "L", "XL"],
@@ -57,7 +57,7 @@ export const hats = {
     {
       name: "Classic Fedora",
       price: 27.99,
-      image: Hat4,
+      image_url: Hat4,
       description: "A stylish fedora for all occasions.",
       id: 30,
       sizes: ["XS", "S", "M", "L", "XL"],
@@ -65,7 +65,7 @@ export const hats = {
     {
       name: "Stylish Beanie",
       price: 30.99,
-      image: Hat5,
+      image_url: Hat5,
       description: "A chic accessory that complements any outfit.",
       id: 31,
       sizes: ["XS", "S", "M", "L", "XL"],
@@ -73,14 +73,14 @@ export const hats = {
     {
       name: "Trendy Cap (mini)",
       price: 35.99,
-      image: Hat6,
+      image_url: Hat6,
       description: "Because you deserve to look good no matter your stature",
       id: 32,
     },
     {
       name: "Vintage Top Hat",
       price: 20.99,
-      image: Hat7,
+      image_url: Hat7,
       description: "Are you the next David Barkerfield?",
       id: 33,
       sizes: ["XS", "S", "M", "L", "XL"],
@@ -88,14 +88,14 @@ export const hats = {
     {
       name: "Everyday Cap",
       price: 25.99,
-      image: Hat8,
+      image_url: Hat8,
       description: "Comfortable and stylish for everyday wear.",
       id: 34,
     },
     {
       name: "Rapper Cap",
       price: 23.99,
-      image: Hat9,
+      image_url: Hat9,
       description: "A versatile hat that suits anyone.",
       id: 35,
       sizes: ["XS", "S", "M", "L", "XL"],

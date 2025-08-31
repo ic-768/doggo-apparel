@@ -12,12 +12,12 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useFilters } from "@/context/filters/use-filters";
-import { clothingCategories } from "@/lib/clothing-categories";
 
 import PriceRangeSlider from "./price-range-slider";
 
 export default function Filters() {
   const {
+    allCategories,
     viewType,
     setViewType,
     category,
@@ -42,7 +42,7 @@ export default function Filters() {
           </SelectTrigger>
           <SelectContent title="Categories">
             <SelectItem value="all">All</SelectItem>
-            {clothingCategories.map(({ name }) => (
+            {allCategories.map(({ name }) => (
               <SelectItem key={name} value={name.toLowerCase()}>
                 {name}
               </SelectItem>

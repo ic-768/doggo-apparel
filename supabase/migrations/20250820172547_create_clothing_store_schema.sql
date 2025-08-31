@@ -28,7 +28,7 @@ CREATE INDEX idx_clothing_items_in_stock ON clothing_items(in_stock);
 INSERT INTO categories (name) VALUES
   ('accessories'),
   ('fitness'),
-  ('glasses'),
+  ('eyewear'),
   ('hats'),
   ('loungewear'),
   ('outfits');

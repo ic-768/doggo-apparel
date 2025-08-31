@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 import { clothingCategories } from "./clothing-categories";
+import { ClothingCategories } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -9,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getClothingItemById(id: number) {
   for (const category of clothingCategories) {
-    const item = category.items.find((item) => item.id === id);
+    const item = category.clothing_items.find((item) => item.id === id);
 
     if (item) {
       return item;
@@ -30,18 +31,22 @@ export function getClothingItemsByIds(ids: number[]) {
 
 export function getRelatedItems(id: number) {
   const category = clothingCategories.find(
-    (category) => category.items.find((item) => item.id === id) !== undefined,
+    (category) =>
+      category.clothing_items.find((item) => item.id === id) !== undefined,
   );
 
   if (!category) {
     throw new Error(`Item with id ${id} not found`);
   }
 
-  return category.items.filter((item) => item.id !== id);
+  return category.clothing_items.filter((item) => item.id !== id);
 }
 
-export function getClothingCategoryByName(name: string) {
-  return clothingCategories.find(
+export function getClothingCategoryByName(
+  categories: ClothingCategories,
+  name: string,
+) {
+  return categories.find(
     (category) => category.name.toLowerCase() === name.toLowerCase(),
   );
 }

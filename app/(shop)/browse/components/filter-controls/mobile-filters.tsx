@@ -23,11 +23,7 @@ export default function MobileFilters() {
           <Settings className="size-10" />
         </Button>
       </SheetTrigger>
-      <SheetContent
-        title="test"
-        side="bottom"
-        className="flex h-[27rem] flex-col gap-4"
-      >
+      <SheetContent side="bottom" className="flex h-[27rem] flex-col gap-4">
         <SheetTitle>Filters</SheetTitle>
         <SheetDescription>Narrow down the displayed results</SheetDescription>
         <div className="overflow-y-auto">

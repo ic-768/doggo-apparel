@@ -4,7 +4,6 @@ import { useState } from "react";
 import React, { createContext, ReactNode } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { clothingCategories } from "@/lib/clothing-categories";
 import { ClothingCategories, ClothingItem } from "@/lib/types";
 import {
   addQueryParams,
@@ -16,6 +15,7 @@ type ViewType = "grid" | "carousel";
 
 export interface FiltersContextType {
   viewType: ViewType;
+  allCategories: ClothingCategories;
   setViewType: (viewType: ViewType) => void;
   filteredData: ClothingCategories | ClothingItem[];
   category: string;
@@ -36,7 +36,13 @@ export const FiltersContext = createContext<FiltersContextType | undefined>(
   undefined,
 );
 
-export const FiltersProvider = ({ children }: { children: ReactNode }) => {
+export const FiltersProvider = ({
+  children,
+  allCategories,
+}: {
+  children: ReactNode;
+  allCategories: ClothingCategories;
+}) => {
   const router = useRouter();
 
   const searchParams = useSearchParams();
@@ -53,14 +59,14 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
   const viewingAll = urlCategory === "all";
 
   const applyFilters = () => {
-    const categories = viewingAll
-      ? clothingCategories
-      : [getClothingCategoryByName(urlCategory)!];
+    const filtered_categories = viewingAll
+      ? allCategories
+      : [getClothingCategoryByName(allCategories, urlCategory)!];
 
     // apply all filters
-    return categories.map((category) => ({
+    return filtered_categories.map((category) => ({
       ...category,
-      items: category.items.filter(
+      items: category.clothing_items.filter(
         (item) =>
           item.name.toLowerCase().includes(urlText.toLowerCase()) &&
           item.price >= Number(urlPriceRange[0] || 0) &&
@@ -73,7 +79,7 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
     ? // apply filters and return categories
       applyFilters()
     : // apply filters and return just items
-      applyFilters().flatMap((category) => category.items);
+      applyFilters().flatMap((category) => category.clothing_items);
 
   // set filters as query params in the url
   const setFilters = ({
@@ -103,6 +109,7 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
   return (
     <FiltersContext.Provider
       value={{
+        allCategories,
         category: urlCategory,
         priceRange: urlPriceRange,
         setFilters: debounce(setFilters),
