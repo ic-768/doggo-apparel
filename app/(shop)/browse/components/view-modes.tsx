@@ -68,7 +68,7 @@ function AllList({
           {...fadeIntoView}
           className="flex flex-col gap-6"
         >
-          <h2 className="text-center text-2xl font-semibold text-secondary-foreground">
+          <h2 className="text-center text-2xl font-semibold capitalize text-secondary-foreground">
             {category.name}
           </h2>
           <ItemList textFilter={textFilter} items={category.clothing_items} />
